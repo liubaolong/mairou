@@ -1,0 +1,65 @@
+<section class="Psection MT20" id="Cflow">
+	<div>
+			<form action="" method="">
+				<table style="width:600px;margin-top:30px;margin:auto;border:1px solid #DDDDDD;" class="table table-hover">
+				  <thead>
+					    <tr>
+					      <th colspan="2" style="text-align:center;font-size:35px;">商家申请表</th>
+					    </tr>
+					  </thead>
+					<tr style="height:40px;">
+						<td>店铺名:</td>
+						<td><input type="text" name="shop" maxlength="15" size="40" style="border:1px solid #999;height:25px;"></td>
+					</tr>
+					<tr style="height:40px;">
+						<td>负责代表:</td>
+						<td><input type="text" name="info" size="40" style="border:1px solid #999;height:25px;"></td>
+					</tr>
+					<tr style="height:40px;">
+						<td>身份证</td>
+						<td><input type="text" name="ident" size="40" style="border:1px solid #999;height:25px;"></td>
+					</tr>
+					<tr style="height:40px;">
+						<td>订餐电话:</td>
+						<td><input type="text" name="phone" size="40" style="border:1px solid #999;height:25px;"></td>
+					</tr>
+					<tr style="height:40px;">
+						<td>所在区:</td>
+						<td>
+							<select id="s_province" name="s_province" style="height:30px;"></select>  
+						    <select id="s_city" name="s_city" style="height:30px;"></select>  
+						    <select id="s_county" name="s_county" style="width:65px;height:30px;"></select>
+						    <script class="resources library" src="__JS_PATH__/area.js" type="text/javascript"></script>
+						    <script type="text/javascript">_init_area();</script>
+						</td>
+					</tr>
+					<tr style="height:40px;">
+						<td>详细地址:</td>
+						<td><input type="text" name="adress" size="40" style="border:1px solid #999;height:25px;"></td>
+					</tr>
+					<tr style="height:40px;">
+						<td>营业时间:</td>
+						<td><input type="text" name="time" size="40" style="border:1px solid #999;height:25px;"></td>
+					</tr>
+					<tr style="height:40px;">
+						<td>店铺图片:</td>
+						<td><input type="file" name="photo" ></td>
+					</tr>
+					<tr style="height:40px;">
+						<td>wifi:</td>
+						<td>
+							有<input type="radio" name="yes">
+							无<input type="radio" name="no" checked>
+						</td>
+					</tr>
+					<tr style="height:40px;">
+						<td>商家简介:</td>
+						<td><textarea rows="10" cols="40" style="resize:none;" size="40" style="border:1px solid #999;height:25px;"></textarea></td>
+					</tr>
+					<tr tr style="height:40px;">
+						<td colspan="2"><input type="submit"  value="提交" style="width:50px;height:30px;"></td>
+					</tr>
+				</table>
+			</form>
+	</div>
+</section>

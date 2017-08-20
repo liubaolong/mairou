@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+	<style type="text/css">
+		.box{
+			background: gray;
+			height: 500px;
+		}
+		.left{
+			background: red;
+			height:200px;
+		}
+		.right{
+			background: gray;
+			height:200px;
+		}
+	</style>
+</head>
+<body>
+<div class="container box">
+	<div class="row">
+		<div class="col-md-4 col-xs-2 left"></div>
+		<div class="col-md-8  col-xs-4 right"></div>
+	</div>	
+<table class="table table-hover">
+	<tr><td>1</td></tr>
+	<tr><td>2</td></tr>
+	<tr><td>3</td></tr>
+</table>
+<div class="form-group ">
+  <label class="control-label" for="inputSuccess2">Input with success</label>
+  <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  <span id="inputSuccess2Status" class="sr-only">(success)</span>
+</div>
+
+
+<div class="row">
+		<div class="col-md-3 col-xs-6  left"><a class="thumbnail"><img src="01.jpg" class="img-responsive" alt="Responsive image"></a></div>
+		<div class="col-md-3 col-xs-6 left"><img src="01.jpg" class="img-responsive" alt="Responsive image"></div>
+		<div class="col-md-3 col-xs-6 left"><img src="01.jpg" class="img-responsive" alt="Responsive image"></div>
+		<div class="col-md-3 col-xs-6 left"><img src="01.jpg" class="img-responsive" alt="Responsive image"></div>
+</div>	
+</div>
+</body>
+</html>
+<script type="text/javascript" src="jQuery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#inputSuccess2').blur(function(){
+			$.post('01-re.php',{user:$(this).val()},function(data){
+				if (data.code) {
+					$('.form-group').addClass('has-success has-feedback');
+				} else {
+					$('.form-group').addClass('has-error has-feedback');
+				}
+			},'json');
+			//$('.form-group').addClass('has-success has-feedback');
+		})
+	})
+</script>

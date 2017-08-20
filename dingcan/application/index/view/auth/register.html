@@ -1,0 +1,41 @@
+
+<!--Start content-->
+<section class="Psection MT20">
+ <form action="{:url('user/user')}">
+  <table class="Register">
+  <tr>
+  <td width="40%" align="right" class="FontW">用户名：</td>
+  <td><input type="text" name="" required autofocus></td>
+  </tr>
+  <tr>
+  <td width="40%" align="right" class="FontW">密码：</td>
+  <td><input type="password" name="" required></td>
+  </tr>
+  <tr>
+  <td width="40%" align="right" class="FontW">再次确认：</td>
+  <td><input type="password" name="" required></td>
+  </tr>
+  <tr>
+  <td width="40%" align="right" class="FontW">电子邮件：</td>
+  <td><input type="email" name="" required></td>
+  </tr>
+  <tr>
+  <td width="40%" align="right" class="FontW">手机号码：</td>
+  <td><input type="text" name="phone" class="phone" required pattern="[0-9]{11}"></td>
+  </tr>
+  <tr>
+  <td width="40%" align="right" class="FontW">手机校验码：</td>
+  <td><input type="text" name="" required pattern="[0-9]{6}"><input type="button" value="获取验证码" class=".btn" id="yzm"></td>
+  </tr>
+  <tr>
+  <td width="40%" align="right" class="FontW">验证码：</td>
+  <td><input type="text" name="" required><img src="__UPLOAD_PATH__/captcha.png" style="margin-left:8px; vertical-align:bottom" width="83" height="36"></td>
+  </tr>
+  <tr>
+  <td width="40%" align="right"></td>
+  <td><input type="submit" name="" class="Submit_b" value="注 册">( 已经是会员，<a href="{:url('user/user')}" class="BlueA">请登录</a> )</td>
+  </tr>
+  </table>
+ </form>
+</section>
+<!--End content-->
