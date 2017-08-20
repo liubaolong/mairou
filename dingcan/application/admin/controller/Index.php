@@ -7,5 +7,6 @@
 		{
 			return $this->fetch();
 		}
+		echo $a;
 		
 	}
