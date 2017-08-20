@@ -7,10 +7,5 @@
 		{
 			return $this->fetch();
 		}
-<<<<<<< HEAD
-		echo 111;
-=======
-		echo $a;
-		
->>>>>>> 6f6bae39cd4b0fe39e751f4f800171795ea18b4e
+
 	}
