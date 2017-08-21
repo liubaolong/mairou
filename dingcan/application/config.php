@@ -150,7 +150,7 @@ return [
         '__FONT_PATH__'=>'/static/font',
         '__LIB_PATH__'=>'/static/lib',
         '__TEMP_PATH__'=>'/static/temp',
-        '__ADMIN_PATH__'=>'/static/admin',
+        '__ADMIN_PATH__'=>'/static/static',
     ],
     // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
