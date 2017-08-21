@@ -7,10 +7,11 @@
 <meta name="description" content="DeathGhost.cn::H5 WEB前端设计开发!" />
 <meta name="author" content="DeathGhost"/>
 <link href="__CSS_PATH__/style.css" rel="stylesheet" type="text/css" />
-<link href="__STATIC_PATH__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<!-- <link href="__STATIC_PATH__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /> -->
 <script type="text/javascript" src="__JS_PATH__/public.js"></script>
 <script type="text/javascript" src="__JS_PATH__/jquery.js"></script>
 <script type="text/javascript" src="__JS_PATH__/jqpublic.js"></script>
+<script type="text/javascript" src="__JS_PATH__/jQuery-1.11.3.js"></script>
 <!--
 Author: DeathGhost
 Author URI: http://www.deathghost.cn
@@ -137,7 +138,7 @@ function selectsearch(theA,word){
     var showArea = function(){
       Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +  
       Gid('s_city').value + " - 县/区" + 
-      Gid('s_county').value + "</h3>"                 }
+      Gid('s_county').value + "</h3>";                 }
 
     $('#yzm').click(function(){
        var phone = $('.phone').val();

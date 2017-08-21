@@ -1,6 +1,7 @@
+<link href="__STATIC_PATH__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /> 
 <section class="Psection MT20" id="Cflow">
 	<div>
-			<form action="" method="">
+			<form action="{:url('index/shop/join')}" method="POST" enctype="multipart/form-data" onsubmit="return submitup()">
 				<table style="width:600px;margin-top:30px;margin:auto;border:1px solid #DDDDDD;" class="table table-hover">
 				  <thead>
 					    <tr>
@@ -9,19 +10,15 @@
 					  </thead>
 					<tr style="height:40px;">
 						<td>店铺名:</td>
-						<td><input type="text" name="shop" maxlength="15" size="40" style="border:1px solid #999;height:25px;"></td>
-					</tr>
-					<tr style="height:40px;">
-						<td>负责代表:</td>
-						<td><input type="text" name="info" size="40" style="border:1px solid #999;height:25px;"></td>
+						<td><input type="text" name="shop" id="shop" maxlength="15" size="40" style="border:1px solid #999;height:25px;" onblur="checkname()"><p style="display:none;" id="p1">商铺名已存在</p></td>
 					</tr>
 					<tr style="height:40px;">
 						<td>身份证</td>
-						<td><input type="text" name="ident" size="40" style="border:1px solid #999;height:25px;"></td>
+						<td><input type="text" name="ident" id="ident" size="40" style="border:1px solid #999;height:25px;" onblur="checkid()"><p style="display:none;" id="p2"></p></td>
 					</tr>
 					<tr style="height:40px;">
 						<td>订餐电话:</td>
-						<td><input type="text" name="phone" size="40" style="border:1px solid #999;height:25px;"></td>
+						<td><input type="text" name="phone" id="phone" size="40" style="border:1px solid #999;height:25px;" onblur="checkphone()"><p style="display:none;" id="p3"></p></td>
 					</tr>
 					<tr style="height:40px;">
 						<td>所在区:</td>
@@ -35,15 +32,15 @@
 					</tr>
 					<tr style="height:40px;">
 						<td>详细地址:</td>
-						<td><input type="text" name="adress" size="40" style="border:1px solid #999;height:25px;"></td>
+						<td><input type="text" name="address" id="address" size="40" style="border:1px solid #999;height:25px;" onblur="checkaddress()"></td>
 					</tr>
 					<tr style="height:40px;">
 						<td>营业时间:</td>
-						<td><input type="text" name="time" size="40" style="border:1px solid #999;height:25px;"></td>
+						<td><input type="text" name="time" id="time" size="40" style="border:1px solid #999;height:25px;" onblur="checktime()"></td>
 					</tr>
 					<tr style="height:40px;">
 						<td>店铺图片:</td>
-						<td><input type="file" name="photo" ></td>
+						<td><input type="file" name="photo" id="photo" onblur="checkphoto()"></td>
 					</tr>
 					<tr style="height:40px;">
 						<td>wifi:</td>
@@ -54,12 +51,152 @@
 					</tr>
 					<tr style="height:40px;">
 						<td>商家简介:</td>
-						<td><textarea rows="10" cols="40" style="resize:none;" size="40" style="border:1px solid #999;height:25px;"></textarea></td>
+						<td><textarea rows="10" cols="40" name="info" id="info" style="resize:none;" size="40" style="border:1px solid #999;height:25px;" onblur="checkinfo()"></textarea></td>
 					</tr>
-					<tr tr style="height:40px;">
-						<td colspan="2"><input type="submit"  value="提交" style="width:50px;height:30px;"></td>
+					<tr style="height:40px;text-align:center;">
+						<td colspan="2"><input type="submit" value="提交" style="width:50px;height:30px;"></td>
 					</tr>
 				</table>
 			</form>
 	</div>
 </section>
+<script type="text/javascript">
+//店铺名称
+	function checkname()
+	{
+		var shop;
+		if ($("#shop").val() == '') {
+			$("#shop").css('border', '1px solid red');
+			return false;
+		} else {
+			$.post("{:url('index/shop/checkname')}",{shop:$("#shop").val()},function(data){
+					if (data['code'] == 1) {
+						$("#shop").css('border', '1px solid green');
+						$("#p1").css('display','none');
+						return true;
+					} else {
+						$("#p1").css('display','block');
+						$("#shop").css('border','1px solid red');
+						return false;
+					}
+				},'json');
+		}
+
+	}
+//身份证
+	function checkid()
+	{
+		var ident;
+		if($("#ident").val() == ''){
+			$("#ident").css('border', '1px solid red');
+			return false;
+		} else {
+
+			$.post("{:url('index/shop/checkid')}",{ident:$('#ident').val()},function(data){
+				if (data != '没有信息' && data != 'ok' && data != '身份证为空') {
+					$("#ident").css('border','1px solid green');
+					$("#p2").html(data);
+					$("#p2").css('display','block');
+							return true;
+				} else{
+					$("#p2").html('身份证不正确');
+					$("#p2").css('display','block');
+					$("#ident").css('border','1px solid red');
+					return false;
+				}
+			},'json');
+		}
+		if ($("#p2").html()=='身份证不正确') {
+			return false;
+		} else {
+		return true;	}
+
+	}
+//电话
+	function checkphone()
+	{
+		var phone;
+		if ($("#phone").val() == '') {
+			$("#phone").css('border','1px solid red');
+			return false;
+		} else {
+			$.post("{:url('index/shop/checkphone')}",{phone:$('#phone').val()},function(data){
+				if (data != '手机号不正确' && data != null && data != '手机号为空') {
+					$("#phone").css('border','1px solid green');
+					$("#p3").html(data);
+					$("#p3").css('display','block');
+				} else {
+					$("#p3").html('手机号不正确');
+					$("#p3").css('display','block');
+					$("#phone").css('border','1px solid red');
+				}
+
+			},'json'); 
+		}
+		if ($("#p3").html()=='手机号不正确') {
+			return false;
+		} else {
+		return true;	}
+		
+	}	
+//地址
+	function checkaddress()
+	{
+		var address;
+		if ($('#address').val() == '') {
+			$("#address").css('border', '1px solid red');
+			return false;
+		}  else{
+			$("#address").css('border', '1px solid green');
+			
+		}
+		return true;
+	}
+//营业时间
+	function checktime()
+	{
+		var time;
+		if ($('#time').val() == '') {
+			$("#time").css('border', '1px solid red');
+			return false;
+		} else {
+			$("#time").css('border', '1px solid green');
+			;
+		}
+		return true
+	}
+//店铺图片
+	function checkphoto()
+	{
+		var photo;
+		if ($('#photo').val() == '') {
+			$("#photo").css('border', '1px solid red');
+			return false;
+		} else {
+			$("#photo").css('border', '1px solid green');
+			
+		}
+		return true;
+	}
+//店家简介
+	function checkinfo()
+		{
+			var info;
+			if ($('#info').val() == '') {
+				$("#info").css('border', '1px solid red');
+				return false;
+			} else {
+				$("#info").css('border', '1px solid green');
+				
+			}
+			return true;
+		}
+	function submitup()
+	{
+		
+		if(checkinfo()&&checkphoto()&&checktime()&&checkaddress()&&checkphone()&&checkid()&&checkname()){
+			return  true;
+		}
+		return  false;
+	}
+</script>
