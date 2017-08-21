@@ -1,5 +1,5 @@
 <?php
-namespace app\admin\controller;
+namespace app\sadmin\controller;
 use think\Controller;
 class Sindex extends Controller
 {
