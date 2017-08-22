@@ -1,7 +1,7 @@
 <?php
 	namespace app\admin\controller;
-	use think\Controller;
-	class Product extends Controller{
+	use app\admin\controller\Auth;
+	class Product extends Auth{
 		//添加商品
 		public function product_add()
 		{

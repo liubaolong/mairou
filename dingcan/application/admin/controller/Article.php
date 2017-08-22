@@ -1,7 +1,7 @@
 <?php
 	namespace app\admin\controller;
-	use think\Controller;
-	class Article extends Controller{
+	use app\admin\controller\Auth;
+	class Article extends Auth{
 		//资讯管理
 		public function article_list()
 		{

@@ -1,9 +1,9 @@
 <?php
 	namespace app\admin\controller;
-	use think\Controller;
-	class Feedback extends Controller{
+	use app\admin\controller\Auth;
+	class Feedback extends Auth{
 		//意见反馈
-		public function feedback()
+		public function feedback_list()
 		{
 			return $this->fetch();
 		}

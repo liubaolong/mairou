@@ -1,7 +1,7 @@
 <?php
 	namespace app\admin\controller;
-	use think\Controller;
-	class Admin extends Controller{
+	use app\admin\controller\Auth;
+	class Admin extends Auth{
 		//管理员添加
 		public function admin_add()
 		{
@@ -18,7 +18,7 @@
 			return $this->fetch();
 		}
 		//添加权限
-		public function admin_role_add()
+		public function admin_role()
 		{
 			return $this->fetch();
 		}

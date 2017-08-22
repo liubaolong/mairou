@@ -1,10 +1,32 @@
-<!--Start content-->
+
+<title>酸辣土豆丝 - DeathGhost</title>
+
+<script>
+$(function(){		
+	$('.title-list li').click(function(){
+		var liindex = $('.title-list li').index(this);
+		$(this).addClass('on').siblings().removeClass('on');
+		$('.menutab-wrap div.menutab').eq(liindex).fadeIn(150).siblings('div.menutab').hide();
+		var liWidth = $('.title-list li').width();
+		$('.shopcontent .title-list p').stop(false,true).animate({'left' : liindex * liWidth + 'px'},300);
+	});
+	
+	$('.menutab-wrap .menutab li').hover(function(){
+		$(this).css("border-color","#ff6600");
+		$(this).find('p > a').css('color','#ff6600');
+	},function(){
+		$(this).css("border-color","#fafafa");
+		$(this).find('p > a').css('color','#666666');
+	});
+	});
+</script>
+
 <section class="slp">
  <section class="food-hd">
   <div class="foodpic">
-   <img src="__UPLOAD_PATH__/02.jpg" id="showimg">
+   <img src="upload/02.jpg" id="showimg">
     <ul class="smallpic">
-     <li><img src="__UPLOAD_PATH__/02.jpg" onmouseover="show(this)" onmouseout="hide()"></li>
+     <li><img src="upload/02.jpg" onmouseover="show(this)" onmouseout="hide()"></li>
     </ul>
   </div>
   <div class="foodtext">
@@ -49,12 +71,12 @@
    <span class="VHtitle">看了又看</span>
    <ul class="Fsulist">
     <li>
-     <a href="{:url('meal/detailsp')}" target="_blank" title="酱爆茄子"><img src="__UPLOAD_PATH__/03.jpg"></a>
+     <a href="detailsp.html" target="_blank" title="酱爆茄子"><img src="upload/03.jpg"></a>
      <p>酱爆茄子</p>
      <p>￥12.80</p>
     </li>
     <li>
-     <a href="{:url('meal/detailsp')}" target="_blank" title="酱爆茄子"><img src="__UPLOAD_PATH__/02.jpg"></a>
+     <a href="detailsp.html" target="_blank" title="酱爆茄子"><img src="upload/02.jpg"></a>
      <p>酱爆茄子</p>
      <p>￥12.80</p>
     </li>
@@ -77,7 +99,7 @@
     <!--case1-->
     <div class="menutab show">
       <div class="cont_padding">
-       <img src="__UPLOAD_PATH__/tds.jpg">
+       <img src="upload/tds.jpg">
        <p>测试信息，可删除！</p>
        <p>1. 将土豆洗净刮皮。</p>
        <p>2. 先将土豆切成整齐的大薄片这样是切出均匀的丝的要点。</p>
@@ -145,8 +167,8 @@
   <!--ad&other infor-->
   <aside>
    <!--广告位或推荐位-->
-   <a href="#" title="广告位占位图片" target="_blank"><img src="__UPLOAD_PATH__/2014912.jpg"></a>
+   <a href="#" title="广告位占位图片" target="_blank"><img src="upload/2014912.jpg"></a>
   </aside>
  </section>
 </section>
-<!--End content-->
+

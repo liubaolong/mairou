@@ -1,7 +1,7 @@
 <?php
 	namespace app\admin\controller;
-	use think\Controller;
-	class Member extends Controller{
+	use app\admin\controller\Auth;
+	class Member extends Auth{
 		//会员列表
 		public function member_list()
 		{

@@ -1,7 +1,7 @@
 <?php
 	namespace app\admin\controller;
-	use think\Controller;
-	class Picture extends Controller{
+	use app\admin\controller\Auth;
+	class Picture extends Auth{
 		//图片列表
 		public function picture_list()
 		{

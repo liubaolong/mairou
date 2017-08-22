@@ -1,7 +1,7 @@
 <?php
 	namespace app\admin\controller;
-	use think\Controller;
-	class Charts extends Controller{
+	use app\admin\controller\Auth;
+	class Charts extends Auth{
 		//折线图
 		public function charts_1()
 		{
