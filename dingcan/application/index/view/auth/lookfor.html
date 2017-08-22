@@ -1,0 +1,172 @@
+
+<!--Start content-->
+<section class="Psection MT20">
+<h2 style="padding-left:250px;">找回密码：</h2>
+ <form action="{:url('auth/gaipwd')}" method="post" id="form1">
+  <table class="Register">
+  <tr>
+  <td width="40%" align="right" class="FontW">用户名：</td>
+  <td><input type="text" name="uname" id="usname" required autofocus>
+  <span style="color:red;" id="uname" class="sp">
+  
+  </span>
+  
+  </td>
+  
+  </tr>
+  
+  <tr>
+    <td width="40%" align="right" class="FontW">手机号码：</td>
+    <td><input type="text" name="phone" class="phone" required pattern="1[34578]\d{9}"><input type="button" value="获取验证码" class="btn" id="pyzm">
+    <span style="color:red;" id="phone" class="sp">
+  
+    </span>
+  </td>
+  </tr>
+  <tr>
+  <td width="40%" align="right" class="FontW">手机校验码：</td>
+  <td><input type="text" name="dxyzm" id="dxyzm" required pattern="[0-9]{4}">
+     <span style="color:red;" id="uname" class="sp">
+  
+      </span></td>
+  </tr>
+  <tr id ="tr3">
+    <td width="40%" align="right" class="FontW">验证码：</td>
+    <td><input type="text" name="yzm" id="yzm" required><img src="{:captcha_src()}" style="margin-left:8px; vertical-align:bottom" width="83" height="36" onclick="this.src=this.src"/>
+      <span style="color:red;" id="ts" class="sp">
+    
+        </span>
+    </td>
+  </tr>
+  <tr id ="tr4">
+    <td width="40%" align="right" class="FontW">修改密码：</td>
+    <td><input type="password" name="pwd" id="pwd" required pattern="[a-zA-Z]{1}([a-zA-Z0-9]|[._]){4,19}"></td>
+  </tr>
+  <tr id ="tr5">
+    <td width="40%" align="right" class="FontW">再次确认：</td>
+    <td><input type="password" name="repwd" id="repwd" required>
+        <span style="color:red;" id="uname" class="sp">
+    
+        </span>
+    </td>
+  </tr>
+  <tr>
+  <td width="40%" align="right"></td>
+  <td><input type="submit" name="" class="a" value="找回密码"></td>
+  </tr>
+  </table>
+ </form>
+</section>
+<!--End content-->
+<script type="text/javascript">
+window.onload = function(){
+
+  var flag = new Array();
+  var info1 = $('#uname');
+  var dxyzm = $('#dxyzm');
+  var yzm = null;
+  var dx = null;
+  //判断用户是否存在
+  $("input[name='uname']").blur(function(){
+    if ($(this).val() == '') {
+      // info1.html('不能为空');
+      flag['uname'] = false;
+    } else {
+        $.post("{:url('auth/isuser')}", {uname:$(this).val()}, function(data){
+            if (data.errorcode) {
+              // info1.html(data.info);
+              flag['uname'] = true;
+              // $("#tr3").css('display','inline-block');
+            } else {
+               
+              flag['uname'] = false;
+              info1.html('该用户不存在');
+            }
+        }, 'json');
+    }
+  });
+  //判断手机是否是该用户注册的
+  $("input[name='phone']").blur(function(){
+    if ($(this).val() == '') {
+      // info1.html('不能为空');
+      flag['phone'] = false;
+    } else {
+        $.post("{:url('auth/isphone')}", {phone:$('.phone').val(),uname:$('#usname').val()}, function(data){
+            if (data.errorcode) {
+              flag['phone'] = true;
+              $().css();
+            } else {
+              flag['phone'] = false;
+              $("#phone").text(data.info);
+            }
+        }, 'json');
+    }
+  });
+    //两次密码是否一致
+    $("input[name='repwd']").blur(function(){ 
+      if ($(this).val() != $('#pwd').val()) {
+        flag['repwd'] = false;
+        $("input[name='repwd']").next().text('两次密码不一致');
+      } else {
+        flag['repwd'] = true;
+      }
+    });
+   
+    
+   $("input").focus(function(){
+    $(".sp").html('');
+  });
+   //发送验证码
+  $('#pyzm').click(function(){
+       var phone = $('.phone').val();
+       $.post("{:url('auth/sendPhoneCode')}",{phone:phone},function(data){
+          if (data) {
+            dx = data;
+            console.log(dx);
+            alert('发送成功');
+          } else {
+            alert('发送失败');
+          }
+       },'json');
+       return false;
+    }); 
+  //手机验证码是否正确
+  $("input[name='dxyzm']").blur(function(){
+    if ($(this).val() != dx) {
+      $(this).next().html('短信验证码输入错误');
+      flag['dxyzm'] = false;
+    } else {
+      flag['dxyzm'] = true;
+    }
+  });
+  //判断验证码是否正确
+  $('#yzm').blur(function(){
+    var ts = $('#ts');
+    yzm = $('#yzm').val();
+    $.post("{:url('auth/yzm')}", {yzm:yzm}, function(data){
+        if (data.code == 1) {
+          ts.text('');
+          flag['yzm'] = true;
+        } else {
+          // alert(data.msg);
+          ts.text(data.msg);
+          flag['yzm'] = false;
+        }
+    },'json');
+  });
+  //判断flag
+  function isBool()
+  {
+     if (flag['uname'] && flag['repwd'] && flag['dxyzm'] && flag['yzm'] && flag['phone']) {
+      return true;
+    } else {
+       return false;
+    }
+  }
+  //提交拦截
+  $("#form1").submit(function(){
+    return isBool();
+  });
+
+}
+</script>

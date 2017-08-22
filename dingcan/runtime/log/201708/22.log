@@ -1,0 +1,1450 @@
+---------------------------------------------------------------
+[ 2017-08-22T19:06:18+08:00 ] ::1 ::1 POST /index/auth/sendphonecode.html
+[ info ] www.dc.com/index/auth/sendphonecode.html [运行时间：0.489028s][吞吐率：2.04req/s] [内存消耗：3,096.30kb] [文件加载：56]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'sendphonecode',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '17',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=1|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'phone' => '13313131311',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->sendPhoneCode[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:06:25+08:00 ] ::1 ::1 GET /captcha.html
+[ info ] www.dc.com/captcha.html [运行时间：0.082005s][吞吐率：12.19req/s] [内存消耗：1,667.07kb] [文件加载：41]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\Wamp\wamp\www\mairou\dingcan\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:06:25+08:00 ] ::1 ::1 POST /index/auth/yzm.html
+[ info ] www.dc.com/index/auth/yzm.html [运行时间：0.213013s][吞吐率：4.69req/s] [内存消耗：3,028.60kb] [文件加载：56]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'yzm',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '4',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=1|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'yzm' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->yzm[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:06:30+08:00 ] ::1 ::1 POST /index/auth/yzm.html
+[ info ] www.dc.com/index/auth/yzm.html [运行时间：0.248014s][吞吐率：4.03req/s] [内存消耗：3,092.84kb] [文件加载：57]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'yzm',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '8',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=1|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'yzm' => 'xhls',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->yzm[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:06:35+08:00 ] ::1 ::1 POST /index/auth/yzm.html
+[ info ] www.dc.com/index/auth/yzm.html [运行时间：0.253014s][吞吐率：3.95req/s] [内存消耗：3,092.84kb] [文件加载：57]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'yzm',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '8',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=1|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'yzm' => 'xhls',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->yzm[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:06:40+08:00 ] ::1 ::1 GET /captcha.html
+[ info ] www.dc.com/captcha.html [运行时间：0.212013s][吞吐率：4.72req/s] [内存消耗：1,667.07kb] [文件加载：41]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\Wamp\wamp\www\mairou\dingcan\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:06:41+08:00 ] ::1 ::1 GET /captcha.html
+[ info ] www.dc.com/captcha.html [运行时间：0.287017s][吞吐率：3.48req/s] [内存消耗：1,667.07kb] [文件加载：41]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\Wamp\wamp\www\mairou\dingcan\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:06:43+08:00 ] ::1 ::1 GET /captcha.html
+[ info ] www.dc.com/captcha.html [运行时间：0.083005s][吞吐率：12.05req/s] [内存消耗：1,667.07kb] [文件加载：41]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\Wamp\wamp\www\mairou\dingcan\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:06:51+08:00 ] ::1 ::1 POST /index/auth/yzm.html
+[ info ] www.dc.com/index/auth/yzm.html [运行时间：0.222012s][吞吐率：4.50req/s] [内存消耗：3,092.84kb] [文件加载：57]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'yzm',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '8',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=1|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'yzm' => 'g67n',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->yzm[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:06:55+08:00 ] ::1 ::1 POST /index/auth/yzm.html
+[ info ] www.dc.com/index/auth/yzm.html [运行时间：0.236013s][吞吐率：4.24req/s] [内存消耗：3,161.90kb] [文件加载：58]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'yzm',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '8',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=1|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'yzm' => 'g67m',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->yzm[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:07:19+08:00 ] ::1 ::1 GET /index/auth/lookfor.html
+[ info ] www.dc.com/index/auth/lookfor.html [运行时间：0.124007s][吞吐率：8.06req/s] [内存消耗：3,138.48kb] [文件加载：59]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'lookfor',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/gaipwd.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=1|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->lookfor[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ VIEW ] D:\Wamp\wamp\www\mairou\dingcan\public/../application/index\view\auth\lookfor.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:07:19+08:00 ] ::1 ::1 GET /captcha.html
+[ info ] www.dc.com/captcha.html [运行时间：0.076004s][吞吐率：13.16req/s] [内存消耗：1,666.94kb] [文件加载：41]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\Wamp\wamp\www\mairou\dingcan\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:07:28+08:00 ] ::1 ::1 POST /index/auth/isuser.html
+[ info ] www.dc.com/index/auth/isuser.html [运行时间：0.224013s][吞吐率：4.46req/s] [内存消耗：3,098.57kb] [文件加载：56]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'isuser',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=1|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'uname' => 'zhangsan',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->isuser[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:dbname=cai;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `f_user` [ RunTime:0.004000s ]
+[ sql ] [ SQL ] SELECT * FROM `f_user` WHERE  `username` = 'zhangsan' LIMIT 1 [ RunTime:0.002001s ]
+---------------------------------------------------------------
+[ 2017-08-22T19:07:30+08:00 ] ::1 ::1 POST /index/auth/isphone.html
+[ info ] www.dc.com/index/auth/isphone.html [运行时间：0.365021s][吞吐率：2.74req/s] [内存消耗：3,099.23kb] [文件加载：56]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'isphone',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=1|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'phone' => '13313131311',
+  'uname' => 'zhangsan',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->isphone[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.039002s ] mysql:dbname=cai;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `f_user` [ RunTime:0.024001s ]
+[ sql ] [ SQL ] SELECT * FROM `f_user` WHERE  `username` = 'zhangsan'  AND `phone` = '13313131311' LIMIT 1 [ RunTime:0.001000s ]
+---------------------------------------------------------------
+[ 2017-08-22T19:07:30+08:00 ] ::1 ::1 POST /index/auth/sendphonecode.html
+[ info ] www.dc.com/index/auth/sendphonecode.html [运行时间：0.406023s][吞吐率：2.46req/s] [内存消耗：3,096.15kb] [文件加载：56]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'sendphonecode',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '17',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=1|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'phone' => '13313131311',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->sendPhoneCode[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:07:37+08:00 ] ::1 ::1 POST /index/auth/yzm.html
+[ info ] www.dc.com/index/auth/yzm.html [运行时间：0.213012s][吞吐率：4.69req/s] [内存消耗：3,028.60kb] [文件加载：56]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'yzm',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '4',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=1|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'yzm' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->yzm[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:07:37+08:00 ] ::1 ::1 GET /captcha.html
+[ info ] www.dc.com/captcha.html [运行时间：0.215013s][吞吐率：4.65req/s] [内存消耗：1,667.07kb] [文件加载：41]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\Wamp\wamp\www\mairou\dingcan\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:07:38+08:00 ] ::1 ::1 POST /index/auth/yzm.html
+[ info ] www.dc.com/index/auth/yzm.html [运行时间：0.211012s][吞吐率：4.74req/s] [内存消耗：3,028.60kb] [文件加载：56]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'yzm',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '4',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=1|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'yzm' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->yzm[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:07:39+08:00 ] ::1 ::1 GET /captcha.html
+[ info ] www.dc.com/captcha.html [运行时间：0.069004s][吞吐率：14.49req/s] [内存消耗：1,667.07kb] [文件加载：41]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\Wamp\wamp\www\mairou\dingcan\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:07:40+08:00 ] ::1 ::1 GET /captcha.html
+[ info ] www.dc.com/captcha.html [运行时间：0.114007s][吞吐率：8.77req/s] [内存消耗：1,667.07kb] [文件加载：41]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\Wamp\wamp\www\mairou\dingcan\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:07:46+08:00 ] ::1 ::1 POST /index/auth/yzm.html
+[ info ] www.dc.com/index/auth/yzm.html [运行时间：0.211012s][吞吐率：4.74req/s] [内存消耗：3,161.90kb] [文件加载：58]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'yzm',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '8',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=1|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'yzm' => '6lnh',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->yzm[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:07:54+08:00 ] ::1 ::1 POST /index/auth/gaipwd.html
+[ info ] www.dc.com/index/auth/gaipwd.html [运行时间：0.224012s][吞吐率：4.46req/s] [内存消耗：3,166.39kb] [文件加载：60]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'gaipwd',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '76',
+  'cache-control' => 'max-age=0',
+  'origin' => 'http://www.dc.com',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=1|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'uname' => 'zhangsan',
+  'phone' => '13313131311',
+  'dxyzm' => '7917',
+  'yzm' => '6lnh',
+  'pwd' => 'admin1',
+  'repwd' => 'admin1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->gaipwd[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ VIEW ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\tpl\dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010000s ] mysql:dbname=cai;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `f_user` [ RunTime:0.033002s ]
+[ sql ] [ SQL ] UPDATE `f_user`  SET `password`='e00cf25ad42683b3df678c61f42c6bda'  WHERE  `username` = 'zhangsan' [ RunTime:0.066004s ]
+---------------------------------------------------------------
+[ 2017-08-22T19:07:57+08:00 ] ::1 ::1 GET /index/index/index.html
+[ info ] www.dc.com/index/index/index.html [运行时间：0.126007s][吞吐率：7.94req/s] [内存消耗：2,030.56kb] [文件加载：52]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/gaipwd.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\Wamp\wamp\www\mairou\dingcan\public/../application/index\view\index\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:08:32+08:00 ] ::1 ::1 GET /index/auth/lookfor.html
+[ info ] www.dc.com/index/auth/lookfor.html [运行时间：0.299017s][吞吐率：3.34req/s] [内存消耗：3,138.30kb] [文件加载：59]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'lookfor',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=1|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->lookfor[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ VIEW ] D:\Wamp\wamp\www\mairou\dingcan\public/../application/index\view\auth\lookfor.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:08:32+08:00 ] ::1 ::1 GET /captcha.html
+[ info ] www.dc.com/captcha.html [运行时间：0.118006s][吞吐率：8.47req/s] [内存消耗：1,666.94kb] [文件加载：41]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\Wamp\wamp\www\mairou\dingcan\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:09:03+08:00 ] ::1 ::1 POST /index/auth/isuser.html
+[ info ] www.dc.com/index/auth/isuser.html [运行时间：0.340020s][吞吐率：2.94req/s] [内存消耗：3,098.57kb] [文件加载：56]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'isuser',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'uname' => 'zhangsan',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->isuser[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.018001s ] mysql:dbname=cai;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `f_user` [ RunTime:0.027002s ]
+[ sql ] [ SQL ] SELECT * FROM `f_user` WHERE  `username` = 'zhangsan' LIMIT 1 [ RunTime:0.002000s ]
+---------------------------------------------------------------
+[ 2017-08-22T19:09:06+08:00 ] ::1 ::1 POST /index/auth/isphone.html
+[ info ] www.dc.com/index/auth/isphone.html [运行时间：0.347019s][吞吐率：2.88req/s] [内存消耗：3,099.23kb] [文件加载：56]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'isphone',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'phone' => '13313131311',
+  'uname' => 'zhangsan',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->isphone[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:dbname=cai;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `f_user` [ RunTime:0.028002s ]
+[ sql ] [ SQL ] SELECT * FROM `f_user` WHERE  `username` = 'zhangsan'  AND `phone` = '13313131311' LIMIT 1 [ RunTime:0.002000s ]
+---------------------------------------------------------------
+[ 2017-08-22T19:09:06+08:00 ] ::1 ::1 POST /index/auth/sendphonecode.html
+[ info ] www.dc.com/index/auth/sendphonecode.html [运行时间：0.398022s][吞吐率：2.51req/s] [内存消耗：3,096.15kb] [文件加载：56]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'sendphonecode',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '17',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'phone' => '13313131311',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->sendPhoneCode[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:09:16+08:00 ] ::1 ::1 POST /index/auth/yzm.html
+[ info ] www.dc.com/index/auth/yzm.html [运行时间：0.102006s][吞吐率：9.80req/s] [内存消耗：3,092.84kb] [文件加载：57]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'yzm',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '8',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'yzm' => 'n8ua',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->yzm[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:09:19+08:00 ] ::1 ::1 POST /index/auth/yzm.html
+[ info ] www.dc.com/index/auth/yzm.html [运行时间：0.255015s][吞吐率：3.92req/s] [内存消耗：3,161.90kb] [文件加载：58]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'yzm',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '8',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'yzm' => 'nbua',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->yzm[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:09:24+08:00 ] ::1 ::1 POST /index/auth/gaipwd.html
+[ info ] www.dc.com/index/auth/gaipwd.html [运行时间：0.434025s][吞吐率：2.30req/s] [内存消耗：3,166.39kb] [文件加载：60]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'gaipwd',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '74',
+  'cache-control' => 'max-age=0',
+  'origin' => 'http://www.dc.com',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'uname' => 'zhangsan',
+  'phone' => '13313131311',
+  'dxyzm' => '2093',
+  'yzm' => 'nbua',
+  'pwd' => 'admin',
+  'repwd' => 'admin',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->gaipwd[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ VIEW ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\tpl\dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.015001s ] mysql:dbname=cai;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `f_user` [ RunTime:0.078004s ]
+[ sql ] [ SQL ] UPDATE `f_user`  SET `password`='21232f297a57a5a743894a0e4a801fc3'  WHERE  `username` = 'zhangsan' [ RunTime:0.202011s ]
+---------------------------------------------------------------
+[ 2017-08-22T19:09:27+08:00 ] ::1 ::1 GET /index/index/index.html
+[ info ] www.dc.com/index/index/index.html [运行时间：0.428024s][吞吐率：2.34req/s] [内存消耗：2,030.56kb] [文件加载：52]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/gaipwd.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\Wamp\wamp\www\mairou\dingcan\public/../application/index\view\index\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:09:41+08:00 ] ::1 ::1 GET /index/auth/lookfor.html
+[ info ] www.dc.com/index/auth/lookfor.html [运行时间：0.463027s][吞吐率：2.16req/s] [内存消耗：3,138.30kb] [文件加载：59]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'lookfor',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/index/index.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->lookfor[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ VIEW ] D:\Wamp\wamp\www\mairou\dingcan\public/../application/index\view\auth\lookfor.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:09:42+08:00 ] ::1 ::1 GET /captcha.html
+[ info ] www.dc.com/captcha.html [运行时间：0.304017s][吞吐率：3.29req/s] [内存消耗：1,666.94kb] [文件加载：41]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\think\\captcha\\CaptchaController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'id' => NULL,
+)
+[ info ] [ RUN ] think\captcha\CaptchaController->index[ D:\Wamp\wamp\www\mairou\dingcan\vendor\topthink\think-captcha\src\CaptchaController.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:09:44+08:00 ] ::1 ::1 POST /index/auth/isuser.html
+[ info ] www.dc.com/index/auth/isuser.html [运行时间：0.229013s][吞吐率：4.37req/s] [内存消耗：3,098.57kb] [文件加载：56]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'isuser',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '14',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'uname' => 'zhangsan',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->isuser[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010000s ] mysql:dbname=cai;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `f_user` [ RunTime:0.036002s ]
+[ sql ] [ SQL ] SELECT * FROM `f_user` WHERE  `username` = 'zhangsan' LIMIT 1 [ RunTime:0.005000s ]
+---------------------------------------------------------------
+[ 2017-08-22T19:09:45+08:00 ] ::1 ::1 POST /index/auth/isphone.html
+[ info ] www.dc.com/index/auth/isphone.html [运行时间：0.381022s][吞吐率：2.62req/s] [内存消耗：3,099.23kb] [文件加载：56]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'isphone',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '32',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'phone' => '13313131311',
+  'uname' => 'zhangsan',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->isphone[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003001s ] mysql:dbname=cai;host=127.0.0.1;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `f_user` [ RunTime:0.041002s ]
+[ sql ] [ SQL ] SELECT * FROM `f_user` WHERE  `username` = 'zhangsan'  AND `phone` = '13313131311' LIMIT 1 [ RunTime:0.002000s ]
+---------------------------------------------------------------
+[ 2017-08-22T19:09:46+08:00 ] ::1 ::1 POST /index/auth/sendphonecode.html
+[ info ] www.dc.com/index/auth/sendphonecode.html [运行时间：0.501029s][吞吐率：2.00req/s] [内存消耗：3,096.15kb] [文件加载：56]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'sendphonecode',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '17',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'phone' => '13313131311',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->sendPhoneCode[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:09:56+08:00 ] ::1 ::1 POST /index/auth/yzm.html
+[ info ] www.dc.com/index/auth/yzm.html [运行时间：0.215012s][吞吐率：4.65req/s] [内存消耗：3,161.90kb] [文件加载：58]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'yzm',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'content-length' => '8',
+  'origin' => 'http://www.dc.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'application/json, text/javascript, */*',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|4; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+  'yzm' => '3npx',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Auth->yzm[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Auth.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2017-08-22T19:10:32+08:00 ] ::1 ::1 GET /index/index/index.html
+[ info ] www.dc.com/index/index/index.html [运行时间：0.225012s][吞吐率：4.44req/s] [内存消耗：2,030.56kb] [文件加载：52]
+[ info ] [ LANG ] D:\Wamp\wamp\www\mairou\dingcan\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.dc.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://www.dc.com/index/auth/lookfor.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=set7tjj5fjs76avifahplm5t53; thinkphp_show_page_trace=0|0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\Wamp\wamp\www\mairou\dingcan\application\index\controller\Index.php ]
+[ info ] [ VIEW ] D:\Wamp\wamp\www\mairou\dingcan\public/../application/index\view\index\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
