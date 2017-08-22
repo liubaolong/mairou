@@ -10,7 +10,7 @@
 					  </thead>
 					<tr style="height:40px;">
 						<td>店铺名:</td>
-						<td><input type="text" name="shop" id="shop" maxlength="15" size="40" style="border:1px solid #999;height:25px;" onblur="checkname()"><p style="display:none;" id="p1">商铺名已存在</p></td>
+						<td><input type="text" name="shop" id="shop" maxlength="15" size="40" style="border:1px solid #999;height:25px;" onblur="checkname()"><p style="display:none;" id="p1"></p></td>
 					</tr>
 					<tr style="height:40px;">
 						<td>身份证</td>
@@ -72,15 +72,19 @@
 			$.post("{:url('index/shop/checkname')}",{shop:$("#shop").val()},function(data){
 					if (data['code'] == 1) {
 						$("#shop").css('border', '1px solid green');
+						$("#p1").html('商铺名可用');
 						$("#p1").css('display','none');
-						return true;
 					} else {
+						$("#p1").html('商铺名已存在');
 						$("#p1").css('display','block');
 						$("#shop").css('border','1px solid red');
-						return false;
 					}
 				},'json');
 		}
+		if ($("#p1").html()=='商铺名已存在') {
+			return false;
+		} else {
+		return true;	}
 
 	}
 //身份证
@@ -94,6 +98,7 @@
 
 			$.post("{:url('index/shop/checkid')}",{ident:$('#ident').val()},function(data){
 				if (data != '没有信息' && data != 'ok' && data != '身份证为空') {
+
 					$("#ident").css('border','1px solid green');
 					$("#p2").html(data);
 					$("#p2").css('display','block');

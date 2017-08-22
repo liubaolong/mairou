@@ -1,8 +1,10 @@
 <?php
 namespace app\sadmin\controller;
-use think\Controller;
-class Sindex extends Controller
+use app\sadmin\controller\Auth;
+use app\sadmin\model\Sindex as SindexModel;
+class Sindex extends Auth
 {
+	protected $is_login = ['*'];
 	//商家后台
 	public function Sindex()
 	{
@@ -20,8 +22,16 @@ class Sindex extends Controller
 	}
 	//商家信息
 	public function info()
-	{
+	{ 
+		$arr = session('?sadmin') ? session('sadmin'): '';
+		$this->assign('arr',$arr); 
 		return $this->fetch();
+	}
+	//商家信息更改
+	public function alertinfo()
+	{
+		dump($_FILES);
+		dump($_POST);die;
 	}
 	//商家评价
 	public function book()

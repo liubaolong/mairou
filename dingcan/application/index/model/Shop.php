@@ -8,7 +8,7 @@ class shop extends Model
 	//查询店铺名
 	public function shopname($data)
 	{
-		return Db::table('f_shop')->where("s_name = '$data'")->select();
+		return Db::table('f_try')->where("t_name = '$data'")->select();
 	}
 	//查询身份证信息
 	public function shopid($data)
@@ -59,21 +59,22 @@ class shop extends Model
 	{   
 		$file = request()->file('photo');
 		$info = $file->move(ROOT_PATH .	'public/static' .	DS	. 'upload'); 
-		$path = ROOT_PATH .	'public\static' .	DS	. 'upload\\' . $info->getSaveName();
+		$path = "__UPLOAD_PATH__\\". $info->getSaveName();
 		$arr = [
-				's_uid'=>1,
-				's_name'=>$data['shop'],
-				's_address'=>$data['address'],
-				's_qu'=>$data['s_county'],
-				's_phone'=>$data['phone'],
-				's_time'=>$data['time'],
-				's_wifi'=>$data['wifi'],
-				's_info'=>$data['info'],
-				's_ident'=>$data['ident'],
-				's_pic'=>$path,
-				's_addtime'=>time()
+				't_uid'=>1,
+				't_name'=>$data['shop'],
+				't_address'=>$data['address'],
+				't_qu'=>$data['s_county'],
+				't_phone'=>$data['phone'],
+				't_time'=>$data['time'],
+				't_wifi'=>$data['wifi'],
+				't_info'=>$data['info'],
+				't_ident'=>$data['ident'],
+				't_pic'=>$path,
+				't_addtime'=>time(),
+				't_status'=>0,
 				];
-		return Db::name('shop')->insert($arr); 
+		return Db::name('try')->insert($arr); 
 
 	}
 }

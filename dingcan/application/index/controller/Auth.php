@@ -6,6 +6,7 @@ use think\Request;
 use think\Session;
 class Auth extends Controller
 {
+	//初始化
 	public function _initialize()
 	{
 		

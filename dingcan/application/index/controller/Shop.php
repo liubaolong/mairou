@@ -23,11 +23,11 @@ class Shop extends Controller
 	}
 	//商家入驻
 	public function join(Request $request)
-	{
+	{ 
 		if(!empty($request->param('shop'))){
 			$result = $this->shop->shopregister(input());
 			if ($result) {
-
+				
 			} else {
 
 			}
