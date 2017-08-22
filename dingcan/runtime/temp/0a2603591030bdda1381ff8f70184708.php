@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp\www\mairou\dingcan\public/../application/sadmin\view\sindex\info.html";i:1503401691;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -15,13 +16,13 @@
 <div class="panel admin-panel">
   <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 店铺信息</strong></div>
   <div class="body-content">
-    <form method="post" class="form-x" action="{:url('sindex/alertinfo')}" enctype="multipart/form-data">
+    <form method="post" class="form-x" action="<?php echo url('sindex/alertinfo'); ?>" enctype="multipart/form-data">
       <div class="form-group">
         <div class="label">
           <label>店铺名称：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="stitle" value="{$arr['s_name']}" />
+          <input type="text" class="input" name="stitle" value="<?php echo $arr['s_name']; ?>" />
           <div class="tips"></div>
         </div>
       </div>
@@ -30,8 +31,8 @@
           <label>店铺图片：</label>
         </div>
         <div class="field">
-          <img src="{$arr['s_pic']}" style="height:200px;width:200px;">
-          <input type="file"  id="image1" value="{$arr['s_pic']}" >
+          <img src="<?php echo $arr['s_pic']; ?>" style="height:200px;width:200px;">
+          <input type="file"  id="image1" value="<?php echo $arr['s_pic']; ?>" >
         </div>
       </div>
       <div class="form-group">
@@ -39,7 +40,7 @@
           <label>店铺电话：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="surl" value="{$arr['s_phone']}" />
+          <input type="text" class="input" name="surl" value="<?php echo $arr['s_phone']; ?>" />
         </div>
       </div>
       <div class="form-group">
@@ -47,7 +48,7 @@
           <label>营业时间：</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="sentitle" value="{$arr['s_time']}" />
+          <input type="text" class="input" name="sentitle" value="<?php echo $arr['s_time']; ?>" />
           <div class="tips"></div>
         </div>
       </div>
@@ -66,7 +67,7 @@
           <label>身份证</label>
         </div>
         <div class="field">
-          <input type="text" class="input" name="s_name" value="{$arr['s_ident']}" readonly/>
+          <input type="text" class="input" name="s_name" value="<?php echo $arr['s_ident']; ?>" readonly/>
           <div class="tips"></div>
         </div>
       </div>
@@ -75,7 +76,7 @@
           <label>店铺地址：</label>
         </div>
         <div class="field">
-          <textarea class="input" name="sdescription" style="resize:none;">{$arr['s_address']}</textarea>
+          <textarea class="input" name="sdescription" style="resize:none;"><?php echo $arr['s_address']; ?></textarea>
           <div class="tips"></div>
         </div>
       </div>
