@@ -9,7 +9,11 @@ use think\Session;
 use think\Validate;
 class Auth extends Controller
 {
+<<<<<<< HEAD
 	protected $user;
+=======
+	//初始化
+>>>>>>> 96354f6530d43ae300a3edd239eb5a31cead3173
 	public function _initialize()
 	{
 		
