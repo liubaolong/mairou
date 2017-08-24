@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp\www\mairou\dingcan\public/../application/sadmin\view\sindex\list.html";i:1503496818;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -35,28 +36,28 @@
         <th width="10%">更新时间</th>
         <th width="310">操作</th>
       </tr>
-	{volist name="list" id="v"}
+	<?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
         <tr>
-          <td style="text-align:left; padding-left:20px;"><input type="checkbox" name="id[]" value="{$v['m_id']}" />
+          <td style="text-align:left; padding-left:20px;"><input type="checkbox" name="id[]" value="<?php echo $v['m_id']; ?>" />
            </td>
 
-          <td width="10%"><img src="{$v['m_pic']}" alt="" width="70" height="50" /></td>
-          <td>{$v['m_name']}</td>
+          <td width="10%"><img src="<?php echo $v['m_pic']; ?>" alt="" width="70" height="50" /></td>
+          <td><?php echo $v['m_name']; ?></td>
           <td>产品分类</td>
-          <td>{$v['m_counts']}</td>
+          <td><?php echo $v['m_counts']; ?></td>
           <td><?php echo date('Y-m-d',$v['m_addtime'])?></td>
           <td><div>
-          {if $v['m_isput'] == 1}
-	           <a  href="javascript:;" id="up"  value="{$v['m_id']}" onclick="amend(this)">已下架</a>
-           {else}
-	            <a  href="javascript:;" id="up"  value="{$v['m_id']}" onclick="amend(this)">已上架</a>
+          <?php if($v['m_isput'] == 1): ?>
+	           <a  href="javascript:;" id="up"  value="<?php echo $v['m_id']; ?>" onclick="amend(this)">已下架</a>
+           <?php else: ?>
+	            <a  href="javascript:;" id="up"  value="<?php echo $v['m_id']; ?>" onclick="amend(this)">已上架</a>
 	          
-           {/if}
-            | <a  href="{:url('sadmin/sindex/details')}?mid={$v['m_id']}" ">详情</a>
+           <?php endif; ?>
+            | <a  href="<?php echo url('sadmin/sindex/details'); ?>?mid=<?php echo $v['m_id']; ?>" ">详情</a>
            </div></td>
         </tr>
-	{/volist}
-        <td colspan="7"><div class="pagelist"><a href="{:url('sindex/list')}">首页</a> <a href="{:url('sindex/list')}?page={$page['prepage']}">上一页</a><a href="{:url('sindex/list')}?page={$page['nextpage']}" >下一页</a><a href="{:url('sindex/list')}?page={$page['lastpage']}" >尾页 </a> </div></td>
+	<?php endforeach; endif; else: echo "" ;endif; ?>
+        <td colspan="7"><div class="pagelist"><a href="<?php echo url('sindex/list'); ?>">首页</a> <a href="<?php echo url('sindex/list'); ?>?page=<?php echo $page['prepage']; ?>">上一页</a><a href="<?php echo url('sindex/list'); ?>?page=<?php echo $page['nextpage']; ?>" >下一页</a><a href="<?php echo url('sindex/list'); ?>?page=<?php echo $page['lastpage']; ?>" >尾页 </a> </div></td>
       </tr>
 
     </table>
@@ -67,7 +68,7 @@
 	function amend(obj)
 	{
 		var id = $(obj).attr('value'); 
-		$.post("{:url('sadmin/sindex/amend')}",{m_id:id},function(data){
+		$.post("<?php echo url('sadmin/sindex/amend'); ?>",{m_id:id},function(data){
 			if(data['error'] == 1){
 				switch(data['info']){
 					case 1:

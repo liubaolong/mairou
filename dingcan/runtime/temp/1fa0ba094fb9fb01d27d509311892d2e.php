@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\wamp\www\mairou\dingcan\public/../application/sadmin\view\sindex\book.html";i:1503495519;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -34,7 +35,7 @@
           <td>13420925611</td>        
           <td>这是一套后台UI，喜欢的朋友请多多支持谢谢。</td>
           <td>2016-07-01</td>
-          <td><div class="button-group"> <a class="button border-red" href="{:url('sindex/rece')}" target="right" onclick="return del(1)"><span class="icon-trash-o"></span>回复</a> </div></td>
+          <td><div class="button-group"> <a class="button border-red" href="<?php echo url('sindex/rece'); ?>" target="right" onclick="return del(1)"><span class="icon-trash-o"></span>回复</a> </div></td>
         </tr>
         
 

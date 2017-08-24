@@ -1,12 +1,10 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"D:\wamp\www\mairou\dingcan\public/../application/index\view\shop\join.html";i:1503364017;s:78:"D:\wamp\www\mairou\dingcan\public/../application/index\view\public\layout.html";i:1503324306;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:74:"D:\wamp\www\mairou\dingcan\public/../application/index\view\shop\join.html";i:1503403146;s:79:"D:\wamp\www\mairou\dingcan\public/../application/index\view\tpublic\layout.html";i:1503401924;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8" />
-<title>DeathGhost-用户中心</title>
-<meta name="keywords" content="DeathGhost,DeathGhost.cn,web前端设,移动WebApp开发" />
-<meta name="description" content="DeathGhost.cn::H5 WEB前端设计开发!" />
-<meta name="author" content="DeathGhost"/>
+<title>肉肉外卖网</title>
+
 <link href="__CSS_PATH__/style.css" rel="stylesheet" type="text/css" />
 <!-- <link href="__STATIC_PATH__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /> -->
 <script type="text/javascript" src="__JS_PATH__/public.js"></script>
@@ -23,7 +21,7 @@ Author URI: http://www.deathghost.cn
  <section class="Topmenubg">
   <div class="Topnav">
    <div class="LeftNav">
-    <a href="<?php echo url('auth/register'); ?>">注册</a>/<a href="<?php echo url('auth/login'); ?>">登录</a>
+    <a href="<?php echo url('auth/register'); ?>">注册</a>/<a href="<?php echo url('auth/login'); ?>">登录</a> |<a href="<?php echo url('auth/lookfor'); ?>">找回密码</a>
    </div>
    <div class="RightNav">
     <a href="<?php echo url('user/user'); ?>">用户中心</a> <a href="<?php echo url('order/orderlist'); ?>" target="_self" title="我的订单">我的订单</a> <a href="<?php echo url('cart/cart'); ?>">购物车（0）</a> <a href="<?php echo url('user/favorites'); ?>" target="_self" title="我的收藏">我的收藏</a> <a href="<?php echo url('shop/join'); ?>">商家入驻</a>
@@ -102,7 +100,15 @@ Author URI: http://www.deathghost.cn
 					</tr>
 					<tr style="height:40px;">
 						<td>营业时间:</td>
-						<td><input type="text" name="time" id="time" size="40" style="border:1px solid #999;height:25px;" onblur="checktime()"></td>
+						<td>
+						<select name="time" id="time" style="border:1px solid #999;height:25px;" onblur="checktime()">
+							<option>营业时间</option>
+							<option value="8:00-20:00">8:00-20:00</option>
+							<option value="8:00-21:00">8:00-21:00</option>
+							<option value="8:00-22:00">8:00-22:00</option>
+							<option value="8:00-23:00">8:00-23:00</option>
+							<option value="8:00-24:00">8:00-24:00</option>
+						</select>
 					</tr>
 					<tr style="height:40px;">
 						<td>店铺图片:</td>
@@ -345,6 +351,9 @@ function selectsearch(theA,word){
     var showArea = function(){
       Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +  
       Gid('s_city').value + " - 县/区" + 
+<<<<<<< HEAD:dingcan/application/index/view/public/layout.html
+      Gid('s_county').value + "</h3>"
+=======
       Gid('s_county').value + "</h3>";                 }
 
     $('#yzm').click(function(){
@@ -354,5 +363,6 @@ function selectsearch(theA,word){
        });
        return false;
     })
+>>>>>>> 96354f6530d43ae300a3edd239eb5a31cead3173:dingcan/application/index/view/tpublic/layout.html
 
 </script>

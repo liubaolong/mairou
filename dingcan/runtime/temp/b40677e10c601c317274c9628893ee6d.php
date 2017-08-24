@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\wamp\www\mairou\dingcan\public/../application/sadmin\view\sindex\add.html";i:1503454327;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -15,7 +16,7 @@
 <div class="panel admin-panel">
   <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>增加菜品</strong></div>
   <div class="body-content">
-    <form method="post" class="form-x" action="{:url('sindex/adddish')}" enctype="multipart/form-data" onsubmit="return upload()">  
+    <form method="post" class="form-x" action="<?php echo url('sindex/adddish'); ?>" enctype="multipart/form-data" onsubmit="return upload()">  
       <div class="form-group">
         <div class="label">
           <label>菜品名称：</label>
