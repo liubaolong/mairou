@@ -2,6 +2,7 @@
 	namespace app\admin\controller;
 	use app\admin\controller\Auth;
 	class Feedback extends Auth{
+		protected $is_login = ['*'];
 		//意见反馈
 		public function feedback_list()
 		{

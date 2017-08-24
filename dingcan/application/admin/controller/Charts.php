@@ -2,6 +2,7 @@
 	namespace app\admin\controller;
 	use app\admin\controller\Auth;
 	class Charts extends Auth{
+		protected $is_login = ['*'];
 		//折线图
 		public function charts_1()
 		{

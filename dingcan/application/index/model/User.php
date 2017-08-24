@@ -56,5 +56,15 @@
 				return false;
 			}
 		}
+		//退出登录，更新lasttime
+		public function loginout($data)
+		{
+			$result = $this->where('uid',$data['uid'])->update(['lasttime'=>$data['lasttime']]);
+			if ($result) {
+				return $result;
+			} else {
+				return false;
+			}
+		}
 	}
 	

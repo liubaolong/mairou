@@ -33,7 +33,7 @@ class Auth extends Controller
 		$result = $this->user->dologin($data);
 		if ($result) {
 			session('uid', $result['uid']);
-			session('uname', $result['username']);
+			session('username', $result['username']);
 			session('u_level', $result['u_level']);
 			session('u_score', $result['u_score']);
 			//退出时保存
@@ -169,5 +169,22 @@ class Auth extends Controller
 		} else {
 			return $this->success('修改失败');
 		}
+	}
+	//用户退出
+	public function loginout()
+	{
+		$data = [
+			'uid' => session('uid'),
+			'lasttime' => session('lasttime')
+		];
+		// $time = session('lasttime');
+		session(null);
+		$result = $this->user->loginout($data);
+		if ($result) {
+			return $this->success('退出成功', url('index/index/index'));
+		} else {
+			return $this->error('退出失败');
+		}
+		
 	}
 }

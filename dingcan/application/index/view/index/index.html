@@ -1,4 +1,16 @@
-
+<style>
+  .uli{
+    margin-left:20px;
+  }
+  .uli li{
+    padding:3px;
+    /*padding-top:3px;*/
+    font-size: 13px;
+  }
+  .uli li a{
+    text-decoration: underline;
+  }
+</style>
 <!--Start content-->
 <section class="Cfn">
  <aside class="C-left">
@@ -36,6 +48,15 @@
    <p>订单状态：<i class="State02">已签收</i><i class="State03">已点评</i></p>
    </li>
   </ul>
+  <p>
+  周边新闻：
+    <ul class="uli">
+        {volist name="donews" id="vo" key="k"}
+        <li style="width:240px;overflow:hidden;white-space:nowrap;text-overflow: ellipsis; width:20em;"><a href="{:url('index/index/news')}?id={$k}" target="_self" title="标题">({$k})&nbsp;
+        {$vo.title}</a></li>
+        {/volist}
+      </ul>
+  </p>
   <script>
    var UpRoll = document.getElementById('UpRoll');
    var lis = UpRoll.getElementsByTagName('li');

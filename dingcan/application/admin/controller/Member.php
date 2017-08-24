@@ -2,6 +2,7 @@
 	namespace app\admin\controller;
 	use app\admin\controller\Auth;
 	class Member extends Auth{
+		protected $is_login = ['*'];
 		//会员列表
 		public function member_list()
 		{

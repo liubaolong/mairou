@@ -14,13 +14,21 @@
 Author: DeathGhost
 Author URI: http://www.deathghost.cn
 -->
+<!-- 新闻 -->
+
 </head>
 <body>
 <header>
  <section class="Topmenubg">
   <div class="Topnav">
    <div class="LeftNav">
-    <a href="{:url('auth/register')}">注册</a>/<a href="{:url('auth/login')}">登录</a> |<a href="{:url('auth/lookfor')}">找回密码</a>
+        {if condition="$Think.session.uid neq true"}
+        <a href="{:url('auth/register')}">注册</a>/<a href="{:url('auth/login')}">登录</a> |<a href="{:url('auth/lookfor')}">找回密码</a>    
+        {else/}
+        欢迎您，
+        <b>{$Think.session.username}</b>
+        <a href="{:url('auth/loginout')}">退出</a>
+        {/if}
    </div>
    <div class="RightNav">
     <a href="{:url('user/user')}">用户中心</a> <a href="{:url('order/orderlist')}" target="_self" title="我的订单">我的订单</a> <a href="{:url('cart/cart')}">购物车（0）</a> <a href="{:url('user/favorites')}" target="_self" title="我的收藏">我的收藏</a> <a href="{:url('shop/join')}">商家入驻</a>
@@ -73,9 +81,10 @@ Author URI: http://www.deathghost.cn
  <section class="Otherlink">
   <aside>
    <div class="ewm-left">
-    <p>手机扫描二维码：</p>
+    <p>最新新闻</p>
     <img src="__IMG_PATH__/Android_ico_d.gif">
     <img src="__IMG_PATH__/iphone_ico_d.gif">
+      
    </div>
    <div class="tips">
     <p>客服热线</p>
@@ -113,6 +122,7 @@ Author URI: http://www.deathghost.cn
      <li><a href="article_read.html" target="_self" title="标题">网站地图</a></li>
     </ul>
     </div>
+
   </section>
  </section>
 <div class="copyright">© 版权所有 2016 DeathGhost 技术支持：<a href="http://www.deathghost.cn" title="DeathGhost">DeathGhost</a></div>
@@ -136,9 +146,7 @@ function selectsearch(theA,word){
     var showArea = function(){
       Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +  
       Gid('s_city').value + " - 县/区" + 
-<<<<<<< HEAD:dingcan/application/index/view/public/layout.html
-      Gid('s_county').value + "</h3>"
-=======
+
       Gid('s_county').value + "</h3>";                 }
 
     $('#yzm').click(function(){
@@ -148,6 +156,6 @@ function selectsearch(theA,word){
        });
        return false;
     })
->>>>>>> 96354f6530d43ae300a3edd239eb5a31cead3173:dingcan/application/index/view/tpublic/layout.html
+
 
 </script>

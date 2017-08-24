@@ -2,6 +2,7 @@
 	namespace app\admin\controller;
 	use app\admin\controller\Auth;
 	class Admin extends Auth{
+		protected $is_login = ['*'];
 		//管理员添加
 		public function admin_add()
 		{

@@ -1,20 +1,40 @@
-
+{__NOLAYOUT__}
 <title>添加产品分类</title>
-
+<link href="__ADMIN_PATH__/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__ADMIN_PATH__/h-ui.admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__LIB_PATH__/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="__LIB_PATH__/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
 <div class="pd-20">
   <form action="" method="post" class="form form-horizontal" id="form-user-add">
+  <div class="row cl" >
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>上级栏目：</label>
+            <div class="formControls col-5"> 
+              <span class="select-box">
+                  <select class="select" id="sel_Sub" name="sel_Sub" onchange="SetSubID(this);">
+                      <option value="0">菜品顶级分类</option>
+                      <option value="10">★中餐</option>
+                      <option value="101">&nbsp;&nbsp;&nbsp;★★ 川菜</option>
+                      <option value="102">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;★★★ 炒菜</option>
+                      <option value="102">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;★★★ 面食</option>
+                      <option value="102">&nbsp;&nbsp;&nbsp;★★ 湘菜</option>
+                      <option value="102">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;★★★ 炒菜</option>
+                      <option value="102">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;★★★ 汤食</option>
+                      <option value="20">★西餐</option>
+                      <option value="200">&nbsp;&nbsp;&nbsp;★★ 法式</option>
+                      <option value="200">&nbsp;&nbsp;&nbsp;★★ 美式</option>
+                      <option value="200">&nbsp;&nbsp;&nbsp;★★ 英式</option> 
+                      <option value="20">★日餐</option>
+                      <option value="200">&nbsp;&nbsp;&nbsp;★★ 饭团</option>
+                      <option value="200">&nbsp;&nbsp;&nbsp;★★ 料理</option>
+                  </select>
+                </span>
+               </div>
+            <div class="col-3"> </div>
+    </div>
     <div class="row cl">
       <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类名称：</label>
       <div class="formControls col-5">
         <input type="text" class="input-text" value="" placeholder="" id="user-name" name="product-category-name">
-      </div>
-      <div class="col-5"> </div>
-    </div>
-    <div class="row cl">
-      <label class="form-label col-xs-4 col-sm-2">备注：</label>
-      <div class="formControls col-5">
-        <textarea name="" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="textarealength(this,100)"></textarea>
-        <p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
       </div>
       <div class="col-5"> </div>
     </div>
@@ -25,7 +45,17 @@
     </div>
   </form>
 </div>
+<script type="text/javascript" src="__LIB_PATH__/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__LIB_PATH__/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="__ADMIN_PATH__/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN_PATH__/h-ui.admin/js/H-ui.admin.page.js"></script> 
+<!--/_footer /作为公共模版分离出去--> 
 
+<!--请在下方写此页面业务相关的脚本--> 
+<script type="text/javascript" src="__LIB_PATH__/jquery.validation/1.14.0/jquery.validate.js"></script> 
+<script type="text/javascript" src="__LIB_PATH__/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="__LIB_PATH__/jquery.validation/1.14.0/messages_zh.js"></script> 
+<script type="text/javascript">
 <script type="text/javascript">
 $(function(){
 	$('.skin-minimal input').iCheck({

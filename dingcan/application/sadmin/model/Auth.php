@@ -12,7 +12,7 @@ class Auth extends Model
 		if ($result) {
 			//查询是否有店铺
 			$res = Db::name('shop')->where('s_uid',$result['uid'])->find();
-			if ( $res) {
+			if ($res) {
 				session('sadmin',$res);
 				return 1;
 			} else {

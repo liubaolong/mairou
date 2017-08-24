@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:81:"D:\Wamp\wamp\www\mairou\dingcan\public/../application/index\view\index\index.html";i:1503218328;s:83:"D:\Wamp\wamp\www\mairou\dingcan\public/../application/index\view\public\layout.html";i:1503390646;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:81:"D:\Wamp\wamp\www\mairou\dingcan\public/../application/index\view\index\index.html";i:1503496013;s:84:"D:\Wamp\wamp\www\mairou\dingcan\public/../application/index\view\tpublic\layout.html";i:1503468245;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,21 +6,30 @@
 <title>肉肉外卖网</title>
 
 <link href="__CSS_PATH__/style.css" rel="stylesheet" type="text/css" />
-<link href="__STATIC_PATH__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<!-- <link href="__STATIC_PATH__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /> -->
 <script type="text/javascript" src="__JS_PATH__/public.js"></script>
 <script type="text/javascript" src="__JS_PATH__/jquery.js"></script>
 <script type="text/javascript" src="__JS_PATH__/jqpublic.js"></script>
+<script type="text/javascript" src="__JS_PATH__/jQuery-1.11.3.js"></script>
 <!--
 Author: DeathGhost
 Author URI: http://www.deathghost.cn
 -->
+<!-- 新闻 -->
+
 </head>
 <body>
 <header>
  <section class="Topmenubg">
   <div class="Topnav">
    <div class="LeftNav">
-    <a href="<?php echo url('auth/register'); ?>">注册</a>/<a href="<?php echo url('auth/login'); ?>">登录</a> |<a href="<?php echo url('auth/lookfor'); ?>">找回密码</a>
+        <?php if(\think\Session::get('uid') != true): ?>
+        <a href="<?php echo url('auth/register'); ?>">注册</a>/<a href="<?php echo url('auth/login'); ?>">登录</a> |<a href="<?php echo url('auth/lookfor'); ?>">找回密码</a>    
+        <?php else: ?>
+        欢迎您，
+        <b><?php echo \think\Session::get('username'); ?></b>
+        <a href="<?php echo url('auth/loginout'); ?>">退出</a>
+        <?php endif; ?>
    </div>
    <div class="RightNav">
     <a href="<?php echo url('user/user'); ?>">用户中心</a> <a href="<?php echo url('order/orderlist'); ?>" target="_self" title="我的订单">我的订单</a> <a href="<?php echo url('cart/cart'); ?>">购物车（0）</a> <a href="<?php echo url('user/favorites'); ?>" target="_self" title="我的收藏">我的收藏</a> <a href="<?php echo url('shop/join'); ?>">商家入驻</a>
@@ -61,7 +70,19 @@ Author URI: http://www.deathghost.cn
 </head>
 <body>
 
-
+<style>
+  .uli{
+    margin-left:20px;
+  }
+  .uli li{
+    padding:3px;
+    /*padding-top:3px;*/
+    font-size: 13px;
+  }
+  .uli li a{
+    text-decoration: underline;
+  }
+</style>
 <!--Start content-->
 <section class="Cfn">
  <aside class="C-left">
@@ -99,6 +120,15 @@ Author URI: http://www.deathghost.cn
    <p>订单状态：<i class="State02">已签收</i><i class="State03">已点评</i></p>
    </li>
   </ul>
+  <p>
+  周边新闻：
+    <ul class="uli">
+        <?php if(is_array($donews) || $donews instanceof \think\Collection || $donews instanceof \think\Paginator): $k = 0; $__LIST__ = $donews;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($k % 2 );++$k;?>
+        <li style="width:240px;overflow:hidden;white-space:nowrap;text-overflow: ellipsis; width:20em;"><a href="<?php echo url('index/index/news'); ?>?id=<?php echo $k; ?>" target="_self" title="标题">(<?php echo $k; ?>)&nbsp;
+        <?php echo $vo['title']; ?></a></li>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
+      </ul>
+  </p>
   <script>
    var UpRoll = document.getElementById('UpRoll');
    var lis = UpRoll.getElementsByTagName('li');
@@ -319,9 +349,10 @@ Author URI: http://www.deathghost.cn
  <section class="Otherlink">
   <aside>
    <div class="ewm-left">
-    <p>手机扫描二维码：</p>
+    <p>最新新闻</p>
     <img src="__IMG_PATH__/Android_ico_d.gif">
     <img src="__IMG_PATH__/iphone_ico_d.gif">
+      
    </div>
    <div class="tips">
     <p>客服热线</p>
@@ -359,6 +390,7 @@ Author URI: http://www.deathghost.cn
      <li><a href="article_read.html" target="_self" title="标题">网站地图</a></li>
     </ul>
     </div>
+
   </section>
  </section>
 <div class="copyright">© 版权所有 2016 DeathGhost 技术支持：<a href="http://www.deathghost.cn" title="DeathGhost">DeathGhost</a></div>
@@ -382,6 +414,16 @@ function selectsearch(theA,word){
     var showArea = function(){
       Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +  
       Gid('s_city').value + " - 县/区" + 
-      Gid('s_county').value + "</h3>"
+
+      Gid('s_county').value + "</h3>";                 }
+
+    $('#yzm').click(function(){
+       var phone = $('.phone').val();
+       $.get("<?php echo url('auth/yzm'); ?>",{phone:phone},function(data){
+          console.log(data);
+       });
+       return false;
+    })
+
 
 </script>

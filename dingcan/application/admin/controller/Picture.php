@@ -2,6 +2,7 @@
 	namespace app\admin\controller;
 	use app\admin\controller\Auth;
 	class Picture extends Auth{
+		protected $is_login = ['*'];
 		//图片列表
 		public function picture_list()
 		{

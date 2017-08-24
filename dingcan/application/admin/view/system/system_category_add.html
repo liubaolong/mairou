@@ -1,10 +1,13 @@
-
+{__NOLAYOUT__}
 <title>栏目设置</title>
+<link rel="stylesheet" type="text/css" href="__ADMIN_PATH__/h-ui/css/H-ui.min.css" />
+<!-- <link rel="stylesheet" type="text/css" href="__ADMIN_PATH__/h-ui.admin/css/H-ui.admin.css" /> -->
+<link rel="stylesheet" type="text/css" href="__LIB_PATH__/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__ADMIN_PATH__/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="__ADMIN_PATH__/h-ui.admin/css/style.css" />
 
-<div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
-<!--/_menu 作为公共模版分离出去-->
 <section class="Hui-article-box">
-	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统管理 <span class="c-gray en">&gt;</span> 栏目管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+	
 	<div class="pd-20">
 		<form action="" method="post" class="form form-horizontal" id="form-category-add">
 			<div id="tab-category" class="HuiTab">
@@ -151,7 +154,17 @@
 		</form>
 	</div>
 </section>
+<!--_footer 作为公共模版分离出去--> 
+<script type="text/javascript" src="__LIB_PATH__/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__LIB_PATH__/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="__ADMIN_PATH__/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="__ADMIN_PATH__/h-ui.admin/js/H-ui.admin.page.js"></script> 
+<!--/_footer /作为公共模版分离出去--> 
 
+<!--请在下方写此页面业务相关的脚本--> 
+<script type="text/javascript" src="__LIB_PATH__/jquery.validation/1.14.0/jquery.validate.js"></script> 
+<script type="text/javascript" src="__LIB_PATH__/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="__LIB_PATH__/jquery.validation/1.14.0/messages_zh.js"></script> 
 <script type="text/javascript">
 $(function(){
 	$('.skin-minimal input').iCheck({

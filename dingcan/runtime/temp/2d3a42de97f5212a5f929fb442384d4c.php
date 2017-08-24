@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\Wamp\wamp\www\mairou\dingcan\public/../application/index\view\auth\login.html";i:1503399471;s:83:"D:\Wamp\wamp\www\mairou\dingcan\public/../application/index\view\public\layout.html";i:1503390646;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:80:"D:\Wamp\wamp\www\mairou\dingcan\public/../application/index\view\auth\login.html";i:1503399520;s:84:"D:\Wamp\wamp\www\mairou\dingcan\public/../application/index\view\tpublic\layout.html";i:1503468245;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,21 +6,30 @@
 <title>肉肉外卖网</title>
 
 <link href="__CSS_PATH__/style.css" rel="stylesheet" type="text/css" />
-<link href="__STATIC_PATH__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<!-- <link href="__STATIC_PATH__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" /> -->
 <script type="text/javascript" src="__JS_PATH__/public.js"></script>
 <script type="text/javascript" src="__JS_PATH__/jquery.js"></script>
 <script type="text/javascript" src="__JS_PATH__/jqpublic.js"></script>
+<script type="text/javascript" src="__JS_PATH__/jQuery-1.11.3.js"></script>
 <!--
 Author: DeathGhost
 Author URI: http://www.deathghost.cn
 -->
+<!-- 新闻 -->
+
 </head>
 <body>
 <header>
  <section class="Topmenubg">
   <div class="Topnav">
    <div class="LeftNav">
-    <a href="<?php echo url('auth/register'); ?>">注册</a>/<a href="<?php echo url('auth/login'); ?>">登录</a> |<a href="<?php echo url('auth/lookfor'); ?>">找回密码</a>
+        <?php if(\think\Session::get('uid') != true): ?>
+        <a href="<?php echo url('auth/register'); ?>">注册</a>/<a href="<?php echo url('auth/login'); ?>">登录</a> |<a href="<?php echo url('auth/lookfor'); ?>">找回密码</a>    
+        <?php else: ?>
+        欢迎您，
+        <b><?php echo \think\Session::get('username'); ?></b>
+        <a href="<?php echo url('auth/loginout'); ?>">退出</a>
+        <?php endif; ?>
    </div>
    <div class="RightNav">
     <a href="<?php echo url('user/user'); ?>">用户中心</a> <a href="<?php echo url('order/orderlist'); ?>" target="_self" title="我的订单">我的订单</a> <a href="<?php echo url('cart/cart'); ?>">购物车（0）</a> <a href="<?php echo url('user/favorites'); ?>" target="_self" title="我的收藏">我的收藏</a> <a href="<?php echo url('shop/join'); ?>">商家入驻</a>
@@ -64,7 +73,7 @@ Author URI: http://www.deathghost.cn
 
 <!--Start content-->
 <section class="Psection MT20">
-<h2 style="padding-left:250px;">登录：</h2>
+<h2 style="padding-left:300px;">登录：</h2>
  <form action="<?php echo url('auth/dologin'); ?>" method="post" id="log">
   <table class="login">
   <tr>
@@ -124,9 +133,10 @@ Author URI: http://www.deathghost.cn
  <section class="Otherlink">
   <aside>
    <div class="ewm-left">
-    <p>手机扫描二维码：</p>
+    <p>最新新闻</p>
     <img src="__IMG_PATH__/Android_ico_d.gif">
     <img src="__IMG_PATH__/iphone_ico_d.gif">
+      
    </div>
    <div class="tips">
     <p>客服热线</p>
@@ -164,6 +174,7 @@ Author URI: http://www.deathghost.cn
      <li><a href="article_read.html" target="_self" title="标题">网站地图</a></li>
     </ul>
     </div>
+
   </section>
  </section>
 <div class="copyright">© 版权所有 2016 DeathGhost 技术支持：<a href="http://www.deathghost.cn" title="DeathGhost">DeathGhost</a></div>
@@ -187,6 +198,16 @@ function selectsearch(theA,word){
     var showArea = function(){
       Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +  
       Gid('s_city').value + " - 县/区" + 
-      Gid('s_county').value + "</h3>"
+
+      Gid('s_county').value + "</h3>";                 }
+
+    $('#yzm').click(function(){
+       var phone = $('.phone').val();
+       $.get("<?php echo url('auth/yzm'); ?>",{phone:phone},function(data){
+          console.log(data);
+       });
+       return false;
+    })
+
 
 </script>
