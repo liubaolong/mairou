@@ -36,7 +36,15 @@
 					</tr>
 					<tr style="height:40px;">
 						<td>营业时间:</td>
-						<td><input type="text" name="time" id="time" size="40" style="border:1px solid #999;height:25px;" onblur="checktime()"></td>
+						<td>
+						<select name="time" id="time" style="border:1px solid #999;height:25px;" onblur="checktime()">
+							<option>营业时间</option>
+							<option value="8:00-20:00">8:00-20:00</option>
+							<option value="8:00-21:00">8:00-21:00</option>
+							<option value="8:00-22:00">8:00-22:00</option>
+							<option value="8:00-23:00">8:00-23:00</option>
+							<option value="8:00-24:00">8:00-24:00</option>
+						</select>
 					</tr>
 					<tr style="height:40px;">
 						<td>店铺图片:</td>
