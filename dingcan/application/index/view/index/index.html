@@ -7,9 +7,9 @@
     /*padding-top:3px;*/
     font-size: 13px;
   }
-  .uli li a{
+/*  .uli li a{
     text-decoration: underline;
-  }
+  }*/
 </style>
 <!--Start content-->
 <section class="Cfn">
@@ -19,7 +19,7 @@
    <img src="__UPLOAD_PATH__/dc.jpg"/>
   </div>
   <a href="{:url('index/list')}" target="_blank"><img src="__IMG_PATH__/by_button.png"></a>
-  <a href="{:url('index/list')}" target="_blank"><img src="__IMG_PATH__/dc_button.png"></a>
+  <a href="{:url('index/list')}" target="_blank"><img src="__IMG_PATH__/dc_button.png"></a> 
  </aside>
  <div class="F-middle">
  <ul class="rslides f426x240">
@@ -48,15 +48,15 @@
    <p>订单状态：<i class="State02">已签收</i><i class="State03">已点评</i></p>
    </li>
   </ul>
-  <p>
+<!--   <p>
   周边新闻：
-    <ul class="uli">
-        {volist name="donews" id="vo" key="k"}
-        <li style="width:240px;overflow:hidden;white-space:nowrap;text-overflow: ellipsis; width:20em;"><a href="{:url('index/index/news')}?id={$k}" target="_self" title="标题">({$k})&nbsp;
-        {$vo.title}</a></li>
-        {/volist}
+    <ul class="uli" style="margin-left:0px;">
+        {//volist name="donews" id="vo" key="k"}
+        <li style="width:240px;overflow:hidden;white-space:nowrap;text-overflow: ellipsis; width:20em;"><a href="{//:url('index/index/news')}?id={//$k}" target="_self" title="标题">({//$k})&nbsp;
+        {//$vo.title}</a></li>
+        {///volist}
       </ul>
-  </p>
+  </p> -->
   <script>
    var UpRoll = document.getElementById('UpRoll');
    var lis = UpRoll.getElementsByTagName('li');
@@ -80,8 +80,13 @@
  <article class="Sflist">
   <div id="Indexouter">
    <ul id="Indextab">
+   {if $type == 1}
     <li class="current">点菜</li>
     <li>餐馆</li>
+  {else}
+    <li>点菜</li>
+    <li class="current">餐馆</li>
+  {/if}
     <p class="class_B">
     <a href="#">中餐</a>
     <a href="#">西餐</a>
@@ -90,52 +95,26 @@
     <span><a href="#" target="_blank">more ></a></span>
     </p>
    </ul>
+
+
   <div id="Indexcontent">
    <ul style="display:block;">
     <li>
      <p class="seekarea">
-     <a href="#">碑林区</a>
-     <a href="#">新城区</a>
-     <a href="#">未央区</a>
-     <a href="#">雁塔区</a>
-     <a href="#">莲湖区</a>
-     <a href="#">高新区</a>
-     <a href="#">灞桥区</a>
-     <a href="#">高陵区</a>
-     <a href="#">阎良区</a>
-     <a href="#">临潼区</a>
-     <a href="#">长安区</a>
-     <a href="#">周至县</a>
-     <a href="#">蓝田县 </a>
+      <b>热门菜品推荐
      </p>
-     <div class="SCcontent">
+     <div class="SCcontent"> 
+     {foreach $dish as $key => $value}
      <a href="{:url('meal/detailsp')}" target="_blank" title="菜品名称">
       <figure>
-       <img src="__UPLOAD_PATH__/05.jpg">
+       <img src="{$value['m_pic']}">
        <figcaption>
-       <span class="title">老李家的糖醋鲤鱼</span>
-       <span class="price"><i>￥</i>169.00</span>
+       <span class="title">{$value['m_name']}</span>
+       <span class="price"><i>￥</i>{$value['m_newprice']}</span>
        </figcaption>
       </figure>
       </a>
-     <a href="{:url('meal/detailsp')}" target="_blank" title="菜品名称">
-      <figure>
-       <img src="__UPLOAD_PATH__/04.jpg">
-       <figcaption>
-       <span class="title">老李家的糖醋鲤鱼</span>
-       <span class="price"><i>￥</i>169.00</span>
-       </figcaption>
-      </figure>
-      </a>
-     <a href="{:url('meal/detailsp')}" target="_blank" title="菜品名称">
-      <figure>
-       <img src="__UPLOAD_PATH__/06.jpg">
-       <figcaption>
-       <span class="title">老李家的糖醋鲤鱼</span>
-       <span class="price"><i>￥</i>169.00</span>
-       </figcaption>
-      </figure>
-      </a>
+      {/foreach}
      </div>
      <div class="bestshop">
       <a href="{:url('shop/shop')}" target="_blank" title="店铺名称">
@@ -166,30 +145,40 @@
      </div>
     </li>
    </ul>
-   <ul>
+  <ul>
   <li>
-     <p class="seekarea">
-     <a href="#">碑林区</a>
-     <a href="#">新城区</a>
-     <a href="#">未央区</a>
-     <a href="#">雁塔区</a>
-     <a href="#">莲湖区</a>
-     <a href="#">高新区</a>
-     <a href="#">灞桥区</a>
-     <a href="#">高陵区</a>
-     <a href="#">阎良区</a>
-     <a href="#">临潼区</a>
-     <a href="#">长安区</a>
-     <a href="#">周至县</a>
-     <a href="#">蓝田县 </a>
+     <p class="seekarea" style="display:block;" id="dnext">
+     <a href="{:url('index/index/index')}?sid=东城区">东城区</a>
+     <a href="{:url('index/index/index')}?sid=西城区">西城区</a>
+     <a href="{:url('index/index/index')}?sid=崇文区">崇文区</a>
+     <a href="{:url('index/index/index')}?sid=宣武区">宣武区</a>
+     <a href="{:url('index/index/index')}?sid=朝阳区">朝阳区</a>
+     <a href="{:url('index/index/index')}?sid=丰台区">丰台区</a>
+     <a href="{:url('index/index/index')}?sid=海淀区">海淀区</a>
+     <a href="{:url('index/index/index')}?sid=昌平区">昌平区</a>
+     <a href="{:url('index/index/index')}?sid=石景山区">石景山区</a>
+     <a href="{:url('index/index/index')}?sid=门头沟区">门头沟区</a>
+     <a href="{:url('index/index/index')}?sid=房山区">房山区</a>
+     <a href="javascript:;" onclick="dnext()">more ></a>
+     </p>
+     <p class="seekarea" style="display:none;" id="dpre">
+     <a href="{:url('index/index/index')}?sid=通州区">通州区</a>
+     <a href="{:url('index/index/index')}?sid=顺义区">顺义区 </a>
+     <a href="{:url('index/index/index')}?sid=大兴区">大兴区</a>
+     <a href="{:url('index/index/index')}?sid=怀柔区">怀柔区</a>
+     <a href="{:url('index/index/index')}?sid=房山区">房山区</a>
+     <a href="{:url('index/index/index')}?sid=密云区">密云区</a>
+     <a href="{:url('index/index/index')}?sid=延庆区">延庆区 </a>
+     <a href="javascript:;" onclick="dpre()">more <</a>
      </p>
      <div class="DCcontent">
+     {foreach $str as $key => $value}
        <a href="{:url('shop/shop')}" target="_blank" title="TITLE:店名">
        <figure>
-       <img src="__UPLOAD_PATH__/cc.jpg">
+       <img src="{$value['s_pic']}">
        <figcaption>
-       <span class="title">老重庆川菜馆</span>
-       <span class="price">预定折扣：<i>8.9折</i></span>
+       <span class="title">{$value['s_name']}</span>
+
        </figcaption>
        <p class="p1"><q>仅售169元！价值289元的4-5人餐，提供免费WiFi。</q></p>
        <p class="p2">
@@ -200,47 +189,10 @@
        <img src="__IMG_PATH__/star-on.png">
        <img src="__IMG_PATH__/star-off.png">
        </p>
-       <p class="p3">店铺地址：西安市雁塔区丈八路***老重庆川菜馆...</p>
+       <p class="p3">店铺地址：{$value['s_address']}</p>
        </figure>
       </a>
-       <a href="{:url('shop/shop')}" target="_blank" title="TITLE:店名">
-       <figure>
-       <img src="__UPLOAD_PATH__/cc.jpg">
-       <figcaption>
-       <span class="title">老重庆川菜馆</span>
-       <span class="price">预定折扣：<i>8.9折</i></span>
-       </figcaption>
-       <p class="p1"><q>仅售169元！价值289元的4-5人餐，提供免费WiFi。</q></p>
-       <p class="p2">
-       店铺评分：
-       <img src="__IMG_PATH__/star-on.png">
-       <img src="__IMG_PATH__/star-on.png">
-       <img src="__IMG_PATH__/star-on.png">
-       <img src="__IMG_PATH__/star-on.png">
-       <img src="__IMG_PATH__/star-off.png">
-       </p>
-       <p class="p3">店铺地址：西安市雁塔区丈八路***老重庆川菜馆...</p>
-       </figure>
-      </a>
-       <a href="{:url('shop/shop')}" target="_blank" title="TITLE:店名">
-       <figure>
-       <img src="__UPLOAD_PATH__/cc.jpg">
-       <figcaption>
-       <span class="title">老重庆川菜馆</span>
-       <span class="price">预定折扣：<i>8.9折</i></span>
-       </figcaption>
-       <p class="p1"><q>仅售169元！价值289元的4-5人餐，提供免费WiFi。</q></p>
-       <p class="p2">
-       店铺评分：
-       <img src="__IMG_PATH__/star-on.png">
-       <img src="__IMG_PATH__/star-on.png">
-       <img src="__IMG_PATH__/star-on.png">
-       <img src="__IMG_PATH__/star-on.png">
-       <img src="__IMG_PATH__/star-off.png">
-       </p>
-       <p class="p3">店铺地址：西安市雁塔区丈八路***老重庆川菜馆...</p>
-       </figure>
-      </a>
+    {/foreach}
      </div>
   </li>
   </ul>
@@ -265,3 +217,17 @@
  </aside>
 </section>
 <!--End content-->
+<script type="text/javascript">
+    //展示超出的菜
+    function dnext()
+    {
+      $('#dnext').css('display','none');
+      $('#dpre').css('display','block');
+    }
+    //收起
+    function dpre()
+    {
+      $('#dpre').css('display','none');
+      $('#dnext').css('display','block');
+    }
+</script>
