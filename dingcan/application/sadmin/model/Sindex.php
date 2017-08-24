@@ -31,6 +31,12 @@ class Sindex extends Model
 			return false;
 		}
 	}
+	//商家菜品分页
+	static public function cailist()
+	{
+		$result = Db::name('meal')->where('sid',session('sadmin')['s_id'])->paginate(5);
+		return $result;
+	}
 	//商家菜品增加
 	static public function updishes($data)
 	{
@@ -61,6 +67,18 @@ class Sindex extends Model
 			return false;
 		}
 	}
+	//商家回复
+	static public function reply($data)
+	{
+		$arr = [
+			'ry_pid'=>$data['id'],
+			'ry_info'=>$data['content'],
+			'ry_addtime'=>time(),
+			'ry_isdel'=>0,
+			];
+		$result = Db::name('reply')->insert($arr);
+		return $result;
+	}
 	//菜品上下架
 	static public function put($data)
 	{
@@ -88,8 +106,14 @@ class Sindex extends Model
 	//菜品信息修改
 	static public function dcai($data)
 	{
+		if (session('dished')['m_newprice'] == $data['price']) {
+			$oldprice = '';
+		} else {
+			$oldprice = session('dished')['m_newprice'];
+		}
 		$arr = [
 				'm_name'=>$data['cai'],
+				'm_oldprice'=>$oldprice,
 				'm_newprice'=>$data['price'],
 				'm_counts'=>$data['count'],
 				'm_score'=>$data['s_score'],
@@ -107,33 +131,5 @@ class Sindex extends Model
 			return false;
 		}
 	}
-	//商家菜品分页
-	static public function cailist($page)
-	{
-		$arr    = []; 
-		$limit  = ($page-1) * 5; 
-		$count  = Db::name('meal')->where('sid',session('sadmin')['s_id'])->count();
-		$pages  = ceil($count / 5);
-		if ($page <= 1 && $page != $pages) {
-			$prepage  = 1;
-			$nextpage = $page + 1;
-			$lastpage = $pages; 
-		} elseif($page >= $pages && $page != $pages) {
-			$prepage  = $page - 1;
-			$nextpage = $pages;
-			$lastpage = $pages;
-		} elseif($page == $pages&&$page == 1){
-			$prepage  = $nextpage = $lastpage= $page;
-		}else {
-			$prepage  = $page -1;
-			$nextpage = $page + 1;
-			$lastpage = $pages; 
-		}
-		$result = Db::name('meal')->where('sid',session('sadmin')['s_id'])->limit($limit,5)->select();
-		$arr['result']   = $result;
-		$arr['prepage']  = $prepage;
-		$arr['nextpage'] = $nextpage;
-		$arr['lastpage'] = $lastpage;
-		return $arr;
-	}
+
 }

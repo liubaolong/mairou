@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
     <title></title>  
+    <link href="__STATIC_PATH__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="__CSS_PATH__/pintuer.css">
     <link rel="stylesheet" href="__CSS_PATH__/sadmin.css">
     <script src="__JS_PATH__/sjquery.js"></script>
@@ -25,20 +26,20 @@
          <th width="120">留言时间</th>
         <th>操作</th>       
       </tr>  
-
+  {volist name="res" id="v"}
         <tr>
-          <td><input type="checkbox" name="id[]" value="1" />
-            1</td>
-          <td></td>
-          <td>神夜</td>
-          <td>13420925611</td>        
-          <td>这是一套后台UI，喜欢的朋友请多多支持谢谢。</td>
-          <td>2016-07-01</td>
-          <td><div class="button-group"> <a class="button border-red" href="{:url('sindex/rece')}" target="right" onclick="return del(1)"><span class="icon-trash-o"></span>回复</a> </div></td>
+          <td><input type="checkbox" name="id[]" value="{$v['p_id']}" />
+            </td>
+          <td>{$v['m_name']}</td>
+          <td>{$v['username']}</td>
+          <td>{$v['phone']}</td>        
+          <td>{$v['p_info']}</td>
+          <td><?php echo date('Y-m-d',$v['p_addtime'])?></td>
+          <td><div class="button-group"> <a class="button border-red" href="{:url('sindex/rece')}?id={$v['p_id']}" target="right" onclick="return del(1)"><span class="icon-trash-o"></span>回复</a> </div></td>
         </tr>
-        
+  {/volist}      
 
-        <td colspan="8"><div class="pagelist"> <a href="javascript:;" >首页</a> <a href="javascript:;">上一页</a> <span class="current">1</span><a href=javascript:;"">2</a><a href="">3</a><a href="javascript:;">下一页</a><a href="">尾页</a> </div></td>
+        <td colspan="8">{$res->render();}</td>
       </tr>
     </table>
   </div>

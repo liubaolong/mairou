@@ -42,29 +42,33 @@ class Sindex extends Auth
 			$this->error('修改失败',url('sadmin/sindex/info'));
 		}
 	}
-	// $data = ['zh_video.video_path','zh_video.video_img','zh_user.username','zh_video.looks','zh_video.create_time','zh_video.vid'];
-	// 	$result = Db::table('zh_video')
-	// 				->join('zh_user','zh_video.uid = zh_user.uid')
-	// 				->field($data)
-	// 				->where(array('zh_video.isdel'=>0,'zh_video.vid'=>$vid,'zh_user.isdel'=>0))
-	// 				->select();
-
 	//商家评价
 	public function book()
 	{
-		$data = ['f_user.username','f_meal.m_name','f_pj.p_info'];
 		$result = Db::table('f_pj')
-					->join(['f_user'=>'f_pj.p_uid = f_user.uid','f_meal'=>'f_pj.p_mid = f_meal.m_id'])
-					->field($data)
-					->where(array('f_pj.sid'=>session('sadmin')['s_id'],'zh_user.isdel'=>0))
-					->select();
-
+					->alias('p')
+					->join('f_meal m','p.p_mid = m.m_id')
+					->join('f_user u','p.p_uid = u.uid')
+					->where(array('p.p_sid'=>session('sadmin')['s_id']))
+					->paginate(5);
+		$this->assign('res',$result);
 		return $this->fetch();
 	}
 	//商家回复
 	public function rece()
 	{
+		$this->assign('id',$_GET['id']);
 		return $this->fetch();
+	}
+	//添加回复
+	public function mesreply(Request $request)
+	{
+		$result = SindexModel::reply($_POST);
+		if ($result) {
+			$this->success('回复成功',url('sadmin/sindex/book'));
+		} else {
+			$this->error('回复失败',url('sadmin/sindex/book'));
+		}
 	}
 	//添加菜品
 	public function add()
@@ -85,17 +89,8 @@ class Sindex extends Auth
 	//菜品管理
 	public function list(Request $request)
 	{
-		if($request->param('page')){
-			$page = $request->param('page');  
-			$list = SindexModel::cailist($page);
-
-		} else {
-			$list = SindexModel::cailist($page=1);
-		}
-
-		
-		$this->assign('list',$list['result']);
-		$this->assign('page',$list);
+		$list = SindexModel::cailist();
+		$this->assign('list',$list);
 		return $this->fetch();
 	}
 	//菜品上下架

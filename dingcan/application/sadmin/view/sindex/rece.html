@@ -8,29 +8,25 @@
 <title></title>
 <link rel="stylesheet" href="__CSS_PATH__/pintuer.css">
 <link rel="stylesheet" href="__CSS_PATH__/sadmin.css">
-<script src="__JS_PATH__/sjquery.js"></script>
+<script src="__JS_PATH__/jquery.js"></script>
 <script src="__JS_PATH__/pintuer.js"></script>
 </head>
 <body>
 <div class="panel admin-panel">
   <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>回复内容</strong></div>
   <div class="body-content">
-    <form method="post" class="form-x" action="">  
-      <div class="form-group">
-        <div class="label">
-          <label>标题：</label>
-        </div>
-        <div class="field">
-          <input type="text" class="input w50" value="" name="title" data-validate="required:请输入标题" />
-          <div class="tips"></div>
-        </div>
-      </div>  
+    <form method="post" class="form-x" action="{:url('sindex/mesreply')}" onsubmit="return upsubmit()">  
       <div class="form-group">
         <div class="label">
           <label>内容：</label>
         </div>
+         <div class="field">
+          <input type="hidden" name="id" value="{$id}">
+          <div class="tips"></div>
+        </div>
         <div class="field">
-          <textarea name="content" class="input" style="height:300px; resize:none;border:1px solid #ddd;"></textarea>
+          <textarea name="content" class="input" onblur="put()" style="height:300px; resize:none;border:1px solid #ddd;"></textarea>
+          <p id="tishi" style="display:none;color:red;">回复内容为空</p>
           <div class="tips"></div>
         </div>
       </div>
@@ -46,4 +42,23 @@
   </div>
 </div>
 
-</body></html>
+</body>
+</html>
+<script type="text/javascript">
+    function put(){
+        if ($(".input").val() == '') {
+          $("#tishi").css('display','block');
+          return false;
+        } else {
+          $("#tishi").css('display','none');
+          return true;
+        } 
+    }
+    function upsubmit()
+    {
+      if(put()){
+        return true;
+      }
+      return false;
+    }
+</script>

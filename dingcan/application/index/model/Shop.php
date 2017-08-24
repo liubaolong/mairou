@@ -61,22 +61,21 @@ class shop extends Model
 		$info = $file->move(ROOT_PATH .	'public/static' .	DS	. 'upload'); 
 		$path = "__UPLOAD_PATH__\\". $info->getSaveName();
 		$path = str_replace('\\','/',$path);
-		dump($path);die;
 		$arr = [
-				't_uid'=>1,
-				't_name'=>$data['shop'],
-				't_address'=>$data['address'],
-				't_qu'=>$data['s_county'],
-				't_phone'=>$data['phone'],
-				't_time'=>$data['time'],
-				't_wifi'=>$data['wifi'],
-				't_info'=>$data['info'],
-				't_ident'=>$data['ident'],
-				't_pic'=>$path,
-				't_addtime'=>time(),
-				't_status'=>0,
+				's_uid'=>1,
+				's_name'=>$data['shop'],
+				's_address'=>$data['address'],
+				's_qu'=>$data['s_county'],
+				's_phone'=>$data['phone'],
+				's_time'=>$data['time'],
+				's_wifi'=>$data['wifi'],
+				's_info'=>$data['info'],
+				's_ident'=>$data['ident'],
+				's_pic'=>$path,
+				's_addtime'=>time(),
+				's_status'=>0,
 				];
-		return Db::name('try')->insert($arr); 
+		return Db::name('shop')->insert($arr); 
 
 	}
 }
