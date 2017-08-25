@@ -9,15 +9,9 @@ class Index extends Controller
 	//首页
     public function index(Request $request)
     {  
-        if (empty($_GET['sid'])) { 
-           $stor = '东城区';
-           $type = 0;
-        } else {
-            $type= 1;
-            $stor = $_GET['sid'];
-        }
-
-        $res = IndexModel::store($stor);
+        
+        $stor = '东城区';
+        $res  = IndexModel::store($stor);
         //查询热门菜
         $dish = IndexModel::hotdish();
         // //新闻标题
@@ -25,9 +19,39 @@ class Index extends Controller
         // $this->assign('donews', $donews);
         $this->assign('dish', $dish);
         $this->assign('str',$res);
-        $this->assign('type',$type);
         return $this->fetch();
     }   
+    //按区搜素店铺
+    public function areastore()
+    {   
+      //   <a href="{:url('shop/shop')}" target="_blank" title="TITLE:店名">
+      //  <figure>
+      //  <img src="{$str[0]['s_pic']}">
+      //  <figcaption>
+      //  <span class="title">{$str[0]['s_name']}</span>
+
+      //  </figcaption>
+      //  <p class="p1">店铺简介:{$str[0]['s_info']}</p>
+      //  <p class="p2">
+      //  店铺评分：
+      //  <img src="__IMG_PATH__/star-on.png">
+      //  <img src="__IMG_PATH__/star-on.png">
+      //  <img src="__IMG_PATH__/star-on.png">
+      //  <img src="__IMG_PATH__/star-on.png">
+      //  <img src="__IMG_PATH__/star-off.png">
+      //  </p>
+      //  <p class="p3">店铺地址：{$str[0]['s_address']}</p>
+      //  </figure>
+      // </a>
+        $stor = $_POST['stor'];
+        $res  = IndexModel::store($stor);
+        if ($res) {
+            $data = ['errcode'=>1,'info'=>$res];
+        } else {
+            $data = ['errcode'=>0];
+        }
+        echo json_encode($data);
+    }
     //新闻内容展示
     // public function news(Request $request)
     // {
