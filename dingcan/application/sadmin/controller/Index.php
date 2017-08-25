@@ -8,6 +8,7 @@ class index extends Auth
 	public function index()
 	{
 		// dump(11);die;
-		return $this->fetch('sadmin/auth/login');
+		$this->assign('title', 'wo');
+		return $this->fetch('sadmin@auth/login');
 	}
 }

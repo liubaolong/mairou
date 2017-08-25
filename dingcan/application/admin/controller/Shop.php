@@ -12,11 +12,23 @@
 			parent::_initialize();
 			$this->shop = new ShopModel();
 		}
+		//申请商家展示
+		public function shop_try()
+		{	
+			$data = 0;
+			$result = $this->shop->shoplist($data);
+			if ($result) {
+				$this->assign('result', $result);
+			} else {
+				$this->assign('result', '');
+			}
+			return $this->fetch();
+		}
 		//商家管理展示
 		public function shop_list()
 		{
-			$result = $this->shop->shoplist();
-			 // dump($result[0]['s_id']);die;
+			$data = 1;
+			$result = $this->shop->shoplist($data);
 			if ($result) {
 				$this->assign('result', $result);
 			} else {
@@ -36,10 +48,7 @@
 				's_id' => input('sid')
 			];
 			$result = $this->shop->details($data);
-			// dump($result['s_id']);die;
-			// dump($result[0]['s_id']);die;
-			// dump(11);
-			// dump($result);
+			
 			if ($result) {
 				$this->assign('result', $result);
 			} else {
@@ -47,5 +56,29 @@
 			}
 			return $this->fetch();
 		}
-		
+		//审核/拒绝 商家入住
+		public function shenhe()
+		{
+			$data = input('s_id');
+			// if (array_key_exists($data, $shopres[0][])) {
+			if(input('status') == 1){
+				$result = $this->shop->shenhe($data);
+				if ($result) {
+					$this->success('审核通过', 'shop/shop_list');
+				} else {
+					$this->error('审核失败', 'shop/shop_list');
+				}
+			} else {
+				$data = [
+					's_id' => input('s_id'),
+				];
+				$result = $this->shop->shenhe($data);
+				if ($result) {
+					$this->error('审核未通过', 'shop/shop_list');
+				} else {
+					$this->error('操作失败', 'shop/shop_list');
+				}
+			}
+		}
+
 	}
