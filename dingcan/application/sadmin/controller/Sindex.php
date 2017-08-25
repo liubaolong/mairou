@@ -30,7 +30,7 @@ class Sindex extends Auth
 		} else {
 			$file = request()->file('file'); 
 			$info = $file->move(ROOT_PATH .	'public/static' . DS . 'upload'); 
-			$path = "__UPLOAD_PATH__\\". $info->getSaveName();
+			$path = "/static/upload\\". $info->getSaveName();
 			$path = str_replace('\\','/',$path);
 		}
 		$sinfo = input();
@@ -120,7 +120,7 @@ class Sindex extends Auth
 		} else {
 			$file = request()->file('file'); 
 			$info = $file->move(ROOT_PATH .	'public/static' . DS . 'dishes'); 
-			$path = "__UPLOAD_PATH__\\". $info->getSaveName();
+			$path = "/static/upload\\". $info->getSaveName();
 			$path = str_replace('\\','/',$path);
 		}
 		$sinfo = input();

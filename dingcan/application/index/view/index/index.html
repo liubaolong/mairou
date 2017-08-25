@@ -79,14 +79,10 @@
 <section class="Sfainfor">
  <article class="Sflist">
   <div id="Indexouter">
-   <ul id="Indextab">
-   {if $type == 1}
+   <ul id="Indextab"> 
+   
     <li class="current">点菜</li>
-    <li>餐馆</li>
-  {else}
-    <li>点菜</li>
-    <li class="current">餐馆</li>
-  {/if}
+   <li >餐馆</li>
     <p class="class_B">
     <a href="#">中餐</a>
     <a href="#">西餐</a>
@@ -99,7 +95,7 @@
 
   <div id="Indexcontent">
    <ul style="display:block;">
-    <li>
+     <li>
      <p class="seekarea">
       <b>热门菜品推荐
      </p>
@@ -144,55 +140,42 @@
       </a>
      </div>
     </li>
+
    </ul>
-  <ul>
-  <li>
+  <ul >
+   <li>
      <p class="seekarea" style="display:block;" id="dnext">
-     <a href="{:url('index/index/index')}?sid=东城区">东城区</a>
-     <a href="{:url('index/index/index')}?sid=西城区">西城区</a>
-     <a href="{:url('index/index/index')}?sid=崇文区">崇文区</a>
-     <a href="{:url('index/index/index')}?sid=宣武区">宣武区</a>
-     <a href="{:url('index/index/index')}?sid=朝阳区">朝阳区</a>
-     <a href="{:url('index/index/index')}?sid=丰台区">丰台区</a>
-     <a href="{:url('index/index/index')}?sid=海淀区">海淀区</a>
-     <a href="{:url('index/index/index')}?sid=昌平区">昌平区</a>
-     <a href="{:url('index/index/index')}?sid=石景山区">石景山区</a>
-     <a href="{:url('index/index/index')}?sid=门头沟区">门头沟区</a>
-     <a href="{:url('index/index/index')}?sid=房山区">房山区</a>
+     <a href="javascript:;" onclick="store(this)">东城区</a>
+     <a href="javascript:;" onclick="store(this)">西城区</a>
+     <a href="javascript:;" onclick="store(this)">崇文区</a>
+     <a href="javascript:;" onclick="store(this)">宣武区</a>
+     <a href="javascript:;" onclick="store(this)">朝阳区</a>
+     <a href="javascript:;" onclick="store(this)">丰台区</a>
+     <a href="javascript:;" onclick="store(this)">海淀区</a>
+     <a href="javascript:;" onclick="store(this)">昌平区</a>
+     <a href="javascript:;" onclick="store(this)"">石景山区</a>
+     <a href="javascript:;" onclick="store(this)"">门头沟区</a>
+     <a href="javascript:;" onclick="store(this)">房山区</a>
      <a href="javascript:;" onclick="dnext()">more ></a>
      </p>
      <p class="seekarea" style="display:none;" id="dpre">
-     <a href="{:url('index/index/index')}?sid=通州区">通州区</a>
-     <a href="{:url('index/index/index')}?sid=顺义区">顺义区 </a>
-     <a href="{:url('index/index/index')}?sid=大兴区">大兴区</a>
-     <a href="{:url('index/index/index')}?sid=怀柔区">怀柔区</a>
-     <a href="{:url('index/index/index')}?sid=房山区">房山区</a>
-     <a href="{:url('index/index/index')}?sid=密云区">密云区</a>
-     <a href="{:url('index/index/index')}?sid=延庆区">延庆区 </a>
+     <a href="javascript:;" onclick="store(this)">通州区</a>
+     <a href="javascript:;" onclick="store(this)">顺义区 </a>
+     <a href="javascript:;" onclick="store(this)">大兴区</a>
+     <a href="javascript:;" onclick="store(this)">怀柔区</a>
+     <a href="javascript:;" onclick="store(this)">房山区</a>
+     <a href="javascript:;" onclick="store(this)">密云区</a>
+     <a href="javascript:;" onclick="store(this)">延庆区 </a>
      <a href="javascript:;" onclick="dpre()">more <</a>
      </p>
      <div class="DCcontent">
-     {foreach $str as $key => $value}
-       <a href="{:url('shop/shop')}" target="_blank" title="TITLE:店名">
-       <figure>
-       <img src="{$value['s_pic']}">
-       <figcaption>
-       <span class="title">{$value['s_name']}</span>
-
-       </figcaption>
-       <p class="p1"><q>仅售169元！价值289元的4-5人餐，提供免费WiFi。</q></p>
-       <p class="p2">
-       店铺评分：
-       <img src="__IMG_PATH__/star-on.png">
-       <img src="__IMG_PATH__/star-on.png">
-       <img src="__IMG_PATH__/star-on.png">
-       <img src="__IMG_PATH__/star-on.png">
-       <img src="__IMG_PATH__/star-off.png">
-       </p>
-       <p class="p3">店铺地址：{$value['s_address']}</p>
-       </figure>
-      </a>
-    {/foreach}
+        <table style="border:1px solid red;width:100px;height:200px;font-size:24px;">
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+          <tr></tr>
+        </table>
      </div>
   </li>
   </ul>
@@ -229,5 +212,29 @@
     {
       $('#dpre').css('display','none');
       $('#dnext').css('display','block');
+    }
+    //餐馆
+    function store(obj)
+    {
+      var stor = $(obj).html();
+      var con = '';
+      var count = 1;
+      $.post("{:url('index/index/areastore')}",{stor:stor},function(data){
+        console.log(data);
+          if (data.errcode == 1){
+           $.each(data.info,function(i,obj){
+              con += '<tr><td><img src="' + obj.s_pic + '" style=width:300px;height:200px;></td></tr>';
+              con += '<tr><td>' + obj.s_id + '</td></tr>';
+              con += '<tr><td>' + obj.s_name + '</td></tr>';
+              con += '<tr><td>' + obj.s_info + '</td></tr>'
+              })
+              $("table").html(con);
+            } else{
+              alert(11);
+              con += '<tr><td>' + 本区暂没有任何店铺 + '</td></tr>';
+              $("table").html(con);
+            }
+      },'json')
+
     }
 </script>
