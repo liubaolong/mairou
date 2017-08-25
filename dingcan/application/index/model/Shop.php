@@ -59,10 +59,10 @@ class shop extends Model
 	{   
 		$file = request()->file('photo');
 		$info = $file->move(ROOT_PATH .	'public/static' .	DS	. 'upload'); 
-		$path = "/static/upload\\". $info->getSaveName();
+		$path = "__UPLOAD_PATH__\\". $info->getSaveName();
 		$path = str_replace('\\','/',$path);
-		$arr  = [
-				's_uid'=>1,
+		$arr = [
+				's_uid'=>session('uid'),
 				's_name'=>$data['shop'],
 				's_address'=>$data['address'],
 				's_qu'=>$data['s_county'],

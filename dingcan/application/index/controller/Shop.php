@@ -24,6 +24,10 @@ class Shop extends Controller
 	//商家入驻
 	public function join(Request $request)
 	{ 
+		//未注册用户不能进入商家入驻页面
+		if (!session('?uid')) {
+			$this->success('请您先注册用户', 'auth/register');
+		}
 		if(!empty($request->param('shop'))){
 			$result = $this->shop->shopregister(input());
 			if ($result) {
