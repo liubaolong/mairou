@@ -62,7 +62,7 @@ class shop extends Model
 		$path = "__UPLOAD_PATH__\\". $info->getSaveName();
 		$path = str_replace('\\','/',$path);
 		$arr = [
-				's_uid'=>1,
+				's_uid'=>session('uid'),
 				's_name'=>$data['shop'],
 				's_address'=>$data['address'],
 				's_qu'=>$data['s_county'],
