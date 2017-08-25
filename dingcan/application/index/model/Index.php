@@ -12,7 +12,7 @@ class Index extends Model
 	} 
 	static public function store($data)
 	{
-		$result = Db::name('shop')->where('delete_time',null)->where('s_status',0)->where('s_qu',$data)->limit(3)->select();
+		$result = Db::name('shop')->where('delete_time',null)->where('s_status',1)->where('s_qu',$data)->limit(3)->select();
 		return $result;
 	}
 }

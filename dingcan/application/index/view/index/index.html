@@ -101,7 +101,7 @@
      </p>
      <div class="SCcontent"> 
      {foreach $dish as $key => $value}
-     <a href="{:url('meal/detailsp')}" target="_blank" title="菜品名称">
+     <a href="{:url('meal/detailsp')}?id={$value['m_id']}" target="_blank" title="菜品名称">
       <figure>
        <img src="{$value['m_pic']}">
        <figcaption>
@@ -168,14 +168,28 @@
      <a href="javascript:;" onclick="store(this)">延庆区 </a>
      <a href="javascript:;" onclick="dpre()">more <</a>
      </p>
-     <div class="DCcontent">
-        <table style="border:1px solid red;width:100px;height:200px;font-size:24px;">
-          <tr></tr>
-          <tr></tr>
-          <tr></tr>
-          <tr></tr>
+     <div class="DCcontent" style="overflow:hidden;">
+      {foreach $str as $key=>$value}
+        <table style="height:200px;float:left;border:1px solid #999;">
+          <tr><td><a href="{:url('index/shop/shop')}?{$value['s_id']}"><img src="{$value['s_pic']}" style=width:297px;height:200px;></a><td></tr>
+          <tr><td style="font-size:16px;">{$value['s_name']}</td></tr>
+          <tr>
+            <td style="height:30px;">
+              <p class="p2" style="font-size:14px;">
+                 店铺评分：
+              <img src="__IMG_PATH__/star-on.png">
+              <img src="__IMG_PATH__/star-on.png">
+               <img src="__IMG_PATH__/star-on.png">
+               <img src="__IMG_PATH__/star-on.png">
+               <img src="__IMG_PATH__/star-off.png">
+             </p>
+          </td>
+         </tr>
+         <tr><td style="font-size:14px;">商家地址:{$value['s_address']}</td></tr>
+          <tr><td style="border:1px solid #999;font-size:14px;height:80px;">商家简介:{$value['s_info']}</td></tr>
           <tr></tr>
         </table>
+      {/foreach}
      </div>
   </li>
   </ul>
@@ -220,19 +234,33 @@
       var con = '';
       var count = 1;
       $.post("{:url('index/index/areastore')}",{stor:stor},function(data){
-        console.log(data);
+        
           if (data.errcode == 1){
            $.each(data.info,function(i,obj){
-              con += '<tr><td><img src="' + obj.s_pic + '" style=width:300px;height:200px;></td></tr>';
-              con += '<tr><td>' + obj.s_id + '</td></tr>';
-              con += '<tr><td>' + obj.s_name + '</td></tr>';
-              con += '<tr><td>' + obj.s_info + '</td></tr>'
+               var url = "{:url('index/shop/shop')}?" + obj.s_id;
+              con += '<table  style="height:200px;float:left;border:1px solid #999;">'
+              con += '<tr><td><a href="'+ url +'"><img src="' + obj.s_pic + '" style=width:297px;height:200px;></a></td></tr>';
+              con += '<tr><td style="font-size:16px;">' + obj.s_name + '</td></tr>';
+             
+              con += '<tr><td><p class="p2">' +
+                       '店铺评分:' +
+                       '<img src="__IMG_PATH__/star-on.png">' +
+                       '<img src="__IMG_PATH__/star-on.png">' +
+                       '<img src="__IMG_PATH__/star-on.png">' +
+                       '<img src="__IMG_PATH__/star-on.png">' +
+                       '<img src="__IMG_PATH__/star-off.png">' +
+                       '</p></td></tr>' 
+              con += '<tr><td style="font-size:14px;">商家地址:' + obj.s_address + '</td></tr>'
+              con += '<tr><td style="border:1px solid #999;font-size:14px;height:80px;">商家简介:' + obj.s_info + '</td></tr>';
+              con += '</table>'
+              $(".DCcontent").html(con);
               })
-              $("table").html(con);
+              
             } else{
-              alert(11);
-              con += '<tr><td>' + 本区暂没有任何店铺 + '</td></tr>';
-              $("table").html(con);
+              con += '<table style="width:900px;height:200px;text-align:center;">';
+              con += '<tr><td style="font-size:40px;">' + '本区暂没有任何店铺' + '</td></tr>';
+              con += '</table>'
+              $(".DCcontent").html(con);
             }
       },'json')
 

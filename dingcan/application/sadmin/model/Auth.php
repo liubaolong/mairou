@@ -12,7 +12,7 @@ class Auth extends Model
 		//判断是否存在用户
 		if ($result) {
 			//查询是否有店铺
-			$res = Db::name('shop')->where('s_uid',$result['uid'])->where('s_status',0)->find();
+			$res = Db::name('shop')->where('s_uid',$result['uid'])->where('s_status',1)->find();
 			if ($res) {
 				session('sadmin',$res);
 				return 1;
