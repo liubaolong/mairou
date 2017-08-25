@@ -16,4 +16,15 @@
 				return false;
 			}
 		} 
+		//商家详情
+		public function details($data)
+		{
+			$result = $this->where($data)->find();
+			// dump($result);die;
+			if ($result) {
+				return $result;
+			} else {
+				return false;
+			}
+		} 
 	}
