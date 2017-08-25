@@ -1,5 +1,5 @@
 
-<title>酸辣土豆丝 - DeathGhost</title>
+<title> - DeathGhost</title>
 
 <script>
 $(function(){		
@@ -24,43 +24,49 @@ $(function(){
 <section class="slp">
  <section class="food-hd">
   <div class="foodpic">
-   <img src="upload/02.jpg" id="showimg">
+   <img src="{$dish['dish']['m_pic']}" id="showimg">
     <ul class="smallpic">
-     <li><img src="upload/02.jpg" onmouseover="show(this)" onmouseout="hide()"></li>
+     <li><img src="{$dish['dish']['m_pic']}" onmouseover="show(this)" onmouseout="hide()"></li>
     </ul>
   </div>
   <div class="foodtext">
    <div class="foodname_a">
-    <h1>酸辣土豆丝</h1>
-    <p>西安市丈八路220号</p>
+    <h1>{$dish['dish']['m_name']}</h1>
+    <p>{$dish['dish']['s_address']}</p>
    </div>
    <div class="price_a">
-    <p class="price01">促销：￥<span>59.00</span></p>
-    <p class="price02">价格：￥<s>69.00</s></p>
+    
+    {if($dish['dish']['m_oldprice']!='')}
+    <p class="price01">促销：￥<span>{$dish['dish']['m_newprice']}</span></p>
+    <p class="price02">价格：￥<s>{$dish['dish']['m_oldprice']}</s></p>
+    {else}
+    <p class="price01">价格：￥<span>{$dish['dish']['m_newprice']}</span></p>
+    <p class="price02">新品上市</p>
+    {/if}
    </div>
    <div class="Freight">
     <span>配送费用：</span>
-    <span><i>未央区</i>至<i>莲湖区</i></span>
-    <span>10.00</span>
+    <span>配送10元(仅限北京市)</span>
+    <span>满60免配送费</span>
    </div>
    <ul class="Tran_infor">
      <li>
-      <p class="Numerical">3</p>
+      <p class="Numerical">{$dish['dish']['m_mothcounts']}</p>
       <p>月销量</p>
      </li>
      <li class="line">
-      <p class="Numerical">58</p>
+      <p class="Numerical">{$dish['count']}</p>
       <p>累计评价</p>
      </li>
      <li>
-      <p class="Numerical">59</p>
+      <p class="Numerical">{$dish['dish']['m_score']}</p>
       <p>送幸福积分</p>
      </li>
    </ul>
    <form action="cart.html">
    <div class="BuyNo">
     <span>我要买：<input type="number" name="Number" required autofocus min="1" value="1"/>份</span>
-    <span>库存：3258</span>
+    <span>库存：{$dish['dish']['m_counts']}</span>
     <div class="Buybutton">
      <input name="" type="submit" value="加入购物车" class="BuyB">
      <a href="shop.html"><span class="Backhome">进入店铺首页</span></a>
@@ -90,7 +96,7 @@ $(function(){
   <div class="title2 cf">
     <ul class="title-list fr cf ">
       <li class="on">详细说明</li>
-      <li>评价详情（5）</li>
+      <li>评价详情({$dish['count']})</li>
       <li>成交记录（5）</li>
       <p><b></b></p>
     </ul>
@@ -99,13 +105,8 @@ $(function(){
     <!--case1-->
     <div class="menutab show">
       <div class="cont_padding">
-       <img src="upload/tds.jpg">
-       <p>测试信息，可删除！</p>
-       <p>1. 将土豆洗净刮皮。</p>
-       <p>2. 先将土豆切成整齐的大薄片这样是切出均匀的丝的要点。</p>
-       <p>3. 将土豆片切成细丝。</p>
-       <p>4. 用清水将切好的土豆丝泡去淀粉，（这样炒出的土豆丝清爽不粘）</p>
-       <p>5. 将葱切末、辣椒剪成小段、蒜切末、红椒切丝、姜切末。</p>
+       <img src="{$dish['dish']['m_pic']}">
+       <p>{$dish['dish']['m_info']}</p>
       </div>
     </div>
     <!--case2-->
@@ -114,13 +115,15 @@ $(function(){
       <table class="Dcomment">
        <th width="80%">评价内容</th>
        <th width="20%" style="text-align:right">评价人</th>
+      {foreach $dish['app'] as $key=>$value}
        <tr>
        <td>
-        还不错，速度倒是挺速度倒是挺快速度倒是挺快速度倒是挺快速度倒是挺快速度倒是挺快速度倒是挺快速度倒是挺快速度倒是挺快速度倒是挺快速度倒是挺快速度倒是挺快快...
-        <time>2016-05-31 22:30:39</time>
+        {$value['p_info']}
+        <time><?php echo date('Y-m-d H:i:s',$value['p_addtime'])?></time>
        </td>
-       <td align="right">DEATHGHOST</td>
+       <td align="right">{$value['username']}</td>
        </tr>
+      {/foreach}
       </table>
       <div class="TurnPage">
          <a href="#">

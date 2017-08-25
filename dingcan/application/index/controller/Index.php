@@ -24,25 +24,6 @@ class Index extends Controller
     //按区搜素店铺
     public function areastore()
     {   
-      //   <a href="{:url('shop/shop')}" target="_blank" title="TITLE:店名">
-      //  <figure>
-      //  <img src="{$str[0]['s_pic']}">
-      //  <figcaption>
-      //  <span class="title">{$str[0]['s_name']}</span>
-
-      //  </figcaption>
-      //  <p class="p1">店铺简介:{$str[0]['s_info']}</p>
-      //  <p class="p2">
-      //  店铺评分：
-      //  <img src="__IMG_PATH__/star-on.png">
-      //  <img src="__IMG_PATH__/star-on.png">
-      //  <img src="__IMG_PATH__/star-on.png">
-      //  <img src="__IMG_PATH__/star-on.png">
-      //  <img src="__IMG_PATH__/star-off.png">
-      //  </p>
-      //  <p class="p3">店铺地址：{$str[0]['s_address']}</p>
-      //  </figure>
-      // </a>
         $stor = $_POST['stor'];
         $res  = IndexModel::store($stor);
         if ($res) {
@@ -86,16 +67,36 @@ class Index extends Controller
     //订餐
     public function list()
     {
+      if (empty($_GET['id']))
+      {
+        $res = IndexModel::alldish();
+      } else{
+        switch ($_GET['id']) {
+          case 1:
+          $res = IndexModel::sale();
+          break;
+          case 2:
+          $res = IndexModel::sale();
+          break;
+          case 3:
+          $res = IndexModel::stime();
+          break;
+        }
+      }
+      $this->assign('res',$res);
     	return $this->fetch();
     }
    	//积分商城
    	public function category()
-   	{
+   	{ 
+      $result = IndexModel::credits();
+      $this->assign('res',$result);
    		return $this->fetch();
    	}
    	//关于我们
    	public function article_read()
    	{
+
    		return $this->fetch();
    	}
 

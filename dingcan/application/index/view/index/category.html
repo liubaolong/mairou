@@ -1,4 +1,6 @@
+<link href="__STATIC_PATH__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
+<script type="text/javascript" src="__JS_PATH__/jqpublic.js"></script>
 <!--Start content-->
 <section class="Psection">
  <section class="fslist_navtree">
@@ -63,80 +65,21 @@
  </section>
  <section class="CateL Overflow">
   <ul>
+{foreach $res as $key=>$value}
    <li> 
-   <a href="{:url('meal/detailsp')}" target="_blank" title="酸辣土豆丝">
-   <img src="__UPLOAD_PATH__/05.jpg">
-   <p class="Overflow">酸辣土豆丝</p>
-   <p class="Overflow">赠送：<span class="CorRed Font16">2</span>积分<i></i></p>
-   <p class="Overflow">好味来快餐连锁店</p>
-   <p class="Overflow">地址：莲湖区土门十字往西100米</p>
+   <a href="{:url('meal/detailsp')}?id={$value['m_id']}" target="_blank" title="{$value['m_name']}">
+   <img src="{$value['m_pic']}">
+   <p class="Overflow">{$value['m_name']}</p>
+   <p class="Overflow">赠送：<span class="CorRed Font16">{$value['m_score']}</span>积分<i></i></p>
+   <p class="Overflow">{$value['s_name']}</p>
+   <p class="Overflow">地址：{$value['s_address']}</p>
    </a>
    </li>
-   <li> 
-   <a href="{:url('meal/detailsp')}" target="_blank" title="酸辣土豆丝">
-   <img src="__UPLOAD_PATH__/06.jpg">
-   <p class="Overflow">酸辣土豆丝</p>
-   <p class="Overflow">赠送：<span class="CorRed Font16">2</span>积分<i></i></p>
-   <p class="Overflow">好味来快餐连锁店</p>
-   <p class="Overflow">地址：莲湖区土门十字往西100米</p>
-   </a>
-   </li>
-   <li> 
-   <a href="{:url('meal/detailsp')}" target="_blank" title="酸辣土豆丝">
-   <img src="__UPLOAD_PATH__/04.jpg">
-   <p class="Overflow">酸辣土豆丝</p>
-   <p class="Overflow">赠送：<span class="CorRed Font16">2</span>积分<i></i></p>
-   <p class="Overflow">好味来快餐连锁店</p>
-   <p class="Overflow">地址：莲湖区土门十字往西100米</p>
-   </a>
-   </li>
-   <li> 
-   <a href="{:url('meal/detailsp')}" target="_blank" title="酸辣土豆丝">
-   <img src="__UPLOAD_PATH__/02.jpg">
-   <p class="Overflow">酸辣土豆丝</p>
-   <p class="Overflow">赠送：<span class="CorRed Font16">2</span>积分<i></i></p>
-   <p class="Overflow">好味来快餐连锁店</p>
-   <p class="Overflow">地址：莲湖区土门十字往西100米</p>
-   </a>
-   </li>
-   <li> 
-   <a href="{:url('meal/detailsp')}" target="_blank" title="酸辣土豆丝">
-   <img src="__UPLOAD_PATH__/02.jpg">
-   <p class="Overflow">酸辣土豆丝</p>
-   <p class="Overflow">赠送：<span class="CorRed Font16">2</span>积分<i></i></p>
-   <p class="Overflow">好味来快餐连锁店</p>
-   <p class="Overflow">地址：莲湖区土门十字往西100米</p>
-   </a>
-   </li>
-   <li> 
-   <a href="{:url('meal/detailsp')}" target="_blank" title="酸辣土豆丝">
-   <img src="__UPLOAD_PATH__/01.jpg">
-   <p class="Overflow">酸辣土豆丝</p>
-   <p class="Overflow">赠送：<span class="CorRed Font16">2</span>积分<i></i></p>
-   <p class="Overflow">好味来快餐连锁店</p>
-   <p class="Overflow">地址：莲湖区土门十字往西100米</p>
-   </a>
-   </li>
-   <li> 
-   <a href="{:url('meal/detailsp')}" target="_blank" title="酸辣土豆丝">
-   <img src="__UPLOAD_PATH__/03.jpg">
-   <p class="Overflow">酸辣土豆丝</p>
-   <p class="Overflow">赠送：<span class="CorRed Font16">2</span>积分<i></i></p>
-   <p class="Overflow">好味来快餐连锁店</p>
-   <p class="Overflow">地址：莲湖区土门十字往西100米</p>
-   </a>
-   </li>
-   <li> 
-   <a href="{:url('meal/detailsp')}" target="_blank" title="酸辣土豆丝">
-   <img src="__UPLOAD_PATH__/02.jpg">
-   <p class="Overflow">酸辣土豆丝</p>
-   <p class="Overflow">赠送：<span class="CorRed Font16">2</span>积分<i></i></p>
-   <p class="Overflow">好味来快餐连锁店</p>
-   <p class="Overflow">地址：莲湖区土门十字往西100米</p>
-   </a>
-   </li>
+{/foreach}
   </ul>
-  <div class="TurnPage">
+<!-- {$res->render()} -->
+ 
+<!--   <div class="TurnPage">
          <a href="#">
           <span class="Prev"><i></i>首页</span>
          </a>
@@ -145,8 +88,10 @@
          <a href="#">
          <span class="Next">最后一页<i></i></span>
         </a>
-       </div>
- </section>
+       </div> -->
+       <div style="border:1px solid red;width:100%;height:30px;"></div>
+ </section> 
+
  <aside class="CateR">
  <!--广告位或推荐位-->
   <div>
