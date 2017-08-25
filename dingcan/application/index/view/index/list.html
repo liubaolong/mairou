@@ -63,47 +63,42 @@
 	</ul>
  </section>
 <section class="Fslmenu">
- <a href="#" title="默认排序">
+ <a href="{:url('index/index/list')}?id=" title="默认排序">
   <span>
   <span>默认排序</span>
   <span></span>
   </span>
  </a>
- <a href="#" title="评价">
+ <a href="{:url('index/index/list')}?id=1" title="评价">
   <span>
   <span>评价</span>
   <span class="s-up"></span>
   </span>
  </a>
- <a href="#" title="销量">
+ <a href="{:url('index/index/list')}?id=2" title="销量">
   <span>
   <span>销量</span>
   <span class="s-up"></span>
   </span>
  </a>
- <a href="#" title="价格排序">
+ <a href="{:url('index/index/list')}?id=3" title="发布时间排序">
   <span>
-  <span>价格</span>
-  <span class="s-down"></span>
-  </span>
- </a>
- <a href="#" title="发布时间排序">
-  <span>
-  <span>发布时间</span>
+  <span>注册时间</span>
   <span class="s-up"></span>
   </span>
  </a>
 </section>
 <section class="Fsl">
  <ul>
+{foreach $res as $key => $value}
   <li>
-   <a href="{:url('shop/shop')}" target="_blank" title="调用产品名/店铺名"><img src="__UPLOAD_PATH__/03.jpg"></a>
+   <a href="{:url('shop/shop')}?id={$value['s_id']}" target="_blank" title="{$value['s_name']}"><img src="{$value['s_pic']}"></a>
    <hgroup>
-   <h3>【大明宫】***川菜馆</h3>
+   <h3>{$value['s_name']}</h3>
    <h4></h4>
    </hgroup>
    <p>菜系：川湘菜</p>
-   <p>地址：西安市莲湖区土门十字往右100米</p>
+   <p>地址：{$value['s_address']}</p>
    <p>人均：20~50元</p>
    <p>
     <span class="Score-l">
@@ -114,72 +109,10 @@
     <img src="__IMG_PATH__/star-off.png">
     <span class="Score-v">4.8</span>
     </span>
-    <span class="DSBUTTON"><a href="{:url('shop/shop')}" target="_blank" class="Fontfff">点外卖</a></span>
+    <span class="DSBUTTON"><a href="{:url('index/shop/shop')}?id={$value['s_id']}" target="_blank" class="Fontfff">点外卖</a></span>
    </p>
   </li>
-  <li>
-   <a href="{:url('shop/shop')}" target="_blank" title="调用产品名/店铺名"><img src="__UPLOAD_PATH__/03.jpg"></a>
-   <hgroup>
-   <h3>【大雁塔】***川菜馆</h3>
-   <h4></h4>
-   </hgroup>
-   <p>菜系：川湘菜</p>
-   <p>地址：西安市莲湖区土门十字往右100米</p>
-   <p>人均：20~50元</p>
-   <p>
-    <span class="Score-l">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-off.png">
-    <span class="Score-v">4.8</span>
-    </span>
-    <span class="DSBUTTON"><a href="{:url('shop/shop')}" target="_blank" class="Fontfff">点外卖</a></span>
-   </p>
-  </li>
-  <li>
-   <a href="{:url('shop/shop')}" target="_blank" title="调用产品名/店铺名"><img src="__UPLOAD_PATH__/03.jpg"></a>
-   <hgroup>
-   <h3>【南稍门】***川菜馆</h3>
-   <h4></h4>
-   </hgroup>
-   <p>菜系：川湘菜</p>
-   <p>地址：西安市莲湖区土门十字往右100米</p>
-   <p>人均：20~50元</p>
-   <p>
-    <span class="Score-l">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-off.png">
-    <span class="Score-v">4.8</span>
-    </span>
-    <span class="DSBUTTON"><a href="{:url('shop/shop')}" target="_blank" class="Fontfff">点外卖</a></span>
-   </p>
-  </li>
-  <li>
-   <a href="{:url('shop/shop')}" target="_blank" title="调用产品名/店铺名"><img src="__UPLOAD_PATH__/03.jpg"></a>
-   <hgroup>
-   <h3>【小雁塔】***川菜馆</h3>
-   <h4></h4>
-   </hgroup>
-   <p>菜系：川湘菜</p>
-   <p>地址：西安市莲湖区土门十字往右100米</p>
-   <p>人均：20~50元</p>
-   <p>
-    <span class="Score-l">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-off.png">
-    <span class="Score-v">4.8</span>
-    </span>
-    <span class="DSBUTTON"><a href="{:url('shop/shop')}" target="_blank" class="Fontfff">点外卖</a></span>
-   </p>
-  </li>
+{/foreach}
  </ul>
  <aside>
   <div class="title">热门商家</div>
