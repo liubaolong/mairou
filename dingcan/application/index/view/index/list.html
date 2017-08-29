@@ -1,70 +1,96 @@
+<link rel="stylesheet" type="text/css" href="__CSS_PATH__/nav.css">
+<script type="text/javascript">
+      $(function(){
+        var _this1=null;
+        $('.nav>li').hover(function(){
+          _this1=$(this);
+          _this1.find('.second-nav').show();
+          var _this2=null;
+          
+          _this1.find('.second-nav').find('li').hover(function(){
+            _this2=$(this);
+            _this2.find('.third-nav').show();
+            _this2.find('.third-nav').hover(function(){
+              $(this).show();
+            },function(){
+              $(this).hide();
+            });
+          },function(){
+            _this2.find('.third-nav').hide();
+          });
+        },function(){
+          _this1.find('.second-nav').hide();
+        });
+      });
+ </script>
 <script type="text/javascript" src="__JS_PATH__/public.js"></script>
 <script type="text/javascript" src="__JS_PATH__/jquery.js"></script>
 
 <script type="text/javascript" src="__JS_PATH__/jqpublic.js"></script>
 <!--Start content-->
 <section class="Psection">
- <section class="fslist_navtree">
-  <ul class="select">
-    <li class="select-list">
-      <dl id="select1">
-        <dt>分类：</dt>
-        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
-        <dd><a href="javascript:">火锅/干锅</a></dd>
-                <dd><a href="javascript:">烧烤</a></dd>
-                <dd><a href="javascript:">干锅</a></dd>
-                <dd><a href="javascript:">海鲜</a></dd>
-                <dd><a href="javascript:">炒菜</a></dd>
-                <dd><a href="javascript:">火锅</a></dd>
-                <dd><a href="javascript:">凉菜</a></dd>
-                <dd><a href="javascript:">焖锅</a></dd>
-                <dd><a href="javascript:">料理</a></dd>
-                <dd><a href="javascript:">汤</a></dd>
-                <dd><a href="javascript:"></a></dd>
-      </dl>
-    </li>
-    <li class="select-list">
-      <dl id="select2">
-        <dt>位置：</dt>
-        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
-        <dd><a href="javascript:">高新区</a></dd>
-                <dd><a href="javascript:">未央区</a></dd>
-                <dd><a href="javascript:">碑林区</a></dd>
-                <dd><a href="javascript:">阎良区</a></dd>
-                <dd><a href="javascript:">新城区</a></dd>
-                <dd><a href="javascript:">雁塔区</a></dd>
-                <dd><a href="javascript:">莲湖区</a></dd>
-                <dd><a href="javascript:">灞桥区</a></dd>
-                <dd><a href="javascript:">高陵区</a></dd>
-                <dd><a href="javascript:">周至县</a></dd>
-      </dl>
-    </li>
-    <li class="select-list">
-      <dl id="select3">
-        <dt>餐点：</dt>
-        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
-        <dd><a href="javascript:">午餐</a></dd>
-        <dd><a href="javascript:">晚餐</a></dd>
-      </dl>
-    </li>
-        <li class="select-list">
-      <dl id="select4">
-        <dt>价位区间：</dt>
-        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
-        <dd><a href="javascript:">20元以下</a></dd>
-                <dd><a href="javascript:">20-40元</a></dd>
-                <dd><a href="javascript:">40-60元</a></dd>
-                <dd><a href="javascript:">60-80元</a></dd>
-                <dd><a href="javascript:">80-100元</a></dd>
-      </dl>
-    </li>
-    <li class="select-result">
-      <dl>
-       <dd class="select-no">已选择：</dd>
-      </dl>
-    </li>
-  </ul>
- </section>
+
+  <!-- <section class="fslist_navtree"> -->
+
+  <!-- 导航栏 -->
+  
+  
+    <div class="header" style="margin-top:20px;">
+        <ul class="nav">
+
+  {volist name="res1" id="v1"}
+          <!-- 一级 -->
+          <li>
+            <a href="#">
+            {$v1}
+            </a>
+            <ul class="second-nav">
+          <!-- 二级 -->
+          {volist name="res2" id="v2"}
+              <li><a href="#">{$v2}</a>
+                <ul class="third-nav">
+                <!-- 三级 -->
+                  <li><a href="#">T恤+短裤</a></li>
+                  <li><a href="#">T恤+短裙</a></li>
+                  <li><a href="#">T恤+碎花裙</a></li>
+                </ul>
+              </li>
+          {/volist}
+              <li><a href="#">碎花裙</a>
+                <ul class="third-nav">
+                  <li><a href="#">荷叶裙</a></li>
+                  <li><a href="#">仙女裙</a></li>
+                </ul>
+              </li>
+              <li><a href="#">背带裤</a></li>
+            </ul>
+          </li>
+  {/volist}
+
+          <!-- <li><a href="#">夏季爆款</a>
+            <ul class="second-nav">
+              <li><a href="#">两件套</a>
+                <ul class="third-nav">
+                  <li><a href="#">T恤+短裤</a></li>
+                  <li><a href="#">T恤+短裙</a></li>
+                  <li><a href="#">T恤+碎花裙</a></li>
+                </ul>
+              </li>
+              <li><a href="#">背带裤</a></li>
+              <li><a href="#">碎花裙</a>
+                <ul class="third-nav">
+                  <li><a href="#">荷叶裙</a></li>
+                  <li><a href="#">仙女裙</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li> -->
+          
+        </ul>
+      </div>
+    <div style="text-align:center;">
+  </div>
+
 <section class="Fslmenu">
  <a href="{:url('index/index/list')}?id=" title="默认排序">
   <span>
@@ -95,12 +121,13 @@
  <ul>
 {foreach $res as $key => $value}
   <li>
-   <a href="{:url('shop/shop')}?id={$value['s_id']}" target="_blank" title="{$value['s_name']}"><img src="{$value['s_pic']}"></a>
+
+   <a href="{:url('shop/shop')}?id={$value['s_id']}"  title="{$value['s_name']}"><img src="{$value['s_pic']}"></a>
    <hgroup>
    <h3>{$value['s_name']}</h3>
    <h4></h4>
    </hgroup>
-   <p>菜系：川湘菜</p>
+   <p>餐别：川湘菜</p>
    <p>地址：{$value['s_address']}</p>
    <p>人均：20~50元</p>
    <p>
