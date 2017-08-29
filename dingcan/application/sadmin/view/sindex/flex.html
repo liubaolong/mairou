@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>网站信息</title>  
+    <link rel="stylesheet" href="__CSS_PATH__/pintuer.css">
+    <link rel="stylesheet" href="__CSS_PATH__/sadmin.css">
+    <script src="__JS_PATH__/jquery.js"></script>
+    <script src="__JS_PATH__/pintuer.js"></script>  
+</head>
+<body>
+<div class="panel admin-panel">
+  <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 轮播图</strong></div>
+  <div class="body-content">
+    <form method="post" class="form-x" action="{:url('sindex/slidphoto')}" enctype="multipart/form-data" onsubmit="return upsbmit()">
+      <div class="form-group">
+        <div class="label">
+          <label>图片名称：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="stitle" id="stitle" onblur="shop()" value="" />
+          <p id="tips" style="color:red;"></p>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>店铺图片：</label>
+        </div>
+        <div class="field">
+          <input type="file"  id="image1" name="file"  onblur="photo()">
+          <p id="tu" style="color:red;"></p>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>时间：</label>
+        </div>
+        <div class="field">
+          <select name="time" id="git" onblur="sdow()">
+            <option>请选择</option>
+            <option value="15">15天</option>
+            <option value="30">30天</option>
+            <option value="45">45天</option>
+            <option value="60">60天</option>
+          </select>
+           <p id="hint" style="color:red;"></p>
+        </div>
+       
+      </div>
+
+      <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+        <div class="field">
+          <button class="button bg-main icon-check-square-o" type="submit"> 申请</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+
+//轮播图不能为空
+  function photo()
+  {
+    if($("#image1").val()==''){
+      $('#tu').html('图片为空');
+      return false;
+    }
+    return true;
+  }
+//商铺名不能为空
+  function shop()
+  {
+    if($("#stitle").val()==''){
+      $('#tips').html('图片名名为空');
+      return false;
+    }
+    return true;
+  }
+//计算轮播费用
+  function sdow()
+  { 
+    var info = $("#git").val();
+    if(info == ''||info=='请选择'){
+        $("#hint").html('选择时间');
+        return false;
+    } else {
+       $("#hint").html(info * 20 + '元');
+       return true;
+    }
+  }
+  function upsbmit(){
+    if (photo()&&shop()&&sdow()) {
+        return true;
+    }
+    return false;
+  }
+</script>

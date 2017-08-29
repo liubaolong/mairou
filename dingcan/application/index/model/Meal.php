@@ -17,7 +17,7 @@ class Meal extends Model
 						->alias('p')
 						->join('f_user u','p.p_uid = u.uid')
 						->where('p_mid',$data)
-						->where('delete_time',null)
+						->where('p.delete_time',null)
 						->select();
 		return $result;
 	}

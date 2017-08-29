@@ -10,7 +10,6 @@
 /*  .uli li a{
     text-decoration: underline;
   }*/
-
 </style>
 <!--Start content-->
 <section class="Cfn">
@@ -23,11 +22,11 @@
   <a href="{:url('index/list')}" target="_blank"><img src="__IMG_PATH__/dc_button.png"></a> 
  </aside>
  <div class="F-middle">
- <ul class="rslides f426x240">
-        <li><a href="javascript:"><img src="__UPLOAD_PATH__/01.jpg"/></a></li>
-        <li><a href="javascript:"><img src="__UPLOAD_PATH__/02.jpg" /></a></li>
-        <li><a href="javascript:"><img src="__UPLOAD_PATH__/03.jpg"/></a></li>
-    </ul>
+ <ul>
+        <li id="lunbo1" style="display:block;"><a href="javascript:"><img src="__UPLOAD_PATH__/01.jpg"/></a></li>
+        <li id="lunbo2" style="display:none;"><a href="javascript:"><img src="__UPLOAD_PATH__/02.jpg" /></a></li>
+        <li id="lunbo3" style="display:none;"><a href="javascript:"><img src="__UPLOAD_PATH__/03.jpg"/></a></li>
+  </ul>
  </div>
  <aside class="N-right">
   <div class="N-title">公司新闻 <i>COMPANY NEWS</i></div>
@@ -83,7 +82,7 @@
    <ul id="Indextab"> 
    
     <li class="current">点菜</li>
-   <li >餐馆</li>
+    <li >餐馆</li>
     <p class="class_B">
     <a href="#">中餐</a>
     <a href="#">西餐</a>
@@ -166,6 +165,7 @@
      <a href="javascript:;" onclick="store(this)">怀柔区</a>
      <a href="javascript:;" onclick="store(this)">房山区</a>
      <a href="javascript:;" onclick="store(this)">密云区</a>
+     <a href="javascript:;" onclick="store(this)">平谷区 </a>
      <a href="javascript:;" onclick="store(this)">延庆区 </a>
      <a href="javascript:;" onclick="dpre()">more <</a>
      </p>
@@ -264,6 +264,33 @@
               $(".DCcontent").html(con);
             }
       },'json')
-
+    }
+    //轮播图
+   time();
+   function time(){
+     var i=1;
+      setInterval(function(){
+        if(i>3){
+          i = 1;
+        }
+        switch(i){
+          case 1:
+          $("#lunbo1").css('display','block');
+          $("#lunbo2").css('display','none');
+          $("#lunbo3").css('display','none');
+          break;
+          case 2:
+          $("#lunbo1").css('display','none');
+          $("#lunbo2").css('display','block');
+          $("#lunbo3").css('display','none');
+          break;
+          case 3:
+          $("#lunbo1").css('display','none');
+          $("#lunbo2").css('display','none');
+          $("#lunbo3").css('display','block');
+          break;
+        } 
+        i++;   
+      },2000)
     }
 </script>

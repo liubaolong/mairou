@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<title></title>
+<link href="__STATIC_PATH__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__CSS_PATH__/pintuer.css">
+<link rel="stylesheet" href="__CSS_PATH__/sadmin.css">
+<script src="__JS_PATH__/jquery.js"></script>
+<script src="__JS_PATH__/pintuer.js"></script>
+</head>
+<body>
+
+  <div class="panel admin-panel">
+    <div class="panel-head"><strong class="icon-reorder"> 订单管理</strong> <a href="" style="float:right; display:none;">添加字段</a></div>
+    <div class="padding border-bottom">
+    </div>
+<form method="post" action="" id="listform">
+    <table class="table table-hover text-center" style="width:100%;">
+      <tr>
+        <th width="100" style="text-align:left; padding-left:20px;">订单</th>
+        <th>买家</th>
+        <th>收件人</th>
+        <th>电话</th>
+        <th>地址</th>
+        <th>单号</th>
+        <th width="10%">下单时间</th>
+        <th>快递号</th>
+        <th>操作</th>
+      </tr>
+	{volist name="list" id="v"}
+        <tr>
+          <td style="text-align:left; padding-left:20px;"><a href="{:url('sadmin/order/morder')}?id={$v['o_orderno']}">详情</a>
+           </td>
+
+          <td width="10%">{$v['username']}</td>
+          <td>{$v['a_user']}</td>
+          <td>{$v['a_phone']}</td>
+          <td>{$v['a_newaddress']}</td>
+          <td>{$v['o_orderno']}</td>
+          <td><?php echo date('Y-m-d',$v['o_addtime'])?></td>
+          <td><input type="text" name="kaudi" id="number" value="{if($v['o_kuaidino']=='')}{else}{$v['o_kuaidino']}{/if}" maxlength="12"><a href="javascript:;" onblur="fedex(this)" value="{$v['o_orderno']}">发货</a></td>
+          <td><a href="javascript:;" onclick="desdel(this)" value="{$v['o_orderno']}">删除</a></td>
+        </tr>
+	{/volist}
+  <tr>
+        <td colspan="10">{$list->render()}</td>
+  </tr>
+
+
+    </table>
+  </div>
+</form>
+<script type="text/javascript">
+	  //订单删除
+    function desdel(obj)
+    {
+      $.post("{:url('sadmin/order/orderdel')}",{id:$(obj).attr('value')},function(data){
+          if (data.errcode == 1) {
+              $(obj).parent().parent().remove();
+          }
+      },'json');
+    }
+    //快递号
+    function fedex(obj)
+    {
+      $.post("{:url('order/send')}",{sid:$(obj).siblings().attr('value'),id:$(obj).attr('value')},function(data){
+            if (data.errcode == 1) {
+              $(obj).siblings().attr('value',$(obj).siblings().attr('value'));
+              alert('发货成功');
+            }
+      },'json');
+    }
+</script>
+</body>
+</html>

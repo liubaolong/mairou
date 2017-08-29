@@ -31,11 +31,14 @@ class Shop extends Controller
 		if(!empty($request->param('shop'))){
 			$result = $this->shop->shopregister(input());
 			if ($result) {
-				
+				$this->success('待审核',url('index/index/index'));
 			} else {
-
+				$this->error('注册失败',url('index/index/join'));
 			}
 		}
+		//查询一级板块
+		$res =  ShopModel::blok();
+		$this->assign('res',$res);
 		return $this->fetch();
 	}
 	//判断商铺名是否重复

@@ -31,41 +31,16 @@ class Sindex extends Model
 			return false;
 		}
 	}
-	//商家菜品分页
-	static public function cailist()
+	//商家评价
+	static public function shopmate()
 	{
-		$result = Db::name('meal')->where('sid',session('sadmin')['s_id'])->paginate(5);
-		return $result;
-	}
-	//商家菜品增加
-	static public function updishes($data)
-	{
-		$res = Db::name('meal')->where('sid',session('sadmin')['s_id'])->where('m_name',$data['title'])->select();
-		if ($res) {
-			return false;
-		}
-		$file  = request()->file('file'); 
-		$info  = $file->move(ROOT_PATH .	'public/static' . DS . 'dishes'); 
-		$path  = "__STATIC_PATH__\dishes\\". $info->getSaveName();
-		$path  = str_replace('\\','/',$path);
-		$data['m_pic'] = $path;
-		$arr = [
-				'sid'=>session('sadmin')['s_id'],
-				'm_name'=>$data['title'],
-				'm_newprice'=>$data['price'],
-				'm_score'=>$data['s_score'],
-				'm_info'=>$data['note'],
-				'm_pic'=>$data['m_pic'],
-				'm_addtime'=>time(),
-				'm_specail'=>$data['special'],
-				'm_counts'=>$data['count'],
-			];
-		$result = Db::name('meal')->insert($arr);
-		if ($result) {
-			return true;
-		} else {
-			return false;
-		}
+		$result = Db::table('f_pj')
+					->alias('p')
+					->join('f_meal m','p.p_mid = m.m_id')
+					->join('f_user u','p.p_uid = u.uid')
+					->where(array('p.p_sid'=>session('sadmin')['s_id']))
+					->paginate(5);
+		return $result; 
 	}
 	//商家回复
 	static public function reply($data)
@@ -79,57 +54,21 @@ class Sindex extends Model
 		$result = Db::name('reply')->insert($arr);
 		return $result;
 	}
-	//菜品上下架
-	static public function put($data)
+	//商家轮播图申请
+	static public function sdow($res)
 	{
-		$str = Db::name('meal')->where('m_id',$data)->find();
-		if ($str) {
-			if ($str['m_isput']==1) {
-				$arr = ['m_isput'=>0];
-				$result = Db::name('meal')->where('m_id',$data)->update($arr);
-				return 1;
-			} else {
-				$arr = ['m_isput'=>1];
-				$result = Db::name('meal')->where('m_id',$data)->update($arr);
-				return 2;
-			}
-		}
-		return 3;
-	}
-	//菜品信息
-	static public function mealinfo($data)
-	{
-		$result = Db::name('meal')->where('m_id',$data)->find();
-		session('dished',$result);
+		$file  = request()->file('file'); 
+		$info  = $file->move(ROOT_PATH .	'public/static' . DS . 'slider'); 
+		$path = "/static/upload\\". $info->getSaveName();
+		$path  = str_replace('\\','/',$path);
+		$data = [
+			'ad_sid'=>session('sadmin')['s_id'],
+			'ad_name'=>$res['stitle'],
+			'ad_url'=>$path,
+			'ad_price'=>$res['time'] * 20,
+			'overtime'=>$res['time'] * 3600 * 24 + time(),
+			];
+		$result = Db::name('ad')->insert($data);
 		return $result;
 	}
-	//菜品信息修改
-	static public function dcai($data)
-	{
-		if (session('dished')['m_newprice'] == $data['price']) {
-			$oldprice = '';
-		} else {
-			$oldprice = session('dished')['m_newprice'];
-		}
-		$arr = [
-				'm_name'=>$data['cai'],
-				'm_oldprice'=>$oldprice,
-				'm_newprice'=>$data['price'],
-				'm_counts'=>$data['count'],
-				'm_score'=>$data['s_score'],
-				'm_specail'=>$data['special'],
-				'm_info'=>$data['note'],
-			];
-		$result = Db::name('meal')->where('m_id',session('dished')['m_id'])->update($arr);
-		if ($result) {
-			 $newres = Db::name('meal')->where('m_id',session('dished')['m_id'])->find();
-			 if ($newres) {
-			 	session('dished' , $newres);
-			 	return true;
-			 }
-		} else {
-			return false;
-		}
-	}
-
 }
