@@ -93,40 +93,45 @@ class Index extends Controller
       $this->assign('res',$res);
 
       //分类展示
-      $flres = $this->bk->chabk();
+      // $flres = $this->bk->chabk();
      
-      if ($flres) {
-         foreach ($flres as $k => $v) {
-           $pathLength = substr_count($v['path'], ',');
-           switch($pathLength){
-             case 1:
-                $res1[] = $v['b_name'];
-                break;
-             case 2:
-                $res2[] = $v['b_name'];
-                break;
-             case 3:
-                $res3[] = $v['b_name'];
-                break;
-             case 4:
-                $res4[] = $v['b_name'];
-                break;
-           }
+      // if ($flres) {
+      //    foreach ($flres as $k => $v) {
+      //      $pathLength = substr_count($v['path'], ',');
+      //      switch($pathLength){
+      //        case 1:
+      //           $res1[] = $v['b_name'];
+      //           break;
+      //        case 2:
+      //           $res2[] = $v['b_name'];
+      //           break;
+      //        case 3:
+      //           $res3[] = $v['b_name'];
+      //           break;
+      //        case 4:
+      //           $res4[] = $v['b_name'];
+      //           break;
+      //      }
            
-         }
+      //    }
         
+
+        $res1 = $this->onefl();
+        $res2 = $this->twofl();
+        die;
          //将每级分配到页面
          // dump($res1);die;
+        // dump(array_column($res1),'');die;
          // dump($res2);die;
          $this->assign('res1', $res1);
          $this->assign('res2', $res2);
          $this->assign('res3', $res3);
          $this->assign('res4', $res4);
 
-         $this->assign('flres', $flres);
-      } else {
-         $this->assign('flres', '');
-      } 
+         // $this->assign('flres', $flres);
+      // } else {
+      //    $this->assign('flres', '');
+      // } 
     	return $this->fetch();
     }
    	//积分商城
@@ -148,12 +153,22 @@ class Index extends Controller
     //一级分类
     public function onefl()
     {
-
+      $res1 = $this->bk->onefl();
+      if ($res1) {
+        return $res1;
+      } else {
+        return false;
+      }
     }
     //二级分类
     public function twofl()
     {
-
+      $res1 = $this->onefl();
+      foreach ($res1 as $k => $v) {
+        dump($v);
+      }
+      $res2 = $this->twofl();
+      return $res2;
     }
     //三级分类
     public function threefl()

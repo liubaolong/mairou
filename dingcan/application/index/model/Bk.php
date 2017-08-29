@@ -15,4 +15,30 @@
 				return false;
 			}
 		}
+		//一级分类
+	    public function onefl()
+	    {
+	      $res1 = $this->where('parentid', 0)->select();
+	      if ($res1) {
+	      	return $res1;
+	      } else {
+	      	return false;
+	      }
+	    }
+	    //二级分类
+	    public function twofl()
+	    {
+	    	// $res2 = $this->where('parentid')->select();
+	    }
+	    //三级分类
+	    public function threefl()
+	    {
+
+	    }
+	    //四级分类
+	    public function fourfl()
+	    {
+
+	    }
+
  	}
