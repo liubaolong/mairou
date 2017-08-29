@@ -3,9 +3,16 @@ namespace app\index\controller;
 use think\Controller;
 use think\MyCurl;
 use app\index\model\Index as IndexModel;
+use app\index\model\Bk as BkModel;
 use think\Request;
 class Index extends Controller
 {
+    protected $bk;
+    public function _initialize()
+    {
+      parent::_initialize();
+      $this->bk = new BkModel();
+    }
 	//首页
     public function index(Request $request)
     {  
@@ -84,6 +91,42 @@ class Index extends Controller
         }
       }
       $this->assign('res',$res);
+
+      //分类展示
+      $flres = $this->bk->chabk();
+     
+      if ($flres) {
+         foreach ($flres as $k => $v) {
+           $pathLength = substr_count($v['path'], ',');
+           switch($pathLength){
+             case 1:
+                $res1[] = $v['b_name'];
+                break;
+             case 2:
+                $res2[] = $v['b_name'];
+                break;
+             case 3:
+                $res3[] = $v['b_name'];
+                break;
+             case 4:
+                $res4[] = $v['b_name'];
+                break;
+           }
+           
+         }
+        
+         //将每级分配到页面
+         // dump($res1);die;
+         // dump($res2);die;
+         $this->assign('res1', $res1);
+         $this->assign('res2', $res2);
+         $this->assign('res3', $res3);
+         $this->assign('res4', $res4);
+
+         $this->assign('flres', $flres);
+      } else {
+         $this->assign('flres', '');
+      } 
     	return $this->fetch();
     }
    	//积分商城
@@ -100,4 +143,5 @@ class Index extends Controller
    		return $this->fetch();
    	}
 
+    //一级分类
 }

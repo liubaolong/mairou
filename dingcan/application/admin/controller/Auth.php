@@ -49,7 +49,7 @@
 			session(null);
 			$result = $this->user->loginout($data);
 			if ($result) {
-				$this->success('退出成功', url('sadmin@auth/login'));
+				$this->success('退出成功', url('@sadmin/auth/login'));
 			} else {
 				$this->error('退出失败');
 			}

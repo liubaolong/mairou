@@ -27,22 +27,37 @@
   <!--已保存的地址列表-->
   <form action="#">
    <ul class="address">
-    <li id="style1"><input type="radio" value="" id="1" name="rdColor" onclick="changeColor(1)"/><label for="1"> 浙江省 杭州市 余杭区 航海路1588号（孙先生收）<span class="fontcolor">183092***73</span></label></li>
-    <li id="style2"><input type="radio" value="" id="2" name="rdColor" onclick="changeColor(2)"/><label for="2"> 陕西省 西安市 雁塔区 丈八路22号（孙先生收）<span class="fontcolor">183092***73</span></label></li>
-    <li><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'"><img src="__IMG_PATH__/newaddress.png"/></a></li>
+   {neq name="ads" value=""}
+   {volist name="ads" id="v" key="k"}
+    <li id="style{$v.a_id}"><input type="radio"  id="ads" name="a_ids[]"  value="{$v.a_id}" onclick="shouads(this)"/>
+      <label for="1"> {$v.a_newaddress}（{$v.a_user}先生收）<span class="fontcolor" >{$v.a_phone}<!-- 183092***73 --></span>
+      </label>
+    </li>
+    {/volist}
+   {/neq}
+   <!-- <li id='style1'><input type='radio' value='' id='2' name='rdColor' onclick='changeColor(2)'/>
+      <label for='2'> {$v.a_newaddress}（{$v.a_user}先生收）<span class='fontcolor'>{$v.a_phone}</span>
+      </label>
+    </li> -->
+    <!-- <li></li> -->
    </ul>
+   <p>
+     <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'"><img src="__IMG_PATH__/newaddress.png"/></a>
+   </p>
    </form>
    <!--add new address-->
-   <form action="#">
+   <form action="#" method="post">
    <div id="light" class="O-L-content">
     <ul>
-     <li><span><label for="">选择所在地：</label></span><p><em>*</em><select name=""><option>陕西省</option></select> <select name=""><option>西安市</option></select> <select name=""><option>雁塔区</option></select></p></li>
-     <li><span><label for="">邮政编码：</label></span><p><em>*</em><input name="" type="text"  class="Y_N"  pattern="[0-9]{6}" required></p></li>
-     <li><span><label for="">街道地址：</label></span><p><em>*</em><textarea name="" cols="80" rows="5"></textarea></p></li>
-     <li><span><label for="">收件人姓名：</label></span><p><em>*</em><input name="" type="text"></p></li>
-     <li><span><label for="">手机号码：</label></span><p><em>*</em><input name="" type="text" pattern="[0-9]{11}" required></p></li>
-     <div class="button-a"><input type="button" value="确 定" class="C-button" /><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"><span><input name="" type="button" value="取 消"  class="Cancel-b"/></a></div>
-    <div class="close-botton"><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></a></div>
+     <li><span><label for="">街道地址：</label></span><p><em>*</em><textarea name="a_newaddress" cols="80" rows="5" id="a_newaddress"></textarea></p></li>
+     <li><span><label for="">收件人姓名：</label></span><p><em>*</em><input name="a_user" type="text" id="a_user"></p></li>
+     <li><span><label for="">手机号码：</label></span><p><em>*</em><input name="a_phone" type="text" pattern="[0-9]{11}" required id="a_phone"></p></li>
+     <div class="button-a">
+        <input type="button" value="确 定" class="C-button"  onclick = "addnewads()" /><span>
+        <input name="" type="button" value="取 消"  class="Cancel-b" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"/>
+     </div>
+    <div class="close-botton"><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='block'">aa</a>
+    </div>
    </div> 
    <div id="fade" class="overlay"></div>
     </ul>
@@ -67,11 +82,14 @@
   <span class="flow_title">在线支付方式：</span>
    <form action="#">
     <ul>
-    <li><input type="radio" name="pay" id="alipay" value="alipay" /><label for="alipay"><i class="alipay"></i></label></li>
+    <li><input type="radio" name="pay" id="alipay" value="alipay" checked/><label for="alipay"><i class="alipay"></i></label></li>
     </ul>
    </form>
   </div>
-  <form action="#">
+ 
+
+  <!-- 订单信息 -->
+  <form action="{:url('index/order/okorder')}" method="post">
   <div class="inforlist">
    <span class="flow_title">商品清单</span>
    <table>
@@ -79,52 +97,122 @@
     <th>数量</th>
     <th>价格</th>
     <th>小计</th>
+
+    {volist name="result" id="v" key="k"}
     <tr>
-     <td>酸辣土豆丝</td>
-     <td>2</td>
-     <td>￥59</td>
-     <td>￥118</td>
+     <td>{$v.m_name}</td>
+     <td>{$v.mcounts}</td>
+     <td>￥{$v.m_newprice}</td>
+     <td>￥{$v.m_newprice*$v.mcounts}</td>
     </tr>
-    <tr>
-     <td>鱼香肉丝</td>
-     <td>1</td>
-     <td>￥59</td>
-     <td>￥59</td>
-    </tr>
+    {/volist}
+    
    </table>
     <div class="Order_M">
-     <p><em>订单附言:</em><input name=""  type="text"></p>
-     <p><em>优惠券:</em>
-     <select name="">
-      <option>￥10元优惠券</option>
-     </select>
+     <p><em>订单附言:</em><input name="o_message"  type="text" id="fyan"></p>
      </p>
     </div>
     <div class="Sum_infor">
-    <p class="p1">配送费用：￥0.00+商品费用：￥177.00-优惠券：￥10.00</p>
-    <p class="p2">合计：<span>￥167.00</span></p>
-    <input type="submit" value="提交订单" / class="p3button">
+    <p class="p1">配送费用：￥
+    {$song}
+    .00+商品费用：￥{$allprice}.00  
+    <br />
+    <input type="checkbox" class="" id="you" name="you" value="0" onchange="youhui(this)">
+    优惠券：￥
+    {$u_score}
+
+    .00</p>
+    
+    <p class="p2">合计：<span>￥
+    <span id="heji">
+    {$allprice}
+    </span> 
+    .00</span></p>
+    <p>
+      [注:]  商品费用100元以上免邮费哦~
+      <br />
+            &nbsp; &nbsp; &nbsp; &nbsp;100积分可抵用1元优惠券~
+    </p>
+    
+    <input type="hidden" name="o_uid" id="o_uid" value="">
+    <input type="hidden" name="o_aid" id="o_aid">
+    <input type="hidden" name="peiprice" id="peiprice" value="{$song}">
+    <input type="hidden" name="o_you" id="o_you" value="{$song}">
+    <input type="hidden" name="allprice" id="allprice" >
+     {volist name="result" id="v" key="k"}
+     <input type="hidden" name="o_sid[]" value="{$v.sid}">
+     <input type="hidden" name="o_mid[]" value="{$v.car_mid}">
+     <input type="hidden" name="o_counts[]" value="{$v.mcounts}">
+     <input type="hidden" name="oneprice[]" value="{$v.m_newprice}">
+     <input type="hidden" name="manyprice[]" value="{$v.m_newprice*$v.mcounts}">
+    {/volist}
+    <input type="submit" value="提交订单"  class="p3button" onclick=""/>
     </div>
    </div>
    </form>
  </div>
 </section>
-<script>
-//Test code,You can delete this script /2014-9-21DeathGhost/
-$(document).ready(function(){
- var submitorder =$.noConflict();
- submitorder(".p3button").click(function(){
-	 submitorder("#Cflow").hide();
-	 submitorder("#Aflow").show();
-	 });
-});
-</script>
-<section class="Psection MT20 Textcenter" style="display:none;" id="Aflow">
-  <!-- 订单提交成功后则显示如下 -->
-  <p class="Font14 Lineheight35 FontW">恭喜你！订单提交成功！</p>
-  <p class="Font14 Lineheight35 FontW">您的订单编号为：<span class="CorRed">201409205134</span></p>
-  <p class="Font14 Lineheight35 FontW">共计金额：<span class="CorRed">￥359</span></p>
-  <p><button type="button" class="Lineheight35"><a href="#" target="_blank">支付宝立即支付</a></button><button type="button" class="Lineheight35"><a href="{:url('user/user')}">进入用户中心</button></p>
-</section>
-<!--End content-->
 
+<script type="text/javascript">
+function youhui(obj)
+{
+  var you = null; 
+  if ($(obj).attr('value') == 0) {
+    
+    $(obj).attr('value', {$u_score});
+    you = $(obj).attr('value'); 
+  } else {
+    
+    $(obj).attr('value', 0);
+    you = you = $(obj).attr('value');
+  }
+  var heji = {$allprice} + {$song} - you;
+  //不为负数
+  if (heji <= 0) {
+    heji = 0;
+  }
+  $('#heji').text(heji);
+  $('#allprice').attr('value', heji);
+  $('#o_you').attr('value', you);
+  
+}
+
+  function shouads(obj)
+  {
+    var a_id = $(obj).attr('value');
+    $('#o_aid').attr('value',a_id);
+  }
+  // var  a_ids = [];
+  // $("input[name='a_ids[]']").each(function(){
+  //   if ( $(this).prop('checked') ) {
+  //     a_ids.push( $(this).val() );
+  //     // alert( $(this).val() );
+  //   }
+  // });
+</script>
+<script type="text/javascript">
+  function addnewads()
+  {
+    var a_newaddress = $('#a_newaddress').val();
+    var a_user = $('#a_user').val();
+    var a_phone = $('#a_phone').val();
+    if (a_newaddress == '' || a_user == '' || a_phone == '') {
+      alert('所填信息不能为空');
+    } else {
+     /* var jastadds = "<li id='style1'><input type='radio' value='' id='1' name='rdColor' onclick='changeColor(1)'/>
+      <label for='1'> +a_newaddress+（+a_user+先生收）<span class='fontcolor'>+a_phone+</span>
+      </label>
+    </li>";*/ 
+    // var jastadds = '<li id="style1"><input type="radio" value="" id="1" name="rdColor" onclick="changeColor(1)"/>
+    //   <label for="1">' + a_newaddress+'（'+a_user+'先生收）<span class="fontcolor">'+a_phone+' </span>
+    //   </label>
+    // </li>';
+    // alert(jastadds);
+      $('.address').append(jastadds);
+      // $('#style1').after(jastadds);
+      document.getElementById('light').style.display='none';
+      document.getElementById('fade').style.display='none';
+    }
+    // $.post();
+  }
+</script>

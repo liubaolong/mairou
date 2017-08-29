@@ -1,70 +1,138 @@
 <script type="text/javascript" src="__JS_PATH__/cart.js"></script>
 <!--Start content-->
-<form action="#">
+<form action="{:url('order/confirm')}" method="post">
  <div class="gwc" style=" margin:auto;">
   <table cellpadding="0" cellspacing="0" class="gwc_tb1">
     <tr>
-      <td class="tb1_td1"><input id="Checkbox1" type="checkbox"  class="allselect"/></td>
-      <td class="tb1_td1">全选</td>
-      <td class="tb1_td3">商品</td>
-      <td class="tb1_td4">原价</td>
+      <td class="tb1_td1"><!-- <input id="Checkbox1" type="checkbox"  class="allselect"/> --></td>
+      <td class="tb1_td1"><!-- 全选 --></td>
+      <td class="tb1_td3" style="padding-left:100px;">商品</td>
       <td class="tb1_td5">数量</td>  
       <td class="tb1_td6">单价</td>
       <td class="tb1_td7">操作</td>
     </tr>
   </table>
+  <!-- 遍历购物车 -->
+  {volist name="result" id="v" key="k"}
   <table cellpadding="0" cellspacing="0" class="gwc_tb2" id="table1">
     <tr>
-     <td colspan="7" class="shopname Font14 FontW">店铺：好味来快餐店</td>
+     <td colspan="7" class="shopname Font14 FontW">店铺：{$v.s_name}</td>
     </tr>
     <tr>
-      <td class="tb2_td1"><input type="checkbox" value="1" name="newslist" id="newslist-1" /></td>
-      <td class="tb2_td2"><a href="{:url('meal/detailsp')}" target="_blank"><img src="__UPLOAD_PATH__/01.jpg"/></a></td>
-      <td class="tb2_td3"><a href="{:url('meal/detailsp')}" target="_blank">酸辣土豆丝</a></td>
-      <td class="tb1_td4"><s>￥59.00</s></td>
-      <td class="tb1_td5"><input id="min1" name=""  style="width:30px; height:30px;border:1px solid #ccc;" type="button" value="-" />
-        <input id="text_box1" name="" type="text" value="1" style=" width:40px;height:28px; text-align:center; border:1px solid #ccc;" />
-        <input id="add1" name="" style="width:30px; height:30px;border:1px solid #ccc;" type="button" value="+" />
+      <!-- <td class="tb2_td1"><input type="checkbox" value="1" name="newslist" id="newslist-1" onclick="oncheck()"/></td> -->
+
+      <td class="tb2_td1"><input type="checkbox" value="{$v.car_id}" name="chec[]" id="chec" onclick="onchecks(this)"/>
+      <input type="hidden" value="{$v.car_id}"></td>
+      <td class="tb2_td2" style="padding-left:100px;"><a href="{:url('meal/detailsp')}" target="_blank"><img src="{$v.m_pic}"/></a></td>
+      <td class="tb2_td3"><a href="{:url('meal/detailsp')}" target="_blank">{$v.m_name}</a></td>
+
+      <td class="tb1_td5">
+        <input id="jian" name=""  style="width:30px; height:30px;border:1px solid #ccc;" type="button" value="-" onclick="jianprice(this)"/>
+        <input id="text_box1" name="" type="text" value="{$v.mcounts}" style=" width:40px;height:28px; text-align:center; border:1px solid #ccc;" />
+        <input id="jia" name="" style="width:30px; height:30px;border:1px solid #ccc;" type="button" value="+" onclick="addprice(this)" />
+        <input type="hidden" name="" id="cuid" value="{$v.car_uid}">
+        <input type="hidden" name="" id="cmid" value="{$v.car_mid}">
+        <input type="hidden" name="" id="price" value="{$v.m_newprice}">
       </td>
-      <td class="tb1_td6"><label id="total1" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></td>
+      <td class="tb1_td6"><label id="pice" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;">{$v.m_newprice*$v.mcounts}</label></td>
       <td class="tb1_td7"><a href="#" id="delcart1">删除</a></td>
     </tr>
   </table>
-  <table cellpadding="0" cellspacing="0" class="gwc_tb2" id="table2">
-    <tr>
-     <td colspan="7" class="shopname Font14 FontW">店铺：肯德基</td>
-    </tr>
-    <tr>
-      <td class="tb2_td1"><input type="checkbox" value="1" name="newslist" id="newslist-2" /></td>
-      <td class="tb2_td2"><a href="{:url('meal/detailsp')}" target="_blank"><img src="__UPLOAD_PATH__/02.jpg"/></a></td>
-      <td class="tb2_td3"><a href="{:url('meal/detailsp')}" target="_blank">酸辣土豆丝</a></td>
-      <td class="tb1_td4"><s>￥59.00</s></td>
-      <td class="tb1_td5"><input id="min2" name=""  style=" width:30px; height:30px;border:1px solid #ccc;" type="button" value="-" />
-        <input id="text_box2" name="" type="text" value="1" style=" width:40px;height:28px; text-align:center; border:1px solid #ccc;" />
-        <input id="add2" name="" style=" width:30px; height:30px;border:1px solid #ccc;" type="button" value="+" />
-      </td>
-      <td class="tb1_td6"><label id="total2" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></td>
-      <td class="tb1_td7"><a href="#" id="delcart2">删除</a></td>
-    </tr>
-  </table>
+  {/volist}
   <table cellpadding="0" cellspacing="0" class="gwc_tb3">
     <tr>
-      <td class="tb1_td1"><input id="checkAll" class="allselect" type="checkbox" /></td>
-      <td class="tb1_td1">全选</td>
-      <td class="tb3_td1"><input id="invert" type="checkbox" />
+      <td class="tb1_td1"><!-- <input id="checkAll" class="allselect" type="checkbox" /> --></td>
+      <td class="tb1_td1"><!-- 全选 --></td>
+      <td class="tb3_td1"><!-- <input id="invert" type="checkbox" />
         反选
         <input id="cancel" type="checkbox" />
-        取消 </td>
-      <td class="tb3_td2 GoBack_Buy Font14"><a href="#" target="_blank">继续购物</a></td>
-      <td class="tb3_td2">已选商品
-        <label id="shuliang" style="color:#ff5500;font-size:14px; font-weight:bold;">0</label>
-        件</td>
-      <td class="tb3_td3">合计(不含运费):<span>￥</span><span style=" color:#ff5500;">
-        <label id="zong1" style="color:#ff5500;font-size:14px; font-weight:bold;">0.00</label>
-        </span></td>
-      <td class="tb3_td4"><span id="jz1">结算</span><a href="{:url('order/confirm')}" style=" display:none;"  class="jz2" id="jz2">结算</a></td>
+        取消  --></td>
+      <td class="tb3_td2 GoBack_Buy Font14"><a href="{:url('index/index/index')}">继续购物</a></td>
+     <!--  <td class="tb3_td2">已选商品
+       <label id="shuliang" style="color:#ff5500;font-size:14px; font-weight:bold;">0</label>
+       件</td>
+     <td class="tb3_td3">合计(不含运费):<span>￥</span><span style=" color:#ff5500;">
+       <label id="zong1" style="color:#ff5500;font-size:14px; font-weight:bold;">0.00</label>
+       </span></td> -->
+      <td class="tb3_td4">
+
+      <!-- <span id="jz1">结算</span> -->
+
+      <button style=" display:inline-height;padding:0;margin:0;"  class="jz2" id="jz2" onclick="return jstj()">结算</button>
+      </td>
     </tr>
   </table>
 </div>
 </form>
 <!--End content-->
+<script type="text/javascript">
+  var shuliang = $('#shuliang');
+  var totalprice = $('#zong1');
+  function jianprice(obj)
+  {
+    var nums = $(obj).next();
+    var lastnum = nums.val() - 1;
+    nums.val(lastnum);
+    var car_uid = $(obj).parent().children('#cuid').val();
+    var car_mid = $(obj).parent().children('#cmid').val();
+    var m_newprice = $(obj).parent().children('#price').val();
+    var pice = $(obj).parent().next().children('#pice');
+    $.post(
+          "{:url('index/cart/nums')}", 
+          {mcounts:lastnum, 
+            car_uid:car_uid, 
+            car_mid:car_mid, 
+            m_newprice:m_newprice}, 
+          function(data){
+            pice.text(data*lastnum);
+          }, 
+          'json'
+    );
+  }
+  function addprice(obj)
+  {
+    var nums = $(obj).prev();
+    var lastnum = parseInt(nums.val()) + 1;
+    nums.val(lastnum);
+    var car_uid = $(obj).parent().children('#cuid').val();
+    var car_mid = $(obj).parent().children('#cmid').val();
+    var m_newprice = $(obj).parent().children('#price').val();
+    var pice = $(obj).parent().next().children('#pice');
+    $.post(
+          "{:url('index/cart/nums')}", 
+          {mcounts:lastnum, 
+            car_uid:car_uid, 
+            car_mid:car_mid, 
+            m_newprice:m_newprice}, 
+          function(data){
+            pice.text(data*lastnum);
+          }, 
+          'json'
+    );
+  }
+
+  function onchecks(obj)
+  {   
+      var m_newprice = $(obj).parent().siblings().children('#pice').text();
+      var yuan = parseInt(totalprice.text());
+    if ($(obj).attr('checked')){
+      alert($(obj).next().val());
+      
+      totalprice.text(parseInt(m_newprice) + yuan + '.00');
+    } else {
+      totalprice.text(parseInt(m_newprice) - yuan - '.00');
+    }
+   
+  }
+  function jstj()
+  {
+    // if ($('#chec').attr('checked') == 'checked') {
+    //   return true;
+    // }
+    // return false;
+    $("input[name=chec[]]").each(function(i){
+      alert(i);
+    });
+    return false;
+  }
+</script>

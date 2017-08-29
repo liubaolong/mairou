@@ -1,25 +1,112 @@
+<link rel="stylesheet" type="text/css" href="__CSS_PATH__/nav.css">
+<script type="text/javascript">
+      $(function(){
+        var _this1=null;
+        $('.nav>li').hover(function(){
+          _this1=$(this);
+          _this1.find('.second-nav').show();
+          var _this2=null;
+          
+          _this1.find('.second-nav').find('li').hover(function(){
+            _this2=$(this);
+            _this2.find('.third-nav').show();
+            _this2.find('.third-nav').hover(function(){
+              $(this).show();
+            },function(){
+              $(this).hide();
+            });
+          },function(){
+            _this2.find('.third-nav').hide();
+          });
+        },function(){
+          _this1.find('.second-nav').hide();
+        });
+      });
+ </script>
 <script type="text/javascript" src="__JS_PATH__/public.js"></script>
 <script type="text/javascript" src="__JS_PATH__/jquery.js"></script>
+
 <script type="text/javascript" src="__JS_PATH__/jqpublic.js"></script>
 <!--Start content-->
 <section class="Psection">
- <section class="fslist_navtree">
-  <ul class="select">
+  <!-- <section class="fslist_navtree"> -->
+
+  <!-- 导航栏 -->
+  
+  
+    <div class="header" style="margin-top:20px;">
+        <ul class="nav">
+
+  {volist name="res1" id="v1"}
+          <!-- 一级 -->
+          <li>
+            <a href="#">
+            {$v1}
+            </a>
+            <ul class="second-nav">
+          <!-- 二级 -->
+          {volist name="res2" id="v2"}
+              <li><a href="#">{$v2}</a>
+                <ul class="third-nav">
+                <!-- 三级 -->
+                  <li><a href="#">T恤+短裤</a></li>
+                  <li><a href="#">T恤+短裙</a></li>
+                  <li><a href="#">T恤+碎花裙</a></li>
+                </ul>
+              </li>
+          {/volist}
+              <li><a href="#">碎花裙</a>
+                <ul class="third-nav">
+                  <li><a href="#">荷叶裙</a></li>
+                  <li><a href="#">仙女裙</a></li>
+                </ul>
+              </li>
+              <li><a href="#">背带裤</a></li>
+            </ul>
+          </li>
+  {/volist}
+
+          <!-- <li><a href="#">夏季爆款</a>
+            <ul class="second-nav">
+              <li><a href="#">两件套</a>
+                <ul class="third-nav">
+                  <li><a href="#">T恤+短裤</a></li>
+                  <li><a href="#">T恤+短裙</a></li>
+                  <li><a href="#">T恤+碎花裙</a></li>
+                </ul>
+              </li>
+              <li><a href="#">背带裤</a></li>
+              <li><a href="#">碎花裙</a>
+                <ul class="third-nav">
+                  <li><a href="#">荷叶裙</a></li>
+                  <li><a href="#">仙女裙</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li> -->
+          
+        </ul>
+      </div>
+    <div style="text-align:center;">
+  </div>
+
+
+  <!--<ul class="select">
 		<li class="select-list">
 			<dl id="select1">
 				<dt>分类：</dt>
 				<dd class="select-all selected"><a href="javascript:">全部</a></dd>
 				<dd><a href="javascript:">火锅/干锅</a></dd>
-                <dd><a href="javascript:">火锅/干锅</a></dd>
-                <dd><a href="javascript:">火锅/干锅</a></dd>
-                <dd><a href="javascript:">火锅/干锅</a></dd>
-                <dd><a href="javascript:">火锅/干锅</a></dd>
-                <dd><a href="javascript:">火锅/干锅</a></dd>
-                <dd><a href="javascript:">火锅/干锅</a></dd>
-                <dd><a href="javascript:">火锅/干锅</a></dd>
-                <dd><a href="javascript:">火锅/干锅</a></dd>
-                <dd><a href="javascript:">火锅/干锅</a></dd>
-                <dd><a href="javascript:">火锅/干锅</a></dd>
+                <dd><a href="javascript:">烧烤</a></dd>
+                <dd><a href="javascript:">干锅</a></dd>
+                <dd><a href="javascript:">海鲜</a></dd>
+                <dd><a href="javascript:">炒菜</a></dd>
+                <dd><a href="javascript:">火锅</a></dd>
+                <dd><a href="javascript:">凉菜</a></dd>
+                <dd><a href="javascript:">焖锅</a></dd>
+                <dd><a href="javascript:">料理</a></dd>
+                <dd><a href="javascript:">汤</a></dd>
+                <dd><a href="javascript:"></a></dd>
 			</dl>
 		</li>
 		<li class="select-list">
@@ -37,74 +124,70 @@
                 <dd><a href="javascript:">高陵区</a></dd>
                 <dd><a href="javascript:">周至县</a></dd>
 			</dl>
-		</li>
-		<li class="select-list">
+		</li> -->
+		<!-- <li class="select-list">
 			<dl id="select3">
 				<dt>餐点：</dt>
 				<dd class="select-all selected"><a href="javascript:">全部</a></dd>
-				<dd><a href="javascript:">早餐</a></dd>
+				<dd><a href="javascript:">午餐</a></dd>
+        <dd><a href="javascript:">晚餐</a></dd>
 			</dl>
-		</li>
-        <li class="select-list">
-			<dl id="select4">
-				<dt>价位区间：</dt>
-				<dd class="select-all selected"><a href="javascript:">全部</a></dd>
-				<dd><a href="javascript:">20元以下</a></dd>
+		</li> -->
+    <!-- <li class="select-list">
+          <dl id="select4">
+            <dt>价位区间：</dt>
+            <dd class="select-all selected"><a href="javascript:">全部</a></dd>
+            <dd><a href="javascript:">20元以下</a></dd>
                 <dd><a href="javascript:">20-40元</a></dd>
                 <dd><a href="javascript:">40-60元</a></dd>
                 <dd><a href="javascript:">60-80元</a></dd>
                 <dd><a href="javascript:">80-100元</a></dd>
-			</dl>
-		</li>
-		<li class="select-result">
+          </dl>
+        </li> -->
+		<!-- <li class="select-result">
 			<dl>
 			 <dd class="select-no">已选择：</dd>
 			</dl>
 		</li>
-	</ul>
- </section>
+	</ul> -->
+ <!-- </section> -->
 <section class="Fslmenu">
- <a href="#" title="默认排序">
+ <a href="{:url('index/index/list')}?id=" title="默认排序">
   <span>
   <span>默认排序</span>
   <span></span>
   </span>
  </a>
- <a href="#" title="评价">
+ <a href="{:url('index/index/list')}?id=1" title="评价">
   <span>
   <span>评价</span>
   <span class="s-up"></span>
   </span>
  </a>
- <a href="#" title="销量">
+ <a href="{:url('index/index/list')}?id=2" title="销量">
   <span>
   <span>销量</span>
   <span class="s-up"></span>
   </span>
  </a>
- <a href="#" title="价格排序">
+ <a href="{:url('index/index/list')}?id=3" title="发布时间排序">
   <span>
-  <span>价格</span>
-  <span class="s-down"></span>
-  </span>
- </a>
- <a href="#" title="发布时间排序">
-  <span>
-  <span>发布时间</span>
+  <span>注册时间</span>
   <span class="s-up"></span>
   </span>
  </a>
 </section>
 <section class="Fsl">
  <ul>
+{foreach $res as $key => $value}
   <li>
-   <a href="{:url('shop/shop')}" target="_blank" title="调用产品名/店铺名"><img src="__UPLOAD_PATH__/03.jpg"></a>
+   <a href="{:url('shop/shop')}?id={$value['s_id']}"  title="{$value['s_name']}"><img src="{$value['s_pic']}"></a>
    <hgroup>
-   <h3>【大明宫】***川菜馆</h3>
+   <h3>{$value['s_name']}</h3>
    <h4></h4>
    </hgroup>
-   <p>菜系：川湘菜</p>
-   <p>地址：西安市莲湖区土门十字往右100米</p>
+   <p>餐别：川湘菜</p>
+   <p>地址：{$value['s_address']}</p>
    <p>人均：20~50元</p>
    <p>
     <span class="Score-l">
@@ -115,72 +198,10 @@
     <img src="__IMG_PATH__/star-off.png">
     <span class="Score-v">4.8</span>
     </span>
-    <span class="DSBUTTON"><a href="{:url('shop/shop')}" target="_blank" class="Fontfff">点外卖</a></span>
+    <span class="DSBUTTON"><a href="{:url('index/shop/shop')}?id={$value['s_id']}" target="_blank" class="Fontfff">点外卖</a></span>
    </p>
   </li>
-  <li>
-   <a href="{:url('shop/shop')}" target="_blank" title="调用产品名/店铺名"><img src="__UPLOAD_PATH__/03.jpg"></a>
-   <hgroup>
-   <h3>【大雁塔】***川菜馆</h3>
-   <h4></h4>
-   </hgroup>
-   <p>菜系：川湘菜</p>
-   <p>地址：西安市莲湖区土门十字往右100米</p>
-   <p>人均：20~50元</p>
-   <p>
-    <span class="Score-l">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-off.png">
-    <span class="Score-v">4.8</span>
-    </span>
-    <span class="DSBUTTON"><a href="{:url('shop/shop')}" target="_blank" class="Fontfff">点外卖</a></span>
-   </p>
-  </li>
-  <li>
-   <a href="{:url('shop/shop')}" target="_blank" title="调用产品名/店铺名"><img src="__UPLOAD_PATH__/03.jpg"></a>
-   <hgroup>
-   <h3>【南稍门】***川菜馆</h3>
-   <h4></h4>
-   </hgroup>
-   <p>菜系：川湘菜</p>
-   <p>地址：西安市莲湖区土门十字往右100米</p>
-   <p>人均：20~50元</p>
-   <p>
-    <span class="Score-l">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-off.png">
-    <span class="Score-v">4.8</span>
-    </span>
-    <span class="DSBUTTON"><a href="{:url('shop/shop')}" target="_blank" class="Fontfff">点外卖</a></span>
-   </p>
-  </li>
-  <li>
-   <a href="{:url('shop/shop')}" target="_blank" title="调用产品名/店铺名"><img src="__UPLOAD_PATH__/03.jpg"></a>
-   <hgroup>
-   <h3>【小雁塔】***川菜馆</h3>
-   <h4></h4>
-   </hgroup>
-   <p>菜系：川湘菜</p>
-   <p>地址：西安市莲湖区土门十字往右100米</p>
-   <p>人均：20~50元</p>
-   <p>
-    <span class="Score-l">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-on.png">
-    <img src="__IMG_PATH__/star-off.png">
-    <span class="Score-v">4.8</span>
-    </span>
-    <span class="DSBUTTON"><a href="{:url('shop/shop')}" target="_blank" class="Fontfff">点外卖</a></span>
-   </p>
-  </li>
+{/foreach}
  </ul>
  <aside>
   <div class="title">热门商家</div>

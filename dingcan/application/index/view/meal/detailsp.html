@@ -63,13 +63,25 @@ $(function(){
       <p>送幸福积分</p>
      </li>
    </ul>
-   <form action="cart.html">
+   <!-- <form action="{//:url('cart/cart')}?m_id={//$dish['dish']['m_id']}" method="get" id="carid"> -->
    <div class="BuyNo">
-    <span>我要买：<input type="number" name="Number" required autofocus min="1" value="1"/>份</span>
-    <span>库存：{$dish['dish']['m_counts']}</span>
+    <span>我要买：<input type="number" name="Number" required autofocus min="0" 
+    {if ($dish['dish']['m_counts'] == 0)}
+      value="0"
+    {else}
+      value="1"
+    {/if}/>份</span>
+    <input type="hidden" name="m_id" required autofocus min="0" value="{$dish['dish']['m_id']}">
+   
+    <span id="ts">库存：{$dish['dish']['m_counts']}</span><span style="color:red;"></span>
+
     <div class="Buybutton">
+    {neq name="dish['dish']['m_counts']" value="0"}
      <input name="" type="submit" value="加入购物车" class="BuyB">
-     <a href="shop.html"><span class="Backhome">进入店铺首页</span></a>
+    {else}
+    <b>啊哦，暂无库存~</b> &nbsp;&nbsp;&nbsp;&nbsp;
+    {/neq}
+     <a href="meal/shop"><span class="Backhome">进入店铺首页</span></a>
     </div>
    </div>
   </div>
@@ -174,4 +186,29 @@ $(function(){
   </aside>
  </section>
 </section>
-
+<script type="text/javascript">
+  var number = $('input[name=Number]');
+  var m_id = $('input[name=m_id]');
+  number.blur(function(){
+    if ( number.val() > {$dish['dish']['m_counts']}) {
+      $('#ts').next().text('  *请不要超出库存量');
+    } 
+  });
+  number.focus(function(){
+    $('#ts').next().text('');
+  });
+  $('.BuyB').click(function(){
+    if (number.val() > {$dish['dish']['m_counts']}) {
+      $('#ts').next().text('  *请不要超出库存量');
+    } else {
+      $.post("{:url('cart/addcar')}", {m_id:m_id.val(), mcounts:number.val()}, function(data){
+          if (data) {
+            alert('加入成功');
+          } else {
+            alert('加入失败');
+          }
+        
+      }, 'json');
+    }
+  });
+</script>

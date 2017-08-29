@@ -178,9 +178,10 @@ class Auth extends Controller
 			'lasttime' => session('lasttime')
 		];
 		// $time = session('lasttime');
-		session(null);
+		
 		$result = $this->user->loginout($data);
 		if ($result) {
+			session(null);
 			return $this->success('退出成功', url('index/index/index'));
 		} else {
 			return $this->error('退出失败');
