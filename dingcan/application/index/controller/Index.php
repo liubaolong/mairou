@@ -133,7 +133,9 @@ class Index extends Controller
    	public function category()
    	{ 
       $result = IndexModel::credits();
+      $res    = IndexModel::hotstore();
       $this->assign('res',$result);
+      $this->assign('result',$res);
    		return $this->fetch();
    	}
    	//关于我们

@@ -1,6 +1,7 @@
 <?php
 	namespace app\admin\controller;
 	use app\admin\controller\Auth;
+	use app\admin\model\Picture as PictureModel;
 	class Picture extends Auth{
 		protected $is_login = ['*'];
 		//图片列表

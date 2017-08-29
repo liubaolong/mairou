@@ -46,4 +46,10 @@ class Index extends Model
 					// dump($result);die;
 		return $result;
 	}
+	//查询热门店铺
+	static public function hotstore()
+	{
+		$result = Db::table('f_shop')->where('s_status',1)->order('s_monthcount','desc')->paginate(4);
+		return $result;
+	}
 }

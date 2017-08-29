@@ -31,12 +31,14 @@ class Auth extends Controller
 			'password'=>$pwd,
 		];
 		$result = $this->user->dologin($data);
+
 		if ($result) {
 			session('uid', $result['uid']);
 			session('username', $result['username']);
 			session('u_level', $result['u_level']);
 			session('u_score', $result['u_score']);
-			//退出时保存
+			session('nowtime',$result['lasttime']);
+			//退出时保存		
 			session('lasttime', time());
 			return $this->success('登录成功', url('index/index/index'));
 		} else {
@@ -183,6 +185,7 @@ class Auth extends Controller
 		if ($result) {
 			session(null);
 			return $this->success('退出成功', url('index/index/index'));
+			
 		} else {
 			return $this->error('退出失败');
 		}

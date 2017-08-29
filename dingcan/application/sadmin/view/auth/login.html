@@ -19,21 +19,25 @@
 				</div>
 			</div>
 			<div class="login-con">
-				<div class="login-a">
+				<div class="login-a" >
 					<form id="loginForm" method="POST" action="{:url('auth/login')}" onsubmit="return validate()">
-                      <div class="login-b">
+                      <div class="login-b" style="height:400px;margin-top:0px;">
                       	<div class="login-b-a">用户登陆</div>
                       	<div class="login-b-b">
                       		<ul>
                       			<li>
-                      				<label for="userName" >用户名：</label><input type="text" id="mobile" name="userName"/>
+                      				<label for="userName" >用户名：</label><input type="text" id="mobile" onblur="user()" name="userName"/>
 
                       				<h1 id="m-tip"></h1>
                       			</li>
                       			<li>
-                      				<label for="password">密 &nbsp;&nbsp;码：</label><input type="password" id="password" name="password"/>
+                      				<label for="password">密 &nbsp;&nbsp;码：</label><input type="password" onblur="user()" id="password" name="password"/>
                       				<h1 id="p-tip"></h1>
                       			</li>
+                            <!--店铺选择-->
+                            <li id="add" style="display:none;">
+                              
+                            </li>
                       			<li>
                       				<label >验证码：</label><input type="text" id="input1" />      
                                     <input type="text" id="checkCode" class="code" style="width: 55px" /> <a href="#" onClick="createCode()">看不清楚</a>   
@@ -70,11 +74,39 @@
 //商家登录跳转地址
   function sact()
   {
-    $("#loginForm").attr({action:"{:url('auth/login')}"}) ;
+    $("#loginForm").attr({action:"{:url('sadmin/auth/login')}"}) ;
   }
 //管理员登录跳转地址
   function aact()
   {
     $("#loginForm").attr({action:"{:url('admin/auth/dologin')}"}) ;
+  }
+  function user()
+  {
+    var use  = $("#mobile").val();
+    var pass = $("#password").val();
+    if(use != '' && pass != '') {
+      $.post("{:url('sadmin/auth/scount')}",{user:use,pass:pass},function(data){
+          if (data.errcode) {
+            var con = '<label>请选择商户：</label><select name="store">';
+              for(i=0;i<data.info.length;i++){
+                con  += '<option value="'+ data.info[i].s_name +'">'+ data.info[i].s_name+'</option>';
+              }
+              con += '</select>';
+              $('.login-b').css('height','445px')
+              $('#add').css('display','block');
+              $('#add').html(con);
+              
+              $('#loginForm').attr('action',"{:url('sadmin/auth/manyshop')}")
+          } else{
+              var con='';
+              $('.login-b').css('height','400px')
+              $('#add').css('display','none');
+              $('#add').html(con);
+              $('#loginForm').attr('action',"{:url('sadmin/auth/login')}")
+              
+          }
+      },'json')
+    } 
   }
 </script>

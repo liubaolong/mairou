@@ -54,6 +54,12 @@ class shop extends Model
 		$result = $jsonarr['result'];
 		return  $result['province'].' '.$result['city'].' '.$result['company'].'<br>';
 	}
+	//查询一级板块
+	static public function blok()
+	{
+		$result = Db::name('bk')->where('parentid',0)->select();
+		return $result; 
+	}
 	//商家注册
 	public function shopregister($data)
 	{   
@@ -74,6 +80,7 @@ class shop extends Model
 				's_pic'=>$path,
 				's_addtime'=>time(),
 				's_status'=>0,
+				's_type'=>$data['type']
 				];
 		return Db::name('shop')->insert($arr); 
 

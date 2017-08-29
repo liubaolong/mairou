@@ -2,6 +2,7 @@
 namespace app\sadmin\controller;
 use think\Controller;
 use app\sadmin\model\Auth as AuthModel;
+use think\Request;
 class Auth extends Controller
 {
 	// 初始化
@@ -41,7 +42,31 @@ class Auth extends Controller
 	//商家后台退出
 	public function logout()
 	{
+		AuthModel::userloginout();
 		session(null);
 		$this->error('请先登录',url('sadmin/auth/login'));
+	}
+	//检查用户商家数量
+	public function scount(Request $request)
+	{
+		$data = empty($_POST) ? '':$_POST;
+		$res  = AuthModel::checkuser($data);
+		if ($res) {
+			$arr = ['errcode'=>1,'info'=>$res];
+		} else {
+			$arr = ['errcode'=>0];
+		}
+		echo json_encode($arr);
+	}
+	//多商铺用户登录
+	public function manyshop()
+	{
+		$arr = empty($_POST) ? "" :$_POST;
+		$res = AuthModel::checkstore($arr);
+		if ($res) {
+			$this->success('登陆成功 ',url('sadmin/sindex/sindex'));
+		} else {
+			$this->error('登录失败 ',url('sadmin/auth/login'));
+		}
 	}
 }

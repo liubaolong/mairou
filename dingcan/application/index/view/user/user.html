@@ -9,7 +9,7 @@
    <li><i></i><a href="{:url('user/coupon')}">我的优惠券</a></li>
    <li><i></i><a href="{:url('user/favorites')}">我的收藏</a></li>
    <li><i></i><a href="{:url('user/account')}">账户管理</a></li>
-   <li><i></i><a href="#">安全退出</a></li>
+   <li><i></i><a href="{:url('index/auth/loginout')}">安全退出</a></li>
   </ul>
  </nav>
  <article class="U-article Overflow">
@@ -18,8 +18,19 @@
    <span class="Weltitle Block Font16 CorRed FontW Lineheight35">Welcome欢迎光临！</span>
    <div class="U-header MT20 Overflow">
     <img src="__UPLOAD_PATH__/testuser.jpg">
-    <p class="Font14 FontW">DeathGhost 欢迎您回到 用户中心！</p>
-    <p class="Font12">您的上一次登录时间:<time> 2016-05-18 14:20:04</time></p>
+    <p class="Font14 FontW">
+    {if($Think.session.username!='')}
+    {$Think.session.username}
+    {/if}
+    欢迎您回到 用户中心！
+    </p>
+    <p class="Font12">您的上一次登录时间:<time>
+    {if($Think.session.nowtime =='')}
+          <?php echo date('Y-m-d H:i:s',time());?>
+    {else}
+          <?php echo date('Y-m-d H:i:s',session('nowtime'));?>
+    {/if}
+    </time></p>
     <p class="Font12 CorRed FontW">我的优惠券( 0 ) | 我的积分( 0 )</p>
    </div>
     <ul class="s-States Overflow FontW" id="Lbn">

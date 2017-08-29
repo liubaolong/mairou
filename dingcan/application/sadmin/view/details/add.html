@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<title></title>
+<link rel="stylesheet" href="__CSS_PATH__/pintuer.css">
+<link rel="stylesheet" href="__CSS_PATH__/sadmin.css">
+<script src="__JS_PATH__/jquery.js"></script>
+<script src="__JS_PATH__/pintuer.js"></script>
+</head>
+<body>
+<div class="panel admin-panel">
+  <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>增加菜品</strong></div>
+  <div class="body-content">
+    <form method="post" class="form-x" action="{:url('details/adddish')}" enctype="multipart/form-data" onsubmit="return upload()">  
+      <div class="form-group">
+        <div class="label">
+          <label>菜品名称：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" value="" name="title" data-validate="required:请输入标题" />
+          <div class="tips"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>图片：</label>
+        </div>
+        <div class="field">
+          <input type="file" id="image1" name="file" onblur="dimage()" value="+ 浏览上传"  style="float:left;">
+        </div>
+      </div>     
+      
+      <if condition="$iscid eq 1">
+        <div class="form-group">
+          <div class="label">
+            <label>分类标题：</label>
+          </div>
+          <div class="field" style="overflow:hidden;">
+                <div style="float:left;">
+                    <select name="cid" class="input w50" id="classify" onblur="classd()" style="width:100px;">
+                      <option value="">请选择分类</option>
+                      {foreach $res as $key=>$value}
+                        <option value="{$value['b_id']}">{$value['b_name']}</option>
+                      {/foreach}
+                    </select>
+                </div >
+                <div id="second" onblur="classds()" style="float:left;display:none;">
+                </div>
+                <div id="three"  style="float:left;display:none;">
+                </div>
+            <div class="tips"></div>
+          </div>
+        </div>
+      </if>
+   
+      <div class="form-group">
+        <div class="label">
+          <label>价格：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" id="pri" name="price" onblur="jiage()" value="" style="width:60px;"/>
+        </div>
+      </div>
+       <div class="form-group">
+        <div class="label">
+          <label>剩余量：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" id="count" name="count" onblur="dcount()" value="" style="width:60px;"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>积分：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input" name="s_score" value="0" style="width:60px;"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label>特色菜：</label>
+        </div>
+        <div class="field">
+          是<input type="radio" name="special" value="1">
+          否<input type="radio" name="special" value="0" checked>
+        </div>
+      </div>
+      
+         <div class="form-group">
+        <div class="label">
+          <label>描述：</label>
+        </div>
+        <div class="field">
+          <textarea class="input" name="note" id="note" onblur="dnote()" style=" height:90px;resize:none;"></textarea>
+          <div class="tips"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+        <div class="field">
+          <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+    //价格
+    function jiage()
+    {
+      if ($("#pri").val() == '') {
+        $("#pri").css('border','1px solid red');
+        return false;
+      } else {
+        $("#pri").css('border','1px solid green');
+        return true;
+      }
+    }
+    //菜品描述
+    function dnote()
+    {
+       if ($("#note").val() == '') {
+        $("#note").css('border','1px solid red');
+        return false;
+      } else {
+        $("#note").css('border','1px solid green');
+        return true;
+      }
+    }
+    //菜品分类
+    //一级分类
+    function classd()
+    {
+        if ($("#classify").val() == '') {
+        return false;
+      } else {
+        $.post("{:url('sadmin/details/checkcate')}",{pid:$("#classify").val()},function(data){ 
+            if (data.errcode == 1) {
+              var con = '<select name="ctwo" id="access" onblur="classds()" style="height:42px;width:99px;">';
+                  con+= '<option value="">请选择分类</option>';
+                for(i=0;i<data.info.length;i++){
+                  con+=  '<option value="'+ data.info[i]['b_id']+'">'+data.info[i]['b_name']+'</option>';
+                    }
+                 con += '</select>';
+                $('#second').css('display','block');
+                $('#second').html(con);
+            } else {
+              $('#second').css('display','none');
+            }
+            
+        },'json')
+        return true;
+      }
+    }
+    //二级分类
+    function classds()
+    {
+      if ($("#access").val() == '') {
+        return false;
+      } else {
+        $.post("{:url('sadmin/details/checkaccess')}",{pid:$("#access").val()},function(data){ 
+            if (data.errcode == 1) {
+              var con = '<select name="cthree" onblur="classdt()" id="cthree" style="height:42px;width:99px;">';
+                  con+= '<option value="">请选择分类</option>';
+                for(i=0;i<data.info.length;i++){
+                  con+=  '<option value="'+ data.info[i]['b_id']+'">'+data.info[i]['b_name']+'</option>';
+                    }
+                 con += '</select>';
+                $('#three').css('display','block');
+                $('#three').html(con);
+            } else {
+              $('#three').css('display','none');
+            }
+            
+        },'json')
+        return true;
+      }
+    }
+    //菜品图片
+    function dimage()
+    {
+       if ($("#image1").val() == '') {
+        return false;
+      } else {
+        return true;
+      }
+    }
+    //菜品剩余量    
+    function dcount()
+    {
+       if ($("#count").val() == '') {
+        $("#count").css('border','1px solid red');
+        return false;
+      } else {
+        $("#count").css('border','1px solid green');
+        return true;
+      }
+    }
+    function upload()
+    {
+      if(jiage()&&dnote()&&classd()&&dimage()&&dcount()&&classds()){
+        return true;
+      }
+      return false;
+    }
+</script>

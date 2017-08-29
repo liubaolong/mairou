@@ -13,7 +13,7 @@
 			parent::_initialize();
 			$this->user = new UserModel();
 			if (!$this->checklogin() && $this->is_login[0] == '*') {
-				$this->error('您还没有登录，请先登录',url('sadmin/auth/login'));
+				$this->error('请先登录',url('sadmin/auth/login'));
 			}
 		}
 		public function checklogin()
@@ -21,10 +21,6 @@
 			return session('?admin');//真|jia 
 		}
 		//登录
-		public function login()
-		{
-			return $this->fetch();
-		}
 		public function dologin()
 		{
 			$data = [
@@ -36,7 +32,7 @@
 				session('admin',$result->toArray());
 				$this->success('登陆成功 ',url('admin/index/index'));
 			} else {
-				$this->error('您还没有登录，请先登录',url('sadmin/auth/login'));
+				$this->error('请先登录',url('sadmin/auth/login'));
 			}
 		}
 		//退出

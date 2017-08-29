@@ -17,6 +17,17 @@
 						<td><input type="text" name="ident" id="ident" size="40" style="border:1px solid #999;height:25px;" onblur="checkid()"><p style="display:none;" id="p2"></p></td>
 					</tr>
 					<tr style="height:40px;">
+						<td>类型</td>
+						<td>
+							<select name="type" id="type" style="border:1px solid #999;height:25px;" onblur="checktype()">
+							<option>请选择类别</option>
+							{foreach $res as $key=>$value}
+							<option value="{$value['b_id']}">{$value['b_name']}</option>
+							{/foreach}
+							</select>
+						</td>
+					</tr>
+					<tr style="height:40px;">
 						<td>订餐电话:</td>
 						<td><input type="text" name="phone" id="phone" size="40" style="border:1px solid #999;height:25px;" onblur="checkphone()"><p style="display:none;" id="p3"></p></td>
 					</tr>
@@ -125,6 +136,19 @@
 		return true;	}
 
 	}
+//类别
+	function checktype()
+	{
+		var type;
+		if ($('#type').val() == '') {
+			$("#type").css('border', '1px solid red');
+			return false;
+		} else {
+			$("#type").css('border', '1px solid green');
+			;
+		}
+		return true
+	}
 //电话
 	function checkphone()
 	{
@@ -207,7 +231,7 @@
 	function submitup()
 	{
 		
-		if(checkinfo()&&checkphoto()&&checktime()&&checkaddress()&&checkphone()&&checkid()&&checkname()){
+		if(checkinfo()&&checkphoto()&&checktime()&&checkaddress()&&checkphone()&&checkid()&&checkname()&&checktype()){
 			return  true;
 		}
 		return  false;

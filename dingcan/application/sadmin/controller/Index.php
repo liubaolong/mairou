@@ -7,8 +7,7 @@ class index extends Auth
 	protected $is_login = ['*'];
 	public function index()
 	{
-		// dump(11);die;
-		$this->assign('title', 'wo');
+		$this->assign('title', '后台登录');
 		return $this->fetch('sadmin@auth/login');
 	}
 }

@@ -1,4 +1,4 @@
-
+<link href="__STATIC_PATH__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <!--Start content-->
 <section class="Psection MT20">
 <nav class="U-nav Font14 FontW">
@@ -10,91 +10,182 @@
    <li><i></i><a href="{:url('user/coupon')}">我的优惠券</a></li>
    <li><i></i><a href="{:url('user/favorites')}">我的收藏</a></li>
    <li><i></i><a href="{:url('user/account')}">账户管理</a></li>
-   <li><i></i><a href="#">安全退出</a></li>
+   <li><i></i><a href="{:url('index/auth/loginout')}">安全退出</a></li>
   </ul>
  </nav>
  <article class="U-article Overflow">
+ <div class="Myorder">
+ <table  style="width:100%;" id="tb">
+     <th class="Font14 FontW">收件人</th>
+     <th class="Font14 FontW">地址</th>
+     <th class="Font14 FontW">电话号</th>
+     <th class="Font14 FontW">操作</th>
+     {foreach $res as $key=>$value}
+     <tr>
+      <td class="FontW"><a href="javascript:;">{$value['a_user']}</a></td>
+      <td>{$value['a_newaddress']}</td>
+      <td>{$value['a_phone']}</td>
+      <td><a href="javascript:;" onclick="dalert(this)" value="{$value['a_id']}">查看</a> | <a href="javascript:;" onclick="ddel(this)" value="{$value['a_id']}">删除</a></td>
+     </tr>
+     {/foreach}
+    </table>
+</div>
   <!--user Address-->
-  <section class="Myaddress Overflow">
-   <span class="MDtitle Font14 FontW Block Lineheight35">收货人信息</span>
+<div id="oldaddress" style="display:none;">
    <form action="#">
-   <table>
-    <tr>
-     <td width="30%" class="Font14 FontW Lineheight35" align="right">选择所在地：</td>
-     <td>
-     <select name="" class="select_ssq">
-      <option>陕西省</option>
-     </select>
-     <select name="" class="select_ssq">
-     <option>西安市</option>
-     </select>
-     <select name="" class="select_ssq">
-     <option>莲湖区</option>
-     </select>
-     </td>
-    </tr>
+    <table style="margin-top:10px;width:100%;">
     <tr>
      <td width="30%" class="Font14 FontW Lineheight35" align="right">收件人姓名：</td>
-     <td><input type="text" name="" required value="DeathGhost" class="input_name"></td>
-    </tr>
-    <tr>
-     <td width="30%" class="Font14 FontW Lineheight35" align="right">街道地址：</td>
-     <td><input type="text" required size="50" value="丈八路144号" class="input_addr"></td>
-    </tr>
-    <tr>
-     <td width="30%" class="Font14 FontW Lineheight35" align="right">邮政编码：</td>
-     <td><input type="text" required size="10" pattern="[0-9]{6}" value="727444" class="input_zipcode"></td>
+     <td><input type="text" value=""   id="oldname" onblur="user()" style="border:1px solid #999;height:35px;"></td>
     </tr>
     <tr>
      <td width="30%" class="Font14 FontW Lineheight35" align="right">手机号码：</td>
-     <td><input type="text" name="" required pattern="[0-9]{11}" value="18309275673" class="input_tel"></td>
+     <td><input type="text"  value="" id="oldtel" onblur="phone()" required pattern="1[34578]\d{9}" style="border:1px solid #999;height:35px;"></td>
     </tr>
-    <tr>
-     <td align="right"  width="30%" class="Font14 FontW Lineheight35"></td>
-     <td class="Lineheight35"><input name="" type="submit" value="确认修改" class="Submit"><input name="" type="submit" value="删除" class="Submit"></td>
-    </tr>
-   </table>
-   </form>
-   <!--add new address-->
-   <form action="#">
-    <table style="margin-top:10px;">
-    <tr>
-     <td width="30%" class="Font14 FontW Lineheight35" align="right">选择所在地：</td>
-     <td>
-     <select name="" class="select_ssq">
-      <option>陕西省</option>
-     </select>
-     <select name="" class="select_ssq">
-     <option>西安市</option>
-     </select>
-     <select name="" class="select_ssq">
-     <option>莲湖区</option>
-     </select>
-     </td>
-    </tr>
-    <tr>
-     <td width="30%" class="Font14 FontW Lineheight35" align="right">收件人姓名：</td>
-     <td><input type="text" name="" required  class="input_name"></td>
-    </tr>
-    <tr>
+      <tr>
      <td width="30%" class="Font14 FontW Lineheight35" align="right">街道地址：</td>
-     <td><input type="text" required  class="input_addr"></td>
-    </tr>
-    <tr>
-     <td width="30%" class="Font14 FontW Lineheight35" align="right">邮政编码：</td>
-     <td><input type="text" required pattern="[0-9]{6}"  class="input_zipcode"></td>
-    </tr>
-    <tr>
-     <td width="30%" class="Font14 FontW Lineheight35" align="right">手机号码：</td>
-     <td><input type="text" name="" required pattern="[0-9]{11}" class="input_tel"></td>
+     <td><input type="text"  value="" id="oldaddr" onblur="address()" style="border:1px solid #999;height:35px;width:300px;"></td>
     </tr>
     <tr>
      <td width="30%" class="Font14 FontW Lineheight35" align="right"></td>
-     <td class="Font14 Font Lineheight35"><input name="" type="submit" value="新增收货地址"  class="Submit"></td>
+     <td class="Font14 Font Lineheight35"><button onclick="olddreset()">返回</button></td>
     </tr>
    </table>
    </form>
-  </section>
+   </div>
+   <!--add new address-->
+   <div id="newaddress" style="display:none;">
+   <form action="#">
+    <table style="margin-top:10px;width:100%;">
+    <tr>
+     <td width="30%" class="Font14 FontW Lineheight35" align="right">收件人姓名：</td>
+     <td><input type="text" value=""   id="name" onblur="user()" style="border:1px solid #999;height:35px;"></td>
+    </tr>
+    <tr>
+     <td width="30%" class="Font14 FontW Lineheight35" align="right">手机号码：</td>
+     <td><input type="text"  value="" id="tel" onblur="phone()" required pattern="1[34578]\d{9}" style="border:1px solid #999;height:35px;"></td>
+    </tr>
+      <tr>
+     <td width="30%" class="Font14 FontW Lineheight35" align="right">街道地址：</td>
+     <td><input type="text"  value="" id="addr" onblur="address()" style="border:1px solid #999;height:35px;width:300px;"></td>
+    </tr>
+    <tr>
+     <td width="30%" class="Font14 FontW Lineheight35" align="right"></td>
+     <td class="Font14 Font Lineheight35"><button onclick="newadd()">新增</button><button onclick="dreset()">返回</button></td>
+    </tr>
+   </table>
+   </form>
+   </div>
+  <button onclick="aleradress()">新增收货地址</button>
  </article>
+ <div style="text-align:center;" id="page";>{$res->render()}</div>
 </section>
 <!--End content-->
+<script type="text/javascript">
+  //新增按钮
+  function aleradress()
+  {
+    $(".Myorder").css('display','none');
+    $("#page").css('display','none');
+    $("#oldaddress").css('display','none');
+    $("#newaddress").css('display','block');
+  }
+  //新增返回按钮
+  function dreset()
+  {
+    $(".Myorder").css('display','block');
+    $("#page").css('display','block');
+    $("#newaddress").css('display','none');
+  }
+  //修改按钮
+  function olddreset()
+  {
+    $(".Myorder").css('display','block');
+    $("#page").css('display','block');
+    $("#oldaddress").css('display','none');
+  }
+  //判断用户名不能为空
+  function user()
+  {
+    if ($("#name").val() == '') {
+      $("#name").css('border','1px solid red');
+       return false;
+    } else {
+      $("#name").css('border','1px solid green');
+      return true;
+    }
+  }
+  //判断地址不能为空
+  function address()
+  {
+    if ($("#addr").val() == '') {
+      $("#addr").css('border','1px solid red');
+       return false;
+    } else {
+      $("#addr").css('border','1px solid green');
+      return true
+    }
+  }
+  //判断电话不能为空
+  function phone()
+  {
+    if ($("#tel").val() == '') {
+      $("#tel").css('border','1px solid red');
+       return false;
+    } else {
+       $("#tel").css('border','1px solid green');
+       return true;
+    }
+
+  }
+  //添加地址
+  function newadd()
+  {
+    if ( ($("#name").val() == '')||($("#addr").val() == '')||($("#tel").val() == '')) {
+          alert('所填写信息不全');
+    } else {
+        $.post("{:url('index/user/newadd')}",{user:$("#name").val(),address:$("#addr").val(),phone:$("#tel").val()},function(data){
+            if (data.errcode == 1) {
+              alert('添加成功');
+              $(".Myorder").css('display','block');
+                  $("#page").css('display','block');
+               $("#newaddress").css('display','none');
+               var con = '<tr><td>'+ $("#name").val() +'</td><td>'+ $("#tel").val() +'</td><td>'+ $("#addr").val() +'</td><td><a href="#" value="'+ data.info+'">修改</a> | <a href="#">删除</a></td></tr>'
+               $("tb").prepend(con);
+               $("#name").val('');
+               $("#addr").val('');
+               $("#tel").val('');
+            } else {
+                alert('添加失败');
+            }
+        },'json')
+    }
+  }
+  //查看地址
+  function dalert(obj)
+  {
+    var id = $(obj).attr('value');
+    $.post("{:url('index/user/addresdat')}",{id:id},function(data){
+      if(data.errcode == 1){
+            $("#oldname").attr('value',data.info['a_user']);
+            $("#oldtel").attr('value',data.info['a_phone']);
+            $("#oldaddr").attr('value',data.info['a_newaddress']);
+            $("#alt").attr('value',data.info['a_id']);
+            $("#oldaddress").css('display','block');
+            $(".Myorder").css('display','none');
+            $("#page").css('display','none');
+           }
+    },'json')
+
+  }
+  //删除
+  function ddel(obj)
+  {
+    $(obj).parent().parent().remove();
+    $.post("{:url('index/user/deladdress')}",{id:$(obj).attr('value')},function(data){
+      if (data.errcode ==  1) {
+        alert('删除成功');
+      }
+    },'json')
+  }
+</script>
