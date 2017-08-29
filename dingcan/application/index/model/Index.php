@@ -43,6 +43,7 @@ class Index extends Model
 					->where('m.delete_time',null)
 					->where('m.m_score','neq',0)
 					->paginate(9);
+					// dump($result);die;
 		return $result;
 	}
 	//查询热门店铺

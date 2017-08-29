@@ -23,4 +23,9 @@
 		{
 			return $this->fetch();
 		}
+		//角色权限
+		public function admin_role_add()
+		{
+			return $this->fetch();
+		}
 	}

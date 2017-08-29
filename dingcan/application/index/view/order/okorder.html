@@ -1,0 +1,20 @@
+
+<script>
+//Test code,You can delete this script /2014-9-21DeathGhost/
+$(document).ready(function(){
+ var submitorder =$.noConflict();
+ submitorder(".p3button").click(function(){
+	 submitorder("#Cflow").hide();
+	 submitorder("#Aflow").show();
+	 });
+});
+</script>
+<section class="Psection MT20 Textcenter" style="display:block;" id="Aflow">
+  <!-- 订单提交成功后则显示如下 -->
+  <p class="Font14 Lineheight35 FontW">恭喜你！订单提交成功！</p>
+  <p class="Font14 Lineheight35 FontW">您的订单编号为：<span class="CorRed">201409205134</span></p>
+  <p class="Font14 Lineheight35 FontW">共计金额：<span class="CorRed">￥359</span></p>
+  <p><button type="button" class="Lineheight35"><a href="#" target="_blank">支付宝立即支付</a></button><button type="button" class="Lineheight35"><a href="{:url('user/user')}">进入用户中心</button></p>
+</section>
+<!--End content-->
+
