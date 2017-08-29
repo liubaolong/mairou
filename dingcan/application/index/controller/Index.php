@@ -144,4 +144,23 @@ class Index extends Controller
    	}
 
     //一级分类
+    public function onefl()
+    {
+
+    }
+    //二级分类
+    public function twofl()
+    {
+
+    }
+    //三级分类
+    public function threefl()
+    {
+
+    }
+    //四级分类
+    public function fourfl()
+    {
+
+    }
 }
