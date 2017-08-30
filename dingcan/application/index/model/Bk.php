@@ -26,9 +26,9 @@
 	      }
 	    }
 	    //二级分类
-	    public function twofl()
+	    public function twofl($data)
 	    {
-	    	// $res2 = $this->where('parentid')->select();
+	    	$res2 = $this->where('parentid',$data)->select();
 	    }
 	    //三级分类
 	    public function threefl()

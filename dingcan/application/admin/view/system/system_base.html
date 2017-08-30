@@ -15,25 +15,25 @@
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>站点名称：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" id="website-Keywords" value="__WEB_NAME__"  class="input-text" name="WEB_NAME">
+					<input type="text" id="website-Keywords" value="__WEB_NAME__"  class="input-text" name="WEB_NAME" required>
 				</div>
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>网站名称：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" id="website-title" value="__WEB_BTM__"  class="input-text" name="WEB_BTM">
+					<input type="text" id="website-title" value="__WEB_BTM__"  class="input-text" name="WEB_BTM" required>
 				</div>
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>站点地址（URL）</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" id="website-Keywords" value="__WEB_URL__"  class="input-text" name="WEB_URL">
+					<input type="text" id="website-Keywords" value="__WEB_URL__"  class="input-text" name="WEB_URL" required>
 				</div>
 			</div>
 			<div class="row cl">
 				<label class="form-label col-xs-4 col-sm-2">备案号：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<input type="text" id="website-icp" value="__WEB_ICP__" class="input-text" name="WEB_ICP">
+					<input type="text" id="website-icp" value="__WEB_ICP__" class="input-text" name="WEB_ICP" required>
 				</div>
 			</div>
 			<div class="row cl">
@@ -54,6 +54,7 @@
 			<div class="row cl">
 				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
 					<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+					<input class="btn" type="button" value="&nbsp;&nbsp;返回&nbsp;&nbsp;" style="background-color:#DDDDDD;" id="gogoback">
 				</div>
 				
 			</div>
@@ -81,5 +82,8 @@ $(function(){
 	});
 
 	$.Huitab("#tab-category .tabBar span","#tab-category .tabCon","current","click","0");
+});
+$('#gogoback').click(function(){
+	window.location.href="{:url('admin/index/index')}";
 });
 </script> 

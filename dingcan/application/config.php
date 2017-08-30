@@ -152,8 +152,6 @@ return [
         '__TEMP_PATH__'=>'/static/temp',
         '__ADMIN_PATH__'=>'/static/static',
 
-        //config路径
-        '__CONF_PATH__'=>'http://www.dc.com/application',
 
         //站点信息
         '__WEB_NAME__'=>'肉肉外卖网',                        //站点名称，将显示在浏览器窗口标题等位置
@@ -161,7 +159,7 @@ return [
         '__WEB_URL__'=>'http://www.dc.com/',         //网站 URL，将作为链接显示在页面底部
         '__WEB_ICP__'=>'京ICP备 89273号',                   //页面底部可以显示 ICP 备案信息
         '__WEB_ISCLOSE__'=>false,                         //true暂时将站点关闭，其他人无法访问，但不影响管理员访问
-        '__WEB_REG__'=>true,                                //true开启注册功能    
+        // '__WEB_REG__'=>true,                                //true开启注册功能    
 
     ],
     // 默认跳转页面对应的模板文件

@@ -1,3 +1,4 @@
+
 <style>
   .uli{
     margin-left:20px;
@@ -172,7 +173,7 @@
      <div class="DCcontent" style="overflow:hidden;">
       {foreach $str as $key=>$value}
         <table style="height:200px;float:left;border:1px solid #999;">
-          <tr><td><a href="{:url('index/shop/shop')}?{$value['s_id']}"><img src="{$value['s_pic']}" style=width:297px;height:200px;></a><td></tr>
+          <tr><td><a href="{:url('index/shop/shop')}?s_id={$value['s_id']}"><img src="{$value['s_pic']}" style="width:297px;height:200px;"></a><td></tr>
           <tr><td style="font-size:16px;">{$value['s_name']}</td></tr>
           <tr>
             <td style="height:30px;">
@@ -238,7 +239,7 @@
         
           if (data.errcode == 1){
            $.each(data.info,function(i,obj){
-               var url = "{:url('index/shop/shop')}?" + obj.s_id;
+               var url = "{:url('index/shop/shop')}?s_id=" + obj.s_id;
               con += '<table  style="height:200px;float:left;border:1px solid #999;">'
               con += '<tr><td><a href="'+ url +'"><img src="' + obj.s_pic + '" style=width:297px;height:200px;></a></td></tr>';
               con += '<tr><td style="font-size:16px;">' + obj.s_name + '</td></tr>';

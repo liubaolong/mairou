@@ -16,17 +16,34 @@ class Index extends Controller
 	//首页
     public function index(Request $request)
     {  
+        $config = config('view_replace_str.__WEB_ISCLOSE__');
+        $info = '';
+        if ($config) {
+          return $this->assign('info', '站点维护中');
+           $this->assign('web_isclose',$config);
+
+          /* {neq name="web_isclose" value=""}
+           {else/}
+            站点维护中。。。。
+            {/neq}*/
+
+           
+        } else {
+          $this->assign('info', '');
+          $stor = '东城区';
+          $res  = IndexModel::store($stor);
+          //查询热门菜
+          $dish = IndexModel::hotdish();
+          // //新闻标题
+          // $donews = $this->donews();
+          // $this->assign('donews', $donews);
+          $this->assign('dish', $dish);
+          $this->assign('str',$res);
+
+          $this->assign('web_isclose',$config);
+          return $this->fetch();
+        }
         
-        $stor = '东城区';
-        $res  = IndexModel::store($stor);
-        //查询热门菜
-        $dish = IndexModel::hotdish();
-        // //新闻标题
-        // $donews = $this->donews();
-        // $this->assign('donews', $donews);
-        $this->assign('dish', $dish);
-        $this->assign('str',$res);
-        return $this->fetch();
     }   
     //按区搜素店铺
     public function areastore()
@@ -93,8 +110,18 @@ class Index extends Controller
       $this->assign('res',$res);
 
       //分类展示
-      // $flres = $this->bk->chabk();
-     
+      /*$flres = $this->bk->chabk();
+     // dump($flres);die;
+      $dd = [];
+      foreach ($flres as $k => $v) {
+        // if ($v['parentid'] = $v['b_id']) {
+        //   $dd[] = $v['b_id'];
+          // dump($v['b_id']);
+        $rr = $this->
+        }
+      }
+      dump($dd);
+      die;*/
       // if ($flres) {
       //    foreach ($flres as $k => $v) {
       //      $pathLength = substr_count($v['path'], ',');
@@ -118,11 +145,11 @@ class Index extends Controller
 
         $res1 = $this->onefl();
         $res2 = $this->twofl();
-        die;
+        // die;
          //将每级分配到页面
          // dump($res1);die;
         // dump(array_column($res1),'');die;
-         // dump($res2);die;
+         dump($res2);die;
          $this->assign('res1', $res1);
          $this->assign('res2', $res2);
          $this->assign('res3', $res3);
@@ -164,10 +191,15 @@ class Index extends Controller
     public function twofl()
     {
       $res1 = $this->onefl();
+      $b_id = [];
       foreach ($res1 as $k => $v) {
-        dump($v);
+        // dump($v['b_id']);
+        $res2 = $this->bk->twofl($v['b_id']);
       }
-      $res2 = $this->twofl();
+      // dump($b_id);
+      // dump($res2);
+      // $res2 = $this->twofl();
+      // return $b_id;
       return $res2;
     }
     //三级分类

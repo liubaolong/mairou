@@ -1,9 +1,17 @@
 <?php
 namespace app\index\controller;
 use think\Controller;
+use think\Request;
 use app\index\model\User as UserModel;
+use app\index\model\Collect as CollectModel;
 class User extends Controller
 {
+	protected $collect;
+	public function  _initialize()
+	{
+		parent:: _initialize();
+		$this->collect = new CollectModel;
+	}
 	//用户中心
 	public function user()
 	{
@@ -20,6 +28,8 @@ class User extends Controller
 		if (!session('?uid')) {
 			$this->success('请先登录', 'auth/login');
 		}
+		dump(session('uid'));die;
+		$result = $this->collect->iscoll(session('uid'));
 		return $this->fetch();
 	}
 	//我的地址

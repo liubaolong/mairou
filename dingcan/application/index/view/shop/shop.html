@@ -47,10 +47,11 @@ Author URI: http://www.deathghost.cn
 <!--Start content-->
 <section class="Shop-index">
  <article>
+ <!-- 店铺信息 -->
   <div class="shopinfor">
    <div class="title">
     <img src="__UPLOAD_PATH__/wpjnewlogo.jpg" class="shop-ico">
-    <span>含山路外婆家</span>
+    <span>{$result.s_name}</span>
     <span>
      <img src="__IMG_PATH__/star-on.png">
      <img src="__IMG_PATH__/star-on.png">
@@ -62,20 +63,36 @@ Author URI: http://www.deathghost.cn
    </div>
    <div class="imginfor">
     <div class="shopimg">
-     <img src="__UPLOAD_PATH__/cc.jpg" id="showimg">
+     <img src="{$result.s_pic}" id="showimg">
       <ul class="smallpic">
-       <li><img src="__UPLOAD_PATH__/cc.jpg" onmouseover="show(this)" onmouseout="hide()"></li>
+       <li><img src="{$result.s_pic}" onmouseover="show(this)" onmouseout="hide()"></li>
       </ul>
     </div>
     <div class="shoptext">
-     <p><span>地址：</span>陕西省西安市雁塔区丈八北路***号</p>
-     <p><span>电话：</span>029-88888888</p>
-     <p><span>特色菜品：</span>毛肚、牛丸、滑虾、羊肉、香辣虾...</p>
+     <p><span>地址：</span>{$result.s_address}</p>
+     <p><span>电话：</span>{$result.s_phone}</p>
+     <p><span>特色菜品：</span>
+     {neq name="tese" value="false"}
+       {volist name="tese" id="v"}
+          {eq name="v.m_specail" value="1"}
+           {$v.m_name}.
+          {/eq}
+       {/volist}
+     ...
+     {else}
+     暂无特色菜...
+     {/neq}
+     </p>
      <p><span>优惠活动：</span>暂无信息</p>
-     <p><span>停车位：</span>4个停车位（免费）</p>
-     <p><span>营业时间：</span>09:00~22:00</p>
-     <p><span>WIFI：</span>免费WIFI</p>
-     <p><span>价格：</span>50元</p>
+     <p><span>营业时间：</span>{$result.s_time}</p>
+     <p><span>WIFI：</span>
+        {eq name="result.s_wifi" value="1"}
+          免费WIFI
+        {else}
+          暂无WIFI
+        {/eq}
+     
+     </p>
      <div class="Button">
       <a href="#ydwm"><span class="DCbutton">查看菜谱点菜</span></a>
      </div>
@@ -86,6 +103,8 @@ Author URI: http://www.deathghost.cn
      </div>
    </div>
   </div>
+
+
   <div class="shopcontent">
   <div class="title2 cf">
     <ul class="title-list fr cf ">
@@ -101,59 +120,31 @@ Author URI: http://www.deathghost.cn
     <!--case1-->
     <div class="menutab show">
      <ul class="products">
-		<li>
-		 <a href="{:url('meal/detailsp')}" target="_blank" title="酸辣土豆丝">
-         <img src="__UPLOAD_PATH__/01.jpg" class="foodsimgsize">
+		
+    {neq name="tese" value="false"}
+     {volist name="tese" id="v"}
+    <li>
+		 <a href="{:url('meal/detailsp')}?id={$v.m_id}" target="_blank" title="{$v.m_name}">
+         <img src="{$v.m_pic}" class="foodsimgsize">
          </a>
-          <a href="#" class="item">
-		 <div>
-		  <p>酸辣土豆丝</p>
-		  <p class="AButton">拖至购物车:￥50.00</p>
-		 </div>
+          <!-- <a href="#" class="item"> -->
+		  <p>{$v.m_name}</p>
 		 </a>
 		</li>
-		<li>
-		 <a href="{:url('meal/detailsp')}" target="_blank" title="酸辣土豆丝">
-         <img src="__UPLOAD_PATH__/02.jpg" class="foodsimgsize">
-         </a>
-          <a href="#" class="item">
-		 <div>
-		  <p>酸辣土豆丝</p>
-		  <p class="AButton">拖至购物车:￥50.00</p>
-		 </div>
-		 </a>
-		</li>
-		<li>
-		 <a href="{:url('meal/detailsp')}" target="_blank" title="酸辣土豆丝">
-         <img src="__UPLOAD_PATH__/04.jpg" class="foodsimgsize">
-         </a>
-          <a href="#" class="item">
-		 <div>
-		  <p>酸辣土豆丝</p>
-		  <p class="AButton">拖至购物车:￥50.00</p>
-		 </div>
-		 </a>
-		</li>
-		<li>
-		 <a href="{:url('meal/detailsp')}" target="_blank" title="酸辣土豆丝">
-         <img src="__UPLOAD_PATH__/03.jpg" class="foodsimgsize">
-         </a>
-          <a href="#" class="item">
-		 <div>
-		  <p>酸辣土豆丝</p>
-		  <p class="AButton">拖至购物车:￥50.00</p>
-		 </div>
-		 </a>
-		</li>
+    {/volist}
+    {/neq}
+    
+		
        <div class="TurnPage">
-     <a href="#">
+     <!-- <a href="#">
       <span class="Prev"><i></i>首页</span>
      </a>
      <a href="#"><span class="PNumber">1</span></a>
      <a href="#"><span class="PNumber">2</span></a>
      <a href="#">
      <span class="Next">最后一页<i></i></span>
-     </a>
+     </a> -->
+     {$tese->render()}
     </div>
 	 </ul>
     </div>

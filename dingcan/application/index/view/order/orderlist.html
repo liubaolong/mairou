@@ -1,16 +1,16 @@
-
+<link href="__STATIC_PATH__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <!--Start content-->
 <section class="Psection MT20">
 <nav class="U-nav Font14 FontW">
   <ul>
- <li><i></i><a href="{:url('user/user')}">用户中心首页</a></li>
+   <li><i></i><a href="{:url('user/user')}">用户中心首页</a></li>
    <li><i></i><a href="{:url('order/orderlist')}">我的订单</a></li>
    <li><i></i><a href="{:url('user/address')}">收货地址</a></li>
    <li><i></i><a href="{:url('message/message')}">我的留言</a></li>
    <li><i></i><a href="{:url('user/coupon')}">我的优惠券</a></li>
    <li><i></i><a href="{:url('user/favorites')}">我的收藏</a></li>
    <li><i></i><a href="{:url('user/account')}">账户管理</a></li>
-   <li><i></i><a href="#">安全退出</a></li>
+   <li><i></i><a href="{:url('index/auth/loginout')}">安全退出</a></li>
   </ul>
  </nav>
  <article class="U-article Overflow">
@@ -23,26 +23,53 @@
      <th class="Font14 FontW">订单总金额</th>
      <th class="Font14 FontW">订单状态</th>
      <th class="Font14 FontW">操作</th>
+     {neq name="result" value="false"}
+     {volist name="result" id="v"}
      <tr>
-      <td class="FontW"><a href="{:url('user/user')}">201409225367</a></td>
-      <td>2014-09-22 19:21:38</td>
-      <td>DeathGhost</td>
-      <td>￥328.00</td>
-      <td>未付款,未发货</td>
-      <td><a href="#">取消订单</a> | <a href="#">付款</a></td>
+      <td class="FontW"><a href="{:url('index/order/order')}?o_orderno={$v.o_orderno}">{$v.o_orderno}</a></td>
+      <td><?php echo date('Y-m-d H:i:s', $v['o_addtime']);?></td>
+      <td>{$v.a_user}</td>
+      <td>￥{$v.allprice}.00</td>
+      <td>
+        {switch name="v.o_status"}
+        {case value="0"}未付款,未发货{/case}
+        {case value="1"}已付款,未发货{/case}
+        {case value="2"}已发货,未签收{/case}
+        {case value="3"}已签收{/case}
+        {/switch}
+      </td>
+      <td><a  onclick="return cancelorder(this)" value="{$v.o_orderno}">
+      {eq name="v.o_status" value="0"}
+      取消订单</a> |
+      {/eq}
+
+       <a href="#">付款</a></td>
      </tr>
+     {/volist}
+     {/neq}
     </table>
-    <div class="TurnPage">
-         <a href="#">
-          <span class="Prev"><i></i>首页</span>
-         </a>
-         <a href="#"><span class="PNumber">1</span></a>
-         <a href="#"><span class="PNumber">2</span></a>
-         <a href="#">
-         <span class="Next">最后一页<i></i></span>
-        </a>
-       </div>
+    {$result->render()}
   </section>
  </article>
 </section>
 <!--End content-->
+
+<script type="text/javascript">
+  
+  function cancelorder(obj)
+  { 
+    if (!confirm('确认取消订单？')) {
+      return false;
+    } else {
+      // 11;
+      $.post("{:url('index/order/cancelorder')}", {o_orderno:$(obj).attr('value')}, function(data){
+          if (data) {
+            $(obj).parent().parent().remove();
+            alert('取消订单成功');
+          } else {
+             alert('取消订单失败');
+          }
+      }, 'json');
+    }
+  }
+</script>

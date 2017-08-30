@@ -2,18 +2,27 @@
 namespace app\index\controller;
 use think\Controller;
 use app\index\model\Shop as ShopModel;
+use app\index\model\Meal as MealModel;
 use think\Request;
 class Shop extends Controller
 {
 	protected $shop;
+	protected $meal;
 	public function  _initialize()
 	{
 		parent:: _initialize();
 		$this->shop = new ShopModel;
+		$this->meal = new MealModel;
 	}
-	//店铺
-	public function Shop()
+	//店铺展示（包括特色菜）
+	public function shop()
 	{
+		$result = $this->shop->shops(input('s_id'));
+		$this->assign('result', $result);
+		//特色菜查询
+		$tese = $this->meal->tese(input('s_id'));
+		$this->assign('tese', $tese);
+		// dump($tese);die;
 		return $this->fetch();
 	}
 	//搜索店铺

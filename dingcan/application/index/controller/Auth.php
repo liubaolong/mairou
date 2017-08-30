@@ -12,7 +12,6 @@ class Auth extends Controller
 	protected $user;
 	public function _initialize()
 	{
-		
 		parent::_initialize();
 		$this->user = new UserModel();
 	}

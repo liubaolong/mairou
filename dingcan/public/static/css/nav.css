@@ -1,0 +1,58 @@
+﻿html,body,div,ul,li,a{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	font-size: 14px;
+	font-family: "微软雅黑";
+	/* background: #333; */
+}
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.header{
+	height: 50px;
+	background: #128a28;
+}
+.header .nav{
+	width: 1000px;
+	height: 50px;
+	line-height: 50px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 111;
+}
+.header .nav li{
+	float: left;
+	width: 14.28%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+.header .nav li a{
+	color: #fff;
+}
+.header .nav li .second-nav{
+	width: 150px;
+	display: none;
+	position: relative;
+}
+.header .nav li .second-nav li{
+	position: relative;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background: #128A28;
+	border-top: 1px solid #097d1f;
+}
+.header .nav li .second-nav li .third-nav{
+	/*position: absolute;*/
+	width: 150px;
+	height: 200px;
+	display: none;
+	margin-left: 100%;
+	margin-top: -40px;
+}

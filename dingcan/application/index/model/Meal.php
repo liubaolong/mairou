@@ -21,5 +21,15 @@ class Meal extends Model
 						->select();
 		return $result;
 	}
+	//查询该店铺所有菜品（包括特色菜）
+	public function tese($data)
+	{
+		$result = $this->where('sid', $data)->paginate(4);
+		if ($result) {
+			return $result;
+		} else {
+			return false;
+		}
+	}
 
 }

@@ -17,9 +17,17 @@ class Order extends Controller
 		$this->address = new AddressModel();
 		$this->order = new OrderModel();
 	}
-	//我的订单
+	//我的订单-地址详情
 	public function order()
 	{
+		$data = [
+			'o_orderno' => input('o_orderno')
+		];
+		$result = $this->order->orderdetail($data);
+		$this->assign('result',$result);
+		//地址详情
+		$adsres = $this->address->adstetail($data);
+		$this->assign('adsres', $adsres);
 		return $this->fetch();
 	}
 	//确认订单
@@ -73,6 +81,11 @@ class Order extends Controller
 		if (!session('?uid')) {
 			$this->success('请先登录', 'auth/login');
 		}
+		$data = [
+			'o_uid' => session('uid')
+		];
+		$result =  $this->order->orderlist($data);
+		$this->assign('result', $result);
 		return $this->fetch();
 	}
 	//订单提交成功
@@ -129,7 +142,11 @@ class Order extends Controller
 	
 		return $this->fetch();
 	}
-	
+	//订单收货地址
+	public function orderadds()
+	{
+
+	}	
 
 	//获取所选地址
 	public function addss()
@@ -137,5 +154,20 @@ class Order extends Controller
 		// dump(input('a_ids'));die;
 
 		return json(input('a_ids')[0]);
+	}
+	//取消订单
+	public function cancelorder()
+	{
+		// dump(input('o_orderno'));
+		$data = [
+			'o_orderno' => input('o_orderno')
+		];
+		$result = $this->order->delorder($data);
+		// dump($result);die;
+		if ($result) {
+			return json(1);
+		} else {
+			return json(0);
+		}
 	}
 }

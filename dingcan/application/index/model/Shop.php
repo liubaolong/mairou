@@ -85,4 +85,15 @@ class shop extends Model
 		return Db::name('shop')->insert($arr); 
 
 	}
+
+	//店铺具体信息
+	public function shops($data)
+	{
+		$result = $this->where('s_id', $data)->find();
+		if ($result) {
+			return $result;
+		} else {
+			return false;
+		}
+	}
 }
