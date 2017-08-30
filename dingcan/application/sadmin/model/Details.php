@@ -30,7 +30,7 @@ class Details extends Model
 		}
 		$file  = request()->file('file'); 
 		$info  = $file->move(ROOT_PATH .	'public/static' . DS . 'dishes'); 
-		$path = "/static/upload\\". $info->getSaveName();
+		$path = "/static/dishes\\". $info->getSaveName();
 		$path  = str_replace('\\','/',$path);
 		$data['m_pic'] = $path;
 		$arr = [

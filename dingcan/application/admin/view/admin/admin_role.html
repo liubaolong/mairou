@@ -1,14 +1,16 @@
-﻿<title>角色管理 - 管理员管理</title>
+﻿<link href="__STATIC_PATH__/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<title>角色管理 - 管理员管理</title>
 
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
 <!--/_menu 作为公共模版分离出去-->
 
-<section class="Hui-article-box">
+<section class="Hui-article-box" >
 	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员管理 <span class="c-gray en">&gt;</span> 角色管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 	<div class="Hui-article">
 		<article class="cl pd-20">
-			<div class="cl pd-5 bg-1 bk-gray"> <span class="l"> <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" href="javascript:;" onclick="admin_role_add('添加角色','{:url('admin/admin/admin_role_add')}','800')"><i class="Hui-iconfont">&#xe600;</i> 添加角色</a> </span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
-			<div class="mt-10">
+
+			<div class="cl pd-5 bg-1 bk-gray"> <span class="l"> <a class="btn btn-primary radius" href="javascript:;" onclick="admin_role_add()"><i class="Hui-iconfont">&#xe600;</i> 添加角色</a></span><span><a href="" class="btn btn-primary radius">返回</a></div></span>
+			<div class="mt-10" style="display:block;">
 			<table class="table table-border table-bordered table-hover table-bg">
 				<thead>
 					<tr>
@@ -18,71 +20,64 @@
 						<th width="25"><input type="checkbox" value="" name=""></th>
 						<th width="40">ID</th>
 						<th width="200">角色名</th>
-						<th>用户列表</th>
+						<th>添加时间</th>
 						<th width="300">描述</th>
 						<th width="70">操作</th>
 					</tr>
 				</thead>
 				<tbody>
+				{foreach $res as $key=>$value}
 					<tr class="text-c">
 						<td><input type="checkbox" value="" name=""></td>
-						<td>1</td>
-						<td>超级管理员</td>
-						<td><a href="#">admin</a></td>
-						<td>拥有至高无上的权利</td>
-						<td class="f-14"><a title="编辑" href="javascript:;" onclick="admin_role_edit('角色编辑','{:url('admin_role_add')}','1')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_role_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+						<td>{$value['j_id']}</td>
+						<td>{$value['j_name']}</td>
+						<td><a href="#"><?php echo date("Y-m-d H:i:s",$value['j_addtime'])?></a></td>
+						<td>{$value['j_info']}</td>
+						<td class="f-14"><a title="编辑" href="javascript:;" onclick="admin_role_edit()" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_role_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 					</tr>
-					<tr class="text-c">
-						<td><input type="checkbox" value="" name=""></td>
-						<td>2</td>
-						<td>总编</td>
-						<td><a href="#">张三</a></td>
-						<td>具有添加、审核、发布、删除内容的权限</td>
-						<td class="f-14"><a title="编辑" href="javascript:;" onclick="admin_role_edit('角色编辑','admin-role-add.html','2')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_role_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-					</tr>
-					<tr class="text-c">
-						<td><input type="checkbox" value="" name=""></td>
-						<td>3</td>
-						<td>栏目主辑</td>
-						<td><a href="#">李四</a>，<a href="#">王五</a></td>
-						<td>只对所在栏目具有添加、审核、发布、删除内容的权限</td>
-						<td class="f-14"><a title="编辑" href="javascript:;" onclick="admin_role_edit('角色编辑','admin-role-add.html','3')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_role_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-					</tr>
-					<tr class="text-c">
-						<td><input type="checkbox" value="" name=""></td>
-						<td>4</td>
-						<td>栏目编辑</td>
-						<td><a href="#">赵六</a>，<a href="#">钱七</a></td>
-						<td>只对所在栏目具有添加、删除草稿等权利。</td>
-						<td class="f-14"><a title="编辑" href="javascript:;" onclick="admin_role_edit('角色编辑','admin-role-add.html','4')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_role_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
-					</tr>
+				{/foreach}
 				</tbody>
 			</table>
 			</div>
-		</article>
-	</div>
+			<!-- 角色添加 -->
+			<div style="display:none;margin-left:400px;" id="attice_add">
+					<table style="height:200px;text-align:center;width:250px;font-size:20px;">
+						<tr><td>角色：</td><td><input type="text" name="role" style="width:200px;height:30px;" id="rolename"></td></tr>
+						<tr><td>描述：</td><td><textarea name="info" cols="30" rows="3" style="resize:none;" id="roleinfo"></textarea></td></tr>
+						<tr><td colspan="2"><button>添加</button></td></tr>
+					</table>
+			</div>
+			<!-- 角色修改 -->
+			<div style="display:none;margin-left:400px;" id="attice_alert">
+					<table style="height:200px;text-align:center;width:250px;font-size:20px;">
+						<tr><td>角色：</td><td><input type="text" name="role" style="width:200px;height:30px;"></td></tr>
+						<tr><td>描述：</td><td><textarea name="info" cols="30" rows="3" style="resize:none;"></textarea></td></tr>
+						<tr><td colspan="2"><button>修改</button></td></tr>
+					</table>
+			</div>
 </section>
+
 
 
 <script type="text/javascript">
 /*管理员-角色-添加*/
-function admin_role_add(title,url,w,h){
-	layer_show(title,url,w,h);
+function admin_role_add(){
+	$(".mt-10").css('display','none');
+	$("#attice_add").css('display','block');
+	if($("#rolename").val() == ''&& $("#roleinfo").val()=='')
+	{
+		$.post("{:url('admin/admin/role_add')}",{role:$("#rolename").val(),info:$("#roleinfo").val()},function(data){
+		},'json')
+	} else {
+		alert('信息填写不完整');
+	}
 }
 /*管理员-角色-编辑*/
-function admin_role_edit(title,url,id,w,h){
-	layer_show(title,url,w,h);
+function admin_role_edit(){
+	$(".mt-10").css('display','none');
+	$("#attice_alert").css('display','block');
 }
-/*管理员-角色-删除*/
-function admin_role_del(obj,id){
-	layer.confirm('角色删除须谨慎，确认要删除吗？',function(index){
-		//此处请求后台程序，下方是成功后的前台处理……
-		
-		
-		$(obj).parents("tr").remove();
-		layer.msg('已删除!',{icon:1,time:1000});
-	});
-}
+
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>

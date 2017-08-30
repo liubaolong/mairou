@@ -59,14 +59,14 @@ class Sindex extends Model
 	{
 		$file  = request()->file('file'); 
 		$info  = $file->move(ROOT_PATH .	'public/static' . DS . 'slider'); 
-		$path = "/static/upload\\". $info->getSaveName();
+		$path = "/static/slider\\". $info->getSaveName();
 		$path  = str_replace('\\','/',$path);
 		$data = [
 			'ad_sid'=>session('sadmin')['s_id'],
 			'ad_name'=>$res['stitle'],
 			'ad_url'=>$path,
 			'ad_price'=>$res['time'] * 20,
-			'overtime'=>$res['time'] * 3600 * 24 + time(),
+			'ad_addtime'=>time(),
 			];
 		$result = Db::name('ad')->insert($data);
 		return $result;
