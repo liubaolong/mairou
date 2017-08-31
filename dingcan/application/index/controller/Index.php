@@ -239,20 +239,30 @@ class Index extends Controller
       // dump(input());die;
       // $res2 = $this->bk->twofl(input('b_id');
       if ($res2) {
-        return json(1);
+        return json(['errcode'=>1,'info'=>$res2]);
       } else {
-        return json(0);
+        return json(['errcode'=>0,'info'=>$res2]);
       }
     }
     //三级分类
     public function threefl()
     {
-
+      $res3 = $this->bk->threefl(input('b_id'));
+      if ($res3) {
+        return json(['errcode'=>1,'info'=>$res3]);
+      } else {
+        return json(['errcode'=>0,'info'=>$res3]);
+      }
     }
     //四级分类
     public function fourfl()
     {
-
+       $res4 = $this->bk->fourfl(input('b_id'));
+      if ($res4) {
+        return json(['errcode'=>1,'info'=>$res4]);
+      } else {
+        return json(['errcode'=>0,'info'=>$res4]);
+      }
     }
 
 
