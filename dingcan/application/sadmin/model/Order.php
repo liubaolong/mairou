@@ -27,7 +27,8 @@ class Order extends Model
 					->alias('o')
 					->join('f_meal m','o.o_mid = m.m_id')
 					->where('o.o_orderno',$data)
-					->paginate(5);
+					->select();
+
 		return $result;			
 	}
 	//订单删除
@@ -56,8 +57,8 @@ class Order extends Model
 	//发货
 	static public  function sendout($data)
 	{
-		$res = ['o_status'=>2,'o_kuaidino'=>$data['sid']];
-		$result = Db::name('order')->where('o_orderno',$data['id'])->update($res);
+		$res = ['o_status'=>2,'o_kuaidino'=>$data['kaudino'],'o_kuaidiname'=>$data['kuaidi']];
+		$result = Db::name('order')->where('o_orderno',$data['help'])->update($res);
 		return $result;
 	}
 }

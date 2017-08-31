@@ -42,8 +42,9 @@
           <td>{$v['a_newaddress']}</td>
           <td>{$v['o_orderno']}</td>
           <td><?php echo date('Y-m-d',$v['o_addtime'])?></td>
-          <td><input type="text" name="kaudi" id="number" value="{if($v['o_kuaidino']=='')}{else}{$v['o_kuaidino']}{/if}" maxlength="12" style="display:none" placeholder="快递号"><a href="javascript:;" onblur="fedex(this)" value="{$v['o_orderno']}">
-          {if $v['o_kuaidino']==''}发货{else}已发货{/if}</a></td>
+          <td> {if $v['o_kuaidino']==''}
+         未发货
+         {else}{$v['o_orderno']}{/if}</td>
           <td><a href="javascript:;" onclick="desdel(this)" value="{$v['o_orderno']}">删除</a></td>
         </tr>
 	{/volist}
@@ -68,13 +69,13 @@
     //快递号
     function fedex(obj)
     {
-      sid:$(obj).siblings().css('display','block');
-      $.post("{:url('order/send')}",{sid:$(obj).siblings().attr('value'),id:$(obj).attr('value')},function(data){
-            if (data.errcode == 1) {
-              $(obj).siblings().attr('value',$(obj).siblings().attr('value'));
-              alert('发货成功');
-            }
-      },'json');
+      $("#oform").css('display','block');
+      $(obj).css('display','none');
+    }
+    function upsubmit()
+    {
+      alert(1);
+      return false;
     }
 </script>
 </body>

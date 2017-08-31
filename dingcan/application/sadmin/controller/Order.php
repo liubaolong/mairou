@@ -45,12 +45,11 @@ class Order extends Auth
 	public function send()
 	{
 		$arr  = empty($_POST)?'':$_POST;
-		$info = OrderModel::sendout($arr);
-		if ($info) {
-			$data = ['errcode'=>1,'info'=>$info];
-		} else {
-			$data = ['errcode'=>0];
+		$res  = OrderModel::sendout($arr);
+		if ($res) {
+			$this->success('发货成功',url('sadmin/order/order'));
+		} else {	
+			$this->error('发货失败',url('sadmin/order/order'));
 		}
-		echo json_encode($data);
 	}
 }

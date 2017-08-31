@@ -40,13 +40,18 @@
           <td>{$v['allprice']}</td>
         </tr>
 	{/volist}
-  <tr>
-        <td colspan="9">{$list->render()}</td>
-  </tr>
-
 
     </table>
   </div>
 </form>
+  {if($list[0]['o_kuaidiname']=='')}
+  <form action="{:url('sadmin/order/send')}" method="post">
+  <input type="hidden" name="help" value="{$list[0]['o_orderno']}">
+  快&nbsp;递：<input type="text" name="kuaidi" placeholder="快递">
+  快递号：<input type="text" name="kaudino" placeholder="快递号">
+  <input type="submit" value="发货"> 
+  </form>
+  {else}
+  {/if}
 </body>
 </html>
