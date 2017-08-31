@@ -34,7 +34,7 @@ class Admin extends Model
 	{
 		$arr = [
 			'rb_username'=>$data['adminName'],
-			'rb_password'=>$data['password'],
+			'rb_password'=>md5($data['password']),
 			'rb_sex'=>$data['sex'],
 			'rb_phone'=>$data['phone'],
 			'rb_info'=>$data['info'],
@@ -105,7 +105,8 @@ class Admin extends Model
 	//角色查询
 	static public function roleadmin()
 	{
-		$result = Db::table('f_jues')->where('delete_time',null)->select();
+		$result[0] = Db::table('f_jues')->where('delete_time',null)->select();
+		$result[1] = Db::table('f_rules')->select();
 		return $result;
 	}
 	//角色添加
@@ -117,6 +118,77 @@ class Admin extends Model
 			'j_addtime'=>time(),
 			];
 		$result = Db::name('jues')->insert($data);
+		$res    = Db::name('jues')->where('j_name',$info['role'])->find();
+		$arr    = ['jr_rid'=>$info['power'],'jr_jid'=>$res['j_id']];
+		$rule   = Db::name('jrules')->insert($arr); 
+		return $result;
+	}
+	//角色详情
+	static public function messagerole($id)
+	{
+		$result = Db::name('jues')
+				->alias('j')
+				->join('f_jrules r','j.j_id = r.jr_jid')
+				->where('j.j_id',$id)
+				->find();
+		return $result;
+	}
+	//角色修改
+	static public function editrole($info)
+	{
+		$data = [
+			'j_name'=>$info['role'],
+			'j_info'=>$info['info'],
+			];
+		$result = Db::name('jues')->where('j_id',$info['id'])->update($data);
+		return $result;
+	}
+	//角色删除
+	static public function roledel($id)
+	{
+		$data = ['delete_time'=>time()];
+		$result = Db::name('jues')->where('j_id',$id)->update($data);
+		return $result;
+	}
+	//权限查询
+	static public function permissionadmin()
+	{
+		$result = Db::table('f_rules')->where('r_deletetime',null)->select();
+		return $result;
+	} 
+	//权限添加
+	static public function permissionadd($data)
+	{
+		$arr = [
+			'r_name'=>$data['r_name'],
+			'r_fields'=>$data['r_field'],
+			'r_addtime'=>time(),
+			];
+		$result = Db::name('rules')->insert($arr);
+		return $result;
+	}
+	//权限编辑
+	static public function permissionmessage($id)
+	{
+		$result = Db::name('rules')->where('r_id',$id)->find();
+		return $result;
+	}
+	//权限修改
+	static public function permissioneidt($info)
+	{
+		$data = [
+			'r_name'=>$info['r_name'],
+			'r_fields'=>$info['r_field'],
+			'r_addtime'=>time(),
+			];
+		$result = Db::name('rules')->where('r_id',$info['help'])->update($data);
+		return $result;
+	}
+	//权限删除
+	static public function permissiondel($id)
+	{
+		$data = ['r_deletetime'=>time()];
+		$result = Db::name('rules')->where('r_id',$id)->update($data);
 		return $result;
 	}
 }

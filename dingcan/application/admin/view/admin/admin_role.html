@@ -26,14 +26,14 @@
 					</tr>
 				</thead>
 				<tbody>
-				{foreach $res as $key=>$value}
+				{foreach $res[0] as $key=>$value}
 					<tr class="text-c">
 						<td><input type="checkbox" value="" name=""></td>
 						<td>{$value['j_id']}</td>
 						<td>{$value['j_name']}</td>
 						<td><a href="#"><?php echo date("Y-m-d H:i:s",$value['j_addtime'])?></a></td>
 						<td>{$value['j_info']}</td>
-						<td class="f-14"><a title="编辑" href="javascript:;" onclick="admin_role_edit()" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_role_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+						<td class="f-14"><a title="编辑" href="javascript:;" onclick="admin_role_edit(this,{$value['j_id']})" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_role_del(this,{$value['j_id']})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 					</tr>
 				{/foreach}
 				</tbody>
@@ -41,19 +41,36 @@
 			</div>
 			<!-- 角色添加 -->
 			<div style="display:none;margin-left:400px;" id="attice_add">
+				<form action="{:url('admin/admin/role_add')}" method="POST" onsubmit="return upsubmit()">
 					<table style="height:200px;text-align:center;width:250px;font-size:20px;">
+						<tr><td>权限：</td><td>
+						<select name="power">
+						{foreach $res[1] as $key=>$value}
+							<option value="{$value['r_id']}">{$value['r_name']}</option>
+						{/foreach}
+						</select></td></tr>
 						<tr><td>角色：</td><td><input type="text" name="role" style="width:200px;height:30px;" id="rolename"></td></tr>
 						<tr><td>描述：</td><td><textarea name="info" cols="30" rows="3" style="resize:none;" id="roleinfo"></textarea></td></tr>
 						<tr><td colspan="2"><button>添加</button></td></tr>
 					</table>
+				</form>
 			</div>
 			<!-- 角色修改 -->
 			<div style="display:none;margin-left:400px;" id="attice_alert">
+				<form action="{:url('admin/admin/role_edit')}" method="POST" onsubmit="return editsubmit()">
 					<table style="height:200px;text-align:center;width:250px;font-size:20px;">
-						<tr><td>角色：</td><td><input type="text" name="role" style="width:200px;height:30px;"></td></tr>
-						<tr><td>描述：</td><td><textarea name="info" cols="30" rows="3" style="resize:none;"></textarea></td></tr>
+					<input type="hidden" name="id" id="help">
+						<tr><td>权限：</td><td>
+						<select name="power" value="" >
+						{foreach $res[1] as $key=>$value}
+							<option value="{$value['r_id']}">{$value['r_name']} </option>
+						{/foreach}
+						</select></td></tr>
+						<tr><td>角色：</td><td><input type="text" name="role" id="editname" style="width:200px;height:30px;"></td></tr>
+						<tr><td>描述：</td><td><textarea name="info" cols="30" id="editinfo" rows="3" style="resize:none;"></textarea></td></tr>
 						<tr><td colspan="2"><button>修改</button></td></tr>
 					</table>
+				</form>
 			</div>
 </section>
 
@@ -64,20 +81,48 @@
 function admin_role_add(){
 	$(".mt-10").css('display','none');
 	$("#attice_add").css('display','block');
+}
+function upsubmit()
+{
 	if($("#rolename").val() == ''&& $("#roleinfo").val()=='')
 	{
-		$.post("{:url('admin/admin/role_add')}",{role:$("#rolename").val(),info:$("#roleinfo").val()},function(data){
-		},'json')
-	} else {
 		alert('信息填写不完整');
-	}
+		return false;
+	} 
+	return true;
 }
 /*管理员-角色-编辑*/
-function admin_role_edit(){
+function admin_role_edit(obj,id){
+	var id = id; 
 	$(".mt-10").css('display','none');
 	$("#attice_alert").css('display','block');
-}
+	$.post("{:url('admin/admin/role_message')}",{id:id},function(data){
+		if (data.errcode == 1){
+			$("#editname").attr('value',data.info['j_name']);
+			$("#editinfo").html(data.info['j_info']);
+			$("#help").attr('value',data.info['j_id']);
+			$("#power").attr('sid',data.info['jr_jid']);
+		}
+	},'json')
 
+}
+function editsubmit()
+{
+	if ($("#r_addname").attr('value')=='' && $("#r_addfield").attr('value')=='') {
+	alert('信息填写不完整');
+	return false;
+	}
+	return true;
+}
+//角色删除
+function admin_role_del(obj,id)
+{
+	$.post("{:url('admin/admin/delrole')}",{cid:id},function(data){
+		if (data.errcode==1) {
+			$(obj).parent().parent().remove();
+		}
+	},'json') 
+}
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>

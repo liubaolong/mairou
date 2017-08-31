@@ -85,12 +85,7 @@
 			$this->assign('res',$result);
 			return $this->fetch();
 		}
-		//权限管理
-		public function admin_permission()
-		{
-			return $this->fetch();
-		}
-		//添加权限
+		//角色管理
 		public function admin_role()
 		{ 
 			$res = AdminModel::roleadmin();
@@ -103,15 +98,102 @@
 			$info = empty($_POST)?'':$_POST;
 			$res  = AdminModel::addrole($info);
 			if ($res) {
+				$this->success('添加成功',url('admin/admin/admin_role'));
+			} else {
+				$this->error('添加失败',url('admin/admin/admin_role'));
+			}
+		}
+		//角色详情
+		public function role_message()
+		{
+			$id  = empty($_POST['id'])?'':$_POST['id'];
+			$res = AdminModel::messagerole($id);
+			if ($res) {
 				$data = ['errcode'=>1,'info'=>$res];
-			} else {	
+			} else {
 				$data = ['errcode'=>0];
 			}
 			echo json_encode($data);
 		}
+		//角色编辑
+		public function role_edit()
+		{	
+			$info = empty($_POST)?'':$_POST;
+			$res  = AdminModel::editrole($info);
+			 if ($res) {
+				$this->success('修改成功',url('admin/admin/admin_role'));
+			} else {
+				$this->error('修改失败',url('admin/admin/admin_role'));
+			}
+		} 
 		//角色权限
 		public function admin_role_add()
 		{
 			return $this->fetch();
+		}
+		//角色删除
+		public function delrole()
+		{
+			$id  = $_POST['cid'];
+			$res = AdminModel::roledel($id);
+			if ($res) {
+				$data = ['errcode'=>1,'info'=>$res];
+			} else {
+				$data = ['errcode'=>0];
+			}
+			echo json_encode($data);
+		}	
+		//权限管理
+		public function admin_permission()
+		{
+			$res = AdminModel::permissionadmin();
+			$this->assign('res',$res);
+			return $this->fetch();
+		}	
+		 //权限添加
+		public function add_permission()
+		{	
+			$info = empty($_POST)?'':$_POST;
+			$res  = AdminModel::permissionadd($info);
+			if ($res) {
+				$this->success('添加成功',url('admin/admin/admin_permission'));
+			} else {
+				$this->error('添加失败',url('admin/admin/admin_permission'));
+			}
+		}
+		//权限详情
+		public function message_permission()
+		{
+			$id  = empty($_POST['cid'])?'':$_POST['cid'];
+			$res = AdminModel::permissionmessage($id);
+			if ($res) {
+				$data = ['errcode'=>1,'info'=>$res];
+			} else {
+				$data = ['errcode'=>0];
+			}
+			echo json_encode($data);
+		}
+		//权限修改
+		public function edit_permission()
+		{
+			$info = $_POST;
+			$res = AdminModel::permissioneidt($info);
+			if ($res) {
+				$this->success('修改成功',url('admin/admin/admin_permission'));
+			} else {
+				$this->error('修改失败',url('admin/admin/admin_permission'));
+			}
+		}
+		//权限删除
+		public function del_permission()
+		{
+			$id = $_POST['cid'];
+			$res= AdminModel::permissiondel($id);
+			if ($res) {
+				$data = ['errcode'=>1,'info'=>$res];
+			} else {
+				$data = ['errcode'=>0];
+			}
+			echo json_encode($data);
 		}
 	}
