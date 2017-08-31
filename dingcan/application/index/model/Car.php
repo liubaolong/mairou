@@ -89,7 +89,7 @@
  					 // ->where('car_mid', $data['car_mid'])
  					 ->where('car_id', 'in', $data)
  					 ->delete();
- 			dump($result);die;
+ 			// dump($result);die;
  			if ($result) {
  				return $result;
  			} else {

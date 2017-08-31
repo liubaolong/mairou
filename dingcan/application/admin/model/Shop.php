@@ -45,4 +45,19 @@
 				return false;
 			}
 		}
+
+		//商家删除
+		public function shopdel($data)
+		{
+			if (!is_array($data)) {
+				$result = $this->where('s_id',$data)->update(['s_status'=>1]);
+			} else {
+				$result = $this->where('s_id',$data['s_id'])->update(['s_status'=>2]);	
+			}
+			if ($result) {
+				return $result;
+			} else {
+				return false;
+			}
+		}
 	}

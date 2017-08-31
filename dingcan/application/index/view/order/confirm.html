@@ -150,9 +150,10 @@
 </section>
 
 <script type="text/javascript">
+ var you = null; 
 function youhui(obj)
 {
-  var you = null; 
+ 
   if ($(obj).attr('value') == 0) {
     
     $(obj).attr('value', {$u_score});
@@ -162,7 +163,10 @@ function youhui(obj)
     $(obj).attr('value', 0);
     you = you = $(obj).attr('value');
   }
-  var heji = {$allprice} + {$song} - you;
+  
+  
+}
+var heji = {$allprice} + {$song} - you;
   //不为负数
   if (heji <= 0) {
     heji = 0;
@@ -170,9 +174,6 @@ function youhui(obj)
   $('#heji').text(heji);
   $('#allprice').attr('value', heji);
   $('#o_you').attr('value', you);
-  
-}
-
   function shouads(obj)
   {
     var a_id = $(obj).attr('value');
