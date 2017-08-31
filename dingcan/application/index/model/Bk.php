@@ -38,12 +38,22 @@
 	    //三级分类
 	    public function threefl()
 	    {
-
+	    	$res3 = $this->where('parentid',$data)->select();
+	    	if ($res3) {
+	    		return $res3;
+	    	} else {
+	    		return false;
+	    	}
 	    }
 	    //四级分类
 	    public function fourfl()
 	    {
-
+	    	$res4 = $this->where('parentid',$data)->select();
+	    	if ($res4) {
+	    		return $res4;
+	    	} else {
+	    		return false;
+	    	}
 	    }
 
  	}

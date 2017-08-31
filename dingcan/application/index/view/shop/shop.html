@@ -138,7 +138,6 @@ Author URI: http://www.deathghost.cn
       <li class="on">菜谱</li>
       <li>累计评论（5）</li>
       <li>商家详情</li>
-      <li>店铺留言</li>
       <p><b></b></p>
     </ul>
   </div>
@@ -198,38 +197,15 @@ Author URI: http://www.deathghost.cn
       <img src="__UPLOAD_PATH__/testimg.jpg"><!--此处占位图调用动态地图后将其删除即可-->
      </div>
      <div class="shopdetailsT">
-      <p><span>店铺：外婆家</span></p>
-      <p><span>地址：</span>陕西省西安市雁塔区丈八北路***号</p>
-      <p><span>电话：</span>029-88888888</p>
-      <p><span>乘车路线：</span>300路、115路、14路、800路到西辛庄站下车往东100米</p>
-      <p><span>店铺介绍：</span>***于2005年3月28日开业，立于西安市碑林区***于2005年3月28日开业，立于西安市碑林区***于2005年3月28日开业，立于西安市碑林区***于2005年3月28日开业，立于西安市碑林区***</p>
+      <p><span>店铺：{$result['s_name']}</span></p>
+      <p><span>地址：</span>{$result['s_qu']}{$result['s_address']}</p>
+      <p><span>电话：</span>{$result['s_phone']}</p>
+      <p><span>乘车路线：</span><input type="text" name="che" style="border:1px solid black;height:30px;" id="che"><button onclick="checkway({$result['id']})">查询</button></p>
+      <p><span>店铺介绍：</span>{$result['s_info']}</p>
      </div>
     </div>
     </div>
     <!--case5-->
-    <div class="menutab">
-     <span class="Ask"><i>DeathGhost</i>:这里是测试问答？</span>
-     <span class="Answer"><i>管理员回复</i>：这里是测试回答！</span>
-
-     <div class="TurnPage">
-     <a href="#">
-      <span class="Prev"><i></i>首页</span>
-     </a>
-     <a href="#"><span class="PNumber">1</span></a>
-     <a href="#"><span class="PNumber">2</span></a>
-     <a href="#">
-     <span class="Next">最后一页<i></i></span>
-     </a>
-    </div>
-    
-     <form class="A-Message" action="#"> 
-      <p><i>姓名：</i><input name="usr_name" type="text" autofocus placeholder="张三" required></p>
-      <p><i>手机：</i><input name="" type="text" placeholder="15825518***" pattern="[0-9]{11}" required></p>
-      <p><i>邮件：</i><input type="email" name="email" autocomplete="off" placeholder="admin@admin.com" required/></p>
-      <p><i>问题补充：</i><textarea name="" cols="" rows="" required placeholder="详细说明您的问题..."></textarea></p>
-      <p><input type="submit" class="Abutt" /></p>
-     </form>
-    </div>
   </div>
 </div>
  </article>
@@ -275,11 +251,14 @@ Author URI: http://www.deathghost.cn
     <span>[ <a href="#">清空历史记录</a> ]</span>
    </ul>
   </div>
+  <div style="width:250px;height:300px;margin-top:200px;display:none" id="way">
+  </div>
  </aside>
  
 </section>
 <!--End content-->
 <script type="text/javascript">
+
     function collect()
     {
       var s_id = $('#collect').attr('value');
@@ -318,4 +297,16 @@ Author URI: http://www.deathghost.cn
       
     }
 
+
+
+    function checkway(id)
+    {
+      $.post("{:url('index/shop/path')}",{che:$("#che").val(),id:id},function(data){
+          if (data.code == 1) {
+            $("#way").html(data.result);
+            $("#way").css('display','block');
+          }
+      },'json');
+    }
 </script>
+

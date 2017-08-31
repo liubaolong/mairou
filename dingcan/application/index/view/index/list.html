@@ -30,7 +30,7 @@
 <!--Start content-->
 <section class="Psection">
 <section class="fslist_navtree">
-  <ul class="select">
+  <ul class="select" id="fu">
     <li class="select-list">
       <dl id="select1">
         <dt>一级分类：</dt>
@@ -41,41 +41,36 @@
                 {/foreach}
                 
       </dl>
-    </li>
-    <li class="select-list" style="display:none;">
+    <!-- </li class="select-list"> -->
+    <!-- <li class="select-list">
       <dl id="select2">
-        <dt>二级分类：</dt>
+        <dt>一级分类：</dt>
         <dd class="select-all selected"><a href="javascript:">全部</a></dd>
-       {foreach $res2 as $k2=>$v2}
-                <dd><a href="javascript:" value="{$k2}" id="two" onclick="one(this)">{$v2}</a></dd>
-        {/foreach}
+               
+                
       </dl>
-    </li>
-    <li class="select-list" style="display:none;">
-      <dl id="select3">
-        <dt>三级分类：</dt>
-        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
-        {foreach $res3 as $k3=>$v3}
-                <dd><a href="javascript:" value="{$k3}" id="three" onclick="one(this)">{$v3}</a></dd>
-        {/foreach}
-      </dl>
-    </li>
-        <li class="select-list" style="display:none;">
-      <dl id="select4">
-        <dt>四级分类：</dt>
-        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
-         {foreach $res4 as $k4=>$v4}
-                <dd><a href="javascript:" value="{$k4}" id="one(this)">{$v4}</a></dd>
-        {/foreach}
-      </dl>
+    </li> -->
+    <li id="twoli" class="select-list">
+      
+
     </li>
 
     
-    <li class="select-result">
+    <li class="select-list" id="threeli">
+      
+    </li>
+
+    <li class="select-list"  id="fourli">
+      
+    </li>
+
+    <li id='selectfl'></li>
+    
+    <!-- <li class="select-result">
       <dl>
        <dd class="select-no">已选择：</dd>
       </dl>
-    </li>
+    </li> -->
   </ul>
  </section>
 
@@ -179,7 +174,7 @@
 </section>
 <!--End content-->
 
-<script>
+<script type="text/javascript">
   // var one = $('#one').attr('value');
   // alert(one);
   function one(obj)
@@ -187,23 +182,98 @@
     // alert($(obj).attr('value'));
     var b_id = $(obj).attr('value');
     $.post("{:url('index/index/twofl')}", {b_id:b_id}, function(data){
-      if (data) {
+      if (data.errcode) {
         // alert(data);
+        
+        var twoinfo = '';
+        // twoinfo += '<li class="select-list"  id="twoli">'+
+        // twoinfo = '<li class="select-list" style="display:none" "id="two">'+
+        twoinfo +=       '<dl ><dt>二级分类：</dt><dd class="selected"></dd>';
+              for(i=0;i<data.info.length;i++){
+                twoinfo+=  '<dd><a href="javascript:;" value="'+ data.info[i]['b_id']+'" onclick="two(this)">'+data.info[i]['b_name']+'</a></dd>';
+              }
+               twoinfo += '</dl>' ;
+          // $('#two').attr('value',twoinfo);
+            
+        $('#twoli').css('display','inline-block');
+        $('#twoli').html(twoinfo);
+        // $('#select2').append(twoinfo);   
+      } else {
+        alert(data);
+        // $('#twoli').css('display','none');
+      }
+    }, 'json');
+  }
+  //三级
+  function two(obj)
+  {
+    var b_id = $(obj).attr('value');
+    $.post("{:url('index/index/twofl')}", {b_id:b_id}, function(data){
+      if (data.errcode) {
+        // alert(data);
+        
+        var twoinfo = '';
+        twoinfo +=       '<dl ><dt>三级分类：</dt><dd class="selected"></dd>';
+              for(i=0;i<data.info.length;i++){
+                twoinfo+=  '<dd><a href="javascript:;" value="'+ data.info[i]['b_id']+'" onclick="three(this)">'+data.info[i]['b_name']+'</a></dd>';
+              }
+               twoinfo += '</dl>' ;
+            
+        $('#twoli').css('display','inline-block');
+        $('#twoli').html(twoinfo);
       } else {
         alert(data);
       }
     }, 'json');
-  }
-  function two(obj)
-  {
+    // alert(1);
     alert($(obj).attr('value'));
   }
-  function three(obj)
+   //四级
+   function three(obj)
   {
+    var b_id = $(obj).attr('value');
+    $.post("{:url('index/index/threefl')}", {b_id:b_id}, function(data){
+      if (data.errcode) {
+        // alert(data);
+        
+        var threeinfo = '';
+        threeinfo +=       '<dl ><dt>三级分类：</dt><dd class="selected"></dd>';
+              for(i=0;i<data.info.length;i++){
+                threeinfo+=  '<dd><a href="javascript:;" value="'+ data.info[i]['b_id']+'" onclick="four(this)">'+data.info[i]['b_name']+'</a></dd>';
+              }
+               threeinfo += '</dl>' ;
+            
+        $('#threeinfo').css('display','inline-block');
+        $('#threeinfo').html(threeinfo);
+      } else {
+        alert(data);
+      }
+    }, 'json');
+    // alert(1);
     alert($(obj).attr('value'));
   }
+   //四级
   function four(obj)
   {
+    var b_id = $(obj).attr('value');
+    $.post("{:url('index/index/fourfl')}", {b_id:b_id}, function(data){
+      if (data.errcode) {
+        // alert(data);
+        
+        var fourinfo = '';
+        fourinfo +=       '<dl ><dt>三级分类：</dt><dd class="selected"></dd>';
+              for(i=0;i<data.info.length;i++){
+                fourinfo+=  '<dd><a href="javascript:;" value="'+ data.info[i]['b_id']+'" onclick="two(this)">'+data.info[i]['b_name']+'</a></dd>';
+              }
+               fourinfo += '</dl>' ;
+            
+        $('#fourinfo').css('display','inline-block');
+        $('#fourinfo').html(fourinfo);
+      } else {
+        alert(data);
+      }
+    }, 'json');
+    // alert(1);
     alert($(obj).attr('value'));
   }
 </script>
