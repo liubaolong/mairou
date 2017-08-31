@@ -3,14 +3,9 @@
 	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 管理员管理 <span class="c-gray en">&gt;</span> 权限管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 	<div class="Hui-article">
 		<article class="cl pd-20">
-			<div class="text-c">
-				<form class="Huiform" method="post" action="" target="_self">
-					<input type="text" class="input-text" style="width:250px" placeholder="权限名称" id="" name="">
-					<button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜权限节点</button>
-				</form>
-			</div>
-			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a href="javascript:;" onclick="admin_permission_add('添加权限节点','admin-permission-add.html','','310')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加权限节点</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>
-			<table class="table table-border table-bordered table-bg">
+			<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="admin_permission_add()" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加权限节点</a></span> <span class="r"><a href="" class="btn btn-primary radius">返回</a></span> </div>
+			<div style="display:block;" id="tbbody">
+			<table class="table table-border table-bordered table-bg" >
 				<thead>
 					<tr>
 						<th scope="col" colspan="7">权限节点</th>
@@ -24,15 +19,39 @@
 					</tr>
 				</thead>
 				<tbody>
+				{foreach $res as $key=>$value}
 					<tr class="text-c">
 						<td><input type="checkbox" value="1" name=""></td>
-						<td>1</td>
-						<td>栏目添加</td>
-						<td></td>
-						<td><a title="编辑" href="javascript:;" onclick="admin_permission_edit('角色编辑','admin-permission-add.html','1','','310')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_permission_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+						<td>{$value['r_id']}</td>
+						<td>{$value['r_name']}</td>
+						<td>{$value['r_fields']}</td>
+						<td><a title="编辑" href="javascript:;" onclick="admin_permission_edit(this,{$value['r_id']})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a title="删除" href="javascript:;" onclick="admin_permission_del(this,{$value['r_id']})" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 					</tr>
+				{/foreach}
 				</tbody>
 			</table>
+			<!--权限增加-->
+			</div>
+			<div id="permission_add" style="display:none;">
+				<form action="javascript:;" method="POST" onsubmit="return upsubmit()" id="addform">
+				<table style="text-align:center;width:300px;margin:auto;">
+					<tr><td>权限名称：</td><td><input type="text" name="r_name" id="r_addname" onblur="checkadd()" style="width:200px;height:30px;"></td></tr>
+					<tr><td>权限字段：</td><td><input type="text" name="r_field" id="r_addfield" onblur="checkadd()" style="width:200px;height:30px;"></td></tr>
+					<tr><td colspan="2"><input type="submit" value="提交"></td></tr>
+				</table>
+				</form>
+			</div>
+			<!--权限编辑-->
+			<div id="permission_eidt" style="display:none;">
+				<form action="javascript:;" method="POST"  id="editform" onsubmit="return editsubmit()">
+				<table style="text-align:center;width:300px;margin:auto;">
+				<input type="hidden" value="" id="help" name="help">
+					<tr><td>权限名称：</td><td><input type="text" name="r_name" id="r_editname" style="width:200px;height:30px;"></td></tr>
+					<tr><td>权限字段：</td><td><input type="text" name="r_field" id="r_editfield" style="width:200px;height:30px;"</td></tr>
+					<tr><td colspan="2"><input type="submit" value="提交"></td></tr>
+				</table>
+				</form>
+			</div>
 		</article>
 	</div>
 </section>
@@ -47,19 +66,59 @@
 	h		弹出层高度（缺省调默认值）
 */
 /*管理员-权限-添加*/
-function admin_permission_add(title,url,w,h){
-	layer_show(title,url,w,h);
+function admin_permission_add(){
+	$("#tbbody").css('display','none');
+	$("#permission_add").css('display','block');
+}
+function checkadd()
+{
+	if ($("#r_addname").val()=='' && $("#r_addfield").val()=='') {
+		alert('信息填写不完整');
+		return false;
+	} else {
+		$("#addform").attr('action',"{:url('admin/admin/add_permission')}");
+		return true;
+	}
+}
+function upsubmit()
+{
+	if (checkadd()) {
+		return true;
+	}
+	return false;
 }
 /*管理员-权限-编辑*/
-function admin_permission_edit(title,url,id,w,h){
-	layer_show(title,url,w,h);
+function admin_permission_edit(obj,id){	
+
+	var id = id;
+	$("#tbbody").css('display','none');
+	$("#permission_eidt").css('display','block');
+	$.post("{:url('admin/admin/message_permission')}",{cid:id},function(data){
+		if (data.errcode == 1) {
+			$("#r_editname").attr('value',data.info['r_name']);
+			$("#r_editfield").attr('value',data.info['r_fields']);
+			$("#help").attr('value',data.info['r_id']);
+			$("#editform").attr('action',"{:url('admin/admin/edit_permission')}");
+		}
+	},'json')
+}
+//权限信息修改
+function editsubmit()
+{
+	if ($("#r_addname").attr('value')=='' && $("#r_addfield").attr('value')=='') {
+	alert('信息填写不完整');
+	return false;
+	}
+	return true;
+}
+//权限删除
+function admin_permission_del(obj,id)
+{
+	$.post("{:url('admin/admin/del_permission')}",{cid:id},function(data){
+		if (data.errcode==1) {
+			$(obj).parent().parent().remove();
+		}
+	},'json')
 }
 
-/*管理员-权限-删除*/
-function admin_permission_del(obj,id){
-	layer.confirm('角色删除须谨慎，确认要删除吗？',function(index){
-		$(obj).parents("tr").remove();
-		layer.msg('已删除!',{icon:1,time:1000});
-	});
-}
 </script>

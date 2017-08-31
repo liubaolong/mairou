@@ -8,6 +8,7 @@
 		//菜品详情
 		public function detailsp()
 		{
+			dump($_GET);die;
 			$mid = empty($_GET['id']) ? '':$_GET['id'];
 			//查找菜的信息 评价 
 			$res = MealModel::smeal($mid);	
@@ -43,4 +44,13 @@
 		{
 			return $this->fetch();
 		}
+	//查询菜
+	public function seachd()
+	{
+		$name = $_POST['keyword'];
+		$res  = MealModel::shopsearchd($name);
+		if ($res) {
+			$this->redirect('index/meal/detailsp',['id'=>$res['m_id']]);
+		}
 	}
+}

@@ -96,4 +96,43 @@ class Shop extends Model
 			return false;
 		}
 	}
+	//路线查询
+	static public function checkche($data)
+	{
+		$address = Db::name('shop')->where('s_id',$data['id'])->find();
+		$appkey = '47c0d9ed09e20f8c';//你的appkey
+		$start = $address['s_address'];//utf8
+		$end = $data['che'];//utf8
+		$city = '北京';//utf8
+		$type = '';
+		$url = "http://api.jisuapi.com/transit/station2s?appkey=$appkey&start=$start&end=$end&city=$city&type=$type";
+		$result = MyCurl::curlOpen($url);
+		$jsonarr = json_decode($result, true);
+		//exit(var_dump($jsonarr));
+		 
+		if($jsonarr['status'] != 0)
+		{
+		    echo $jsonarr['msg'];
+		    exit();
+		}
+		 
+		$result = $jsonarr['result'][0];
+		 
+		//此处为公交换乘的参数
+		$str = '';
+		$str = $result['vehicles'][0].'<br>';
+
+		foreach($result['steps'] as $val)
+		{
+		   $str .= $val['distance'].' '.$val['duration'].' '.$val['type'].' '.$val['steptext'].'<br>';
+		}
+		return $str;
+	}
+	//查询店铺
+	static public function shopsearchp($data)
+	{
+		$result = Db::name('shop')->where('s_name','like',$data)->where('delete_time',null)->find();
+		return $result;
+	}
+
 }

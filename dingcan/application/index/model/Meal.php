@@ -31,5 +31,11 @@ class Meal extends Model
 			return false;
 		}
 	}
+	//查询菜品
+	static public function shopsearchd($data)
+	{
+		$result = Db::name('meal')->where('m_name','like',$data)->where('delete_time',null)->find();
+		return $result;
+	}
 
 }

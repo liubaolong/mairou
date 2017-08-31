@@ -82,15 +82,15 @@
 			</nav>
 			<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
 				<ul class="cl">
-					<li>超级管理员</li>
-					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+					<li>管理员</li>
+					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">{$Think.session.admin.rb_username}<i class="Hui-iconfont">&#xe6d5;</i></a>
 						<ul class="dropDown-menu menu radius box-shadow">
 							<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
 							<li><a href="#">切换账户</a></li>
 							<li><a href="{:url('admin/auth/loginout')}">退出</a></li>
 						</ul>
 					</li>
-					<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
+<!-- 					<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li> -->
 					<li id="Hui-skin" class="dropDown right dropDown_hover"> <a href="javascript:;" class="dropDown_A" title="换肤"><i class="Hui-iconfont" style="font-size:18px">&#xe62a;</i></a>
 						<ul class="dropDown-menu menu radius box-shadow">
 							<li><a href="javascript:;" data-val="default" title="默认（黑色）">默认（黑色）</a></li>
@@ -112,14 +112,14 @@
 <aside class="Hui-aside">
 	
 	<div class="menu_dropdown bk_2">
-		<dl id="menu-article">
+	<!-- 	<dl id="menu-article">
 			<dt><i class="Hui-iconfont">&#xe616;</i> 资讯管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
 					<li><a href="{:url('article/article_list')}" title="资讯管理">资讯管理</a></li>
 				</ul>
 			</dd>
-		</dl>
+		</dl> -->
 		<dl id="menu-picture">
 			<dt><i class="Hui-iconfont">&#xe613;</i> 图片管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
@@ -151,7 +151,7 @@
 			<dd>
 				<ul>
 					<li><a href="{:url('feedback/feedback_list')}" title="评论列表">评论列表</a></li>
-					<li><a href="{:url('feedback/feedback_list')}" title="意见反馈">意见反馈</a></li>
+<!-- 					<li><a href="{:url('feedback/feedback_list')}" title="意见反馈">意见反馈</a></li> -->
 				</ul>
 			</dd>
 		</dl>
@@ -160,12 +160,12 @@
 			<dd>
 				<ul>
 					<li><a href="{:url('member/member_list')}" title="会员列表">会员列表</a></li>
-					<li><a href="{:url('member/member_del')}" title="删除的会员">删除的会员</a></li>
+<!-- 					<li><a href="{:url('member/member_del')}" title="删除的会员">删除的会员</a></li>
 					<li><a href="{:url('member/member_level')}" title="等级管理">等级管理</a></li>
 					<li><a href="{:url('member/member_scoreoperation')}" title="积分管理">积分管理</a></li>
 					<li><a href="{:url('member/member_record_browse')}" title="浏览记录">浏览记录</a></li>
 					<li><a href="{:url('member/member_record_download')}" title="下载记录">下载记录</a></li>
-					<li><a href="{:url('member/member_record_share')}" title="分享记录">分享记录</a></li>
+					<li><a href="{:url('member/member_record_share')}" title="分享记录">分享记录</a></li> -->
 				</ul>
 			</dd>
 		</dl>
@@ -179,7 +179,7 @@
 				</ul>
 			</dd>
 		</dl>
-		<dl id="menu-tongji">
+<!-- 		<dl id="menu-tongji">
 			<dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
@@ -192,16 +192,16 @@
 					<li><a href="{:url('charts/charts_7')}" title="3D饼状图">3D饼状图</a></li>
 				</ul>
 			</dd>
-		</dl>
+		</dl> -->
 		<dl id="menu-system">
 			<dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
 					<li><a href="{:url('system/system_base')}" title="系统设置">系统设置</a></li>
-					<li><a href="{:url('system/system_category')}" title="栏目管理">栏目管理</a></li>
-					<li><a href="{:url('system/system_data')}" title="数据字典">数据字典</a></li>
+					<!-- <li><a href="{:url('system/system_category')}" title="栏目管理">栏目管理</a></li> -->
+<!-- 					<li><a href="{:url('system/system_data')}" title="数据字典">数据字典</a></li>
 					<li><a href="{:url('system/system_shielding')}" title="屏蔽词">屏蔽词</a></li>
-					<li><a href="{:url('system/system_log')}" title="系统日志">系统日志</a></li>
+					<li><a href="{:url('system/system_log')}" title="系统日志">系统日志</a></li> -->
 				</ul>
 			</dd>
 		</dl>
