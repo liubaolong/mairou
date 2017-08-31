@@ -8,7 +8,7 @@
 		//菜品详情
 		public function detailsp()
 		{
-			dump($_GET);die;
+			// dump($_GET);die;
 			$mid = empty($_GET['id']) ? '':$_GET['id'];
 			//查找菜的信息 评价 
 			$res = MealModel::smeal($mid);	

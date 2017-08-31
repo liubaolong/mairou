@@ -54,6 +54,7 @@
  					 ->join('car c', 'u.uid=c.car_uid')
  					 ->join('meal m', 'c.car_mid=m.m_id')
  					 ->join('shop s', 'm.sid=s.s_id')
+ 					 ->where('car_uid', session('uid'))
  					 ->where('c.delete_time', null)
  					 ->where('m.delete_time', null)
  					 ->where('s.delete_time', null)
