@@ -2,6 +2,7 @@
 namespace app\index\controller;
 use think\Controller;
 use think\Request;
+use think\MyCurl;
 use app\index\model\Car as CarModel;
 use app\index\model\Address as AddressModel;
 use app\index\model\Order as OrderModel;
@@ -28,6 +29,13 @@ class Order extends Controller
 		//地址详情
 		$adsres = $this->address->adstetail($data);
 		$this->assign('adsres', $adsres);
+
+		//订单状态信息查看
+		// $ostatus = $this->ostatus(input('o_kuaidino'));
+		$ostatus = $this->ostatus();
+		
+		$this->assign('ostatus',$ostatus['list']);
+		$this->assign('issign',$ostatus['issign']);
 		return $this->fetch();
 	}
 	//确认订单
@@ -91,12 +99,8 @@ class Order extends Controller
 	//订单提交成功
 	public function okorder()
 	{
-		// dump(array_column(input(), 0));
-		// dump(input());die;
-
 		//生成订单编号
 		$o_orderno = time();
-		
 		
 		$len = count(input()['o_sid']);
 		$length = count(array_column(input(), 0));
@@ -132,10 +136,31 @@ class Order extends Controller
 
 			$result = $this->order->justorder($v);
 		}
-		
+		$omid = input()['o_mid'];
+		$ocounts = input()['o_counts'];
+		// dump($omid);
+		// dump($ocounts);die;
 		if ($result) {
-			$this->assign('o_orderno', $o_orderno);
-			$this->assign('allprice', input('allprice'));
+			
+			//订单成功，购物车（循环）删除该记录
+			
+			$data = [];
+			foreach ($omid as $key => $val) {
+				$data = [
+					'car_uid' => session('uid'),
+					'car_mid' => $val
+				];
+				$delcar[$key] = $this->car->delcares($data);
+			}
+			if ($delcar) {
+				$this->assign('o_orderno', $o_orderno);
+				$this->assign('allprice', input('allprice'));
+				
+				// $this->assign('omid', input('omid'));
+				// $this->assign('ocounts', input('ocounts'));
+			} else {
+				$this->error('操作失败', 'index/index/index');
+			}
 		} else {
 			$this->error('操作失败', 'index/index/index');
 		}
@@ -169,5 +194,55 @@ class Order extends Controller
 		} else {
 			return json(0);
 		}
+	}
+	//支付时判断库存是否足够
+	// public function is
+
+	//支付成功，改变订单状态,生成快递号
+	public function payorder()
+	{
+		//快递号
+		// $data = []	
+
+		$o_orderno = input('o_orderno');
+		$result = $this->order->payorder($o_orderno);
+		// dump($result);die;
+		if ($result) {
+			//支付成功时库存量相应的减少
+
+			$this->success('支付成功','index/index/index');
+		} else {
+			$this->success('支付失败','index/index/index');
+		}
+	}
+
+	//订单状态 接口
+	public function ostatus()
+	{
+		$appkey = '00745bbd3dac4ef7';//你的appkey
+		$url = "http://api.jisuapi.com/express/query?appkey=$appkey";
+		//快递公司
+		$type = 'ZTO';
+		//订单编号
+		$number = "449155040662";
+		// $number =  $data;
+
+		$post = array('type'=>$type, 
+		            'number'=>$number
+		        );
+
+		$result = Mycurl::curlOpen($url, array('post'=>$post));
+
+		$jsonarr = json_decode($result, true);
+
+		if($jsonarr['status'] != 0)
+		{
+		    echo $jsonarr['msg'];
+		    exit();
+		}
+		 
+		$result = $jsonarr['result'];
+		
+		return $result;
 	}
 }

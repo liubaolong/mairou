@@ -1,9 +1,17 @@
 
 <!--Start content-->
 <section class="Psection MT20">
+<div>
+	<form action="{:url('index/index/searchnews')}" method="post">
+		<span style="font-size:20px;">搜索新闻：</span></h1> 
+		<input type="text" name="snews"  id="snews" style="border:1px solid black;height:30px;">
+		<button type="submit" value="搜索" style="border:1px solid black;height:35px;width:80px;background-color:#00661C;color:white;" >搜索</button>
+	</form>
+</div>
  <article class="A-left Overflow">
   <h1 class="Font16 FontW classtitle">{$showNews['title']}</h1>
-  <div class="A-read">
+
+  <div class="A-read" id="neir">
    {$showNews['content']}
   </div>
  </article>

@@ -49,15 +49,15 @@
    <p>订单状态：<i class="State02">已签收</i><i class="State03">已点评</i></p>
    </li>
   </ul>
-<!--   <p>
+  <p>
   周边新闻：
     <ul class="uli" style="margin-left:0px;">
-        {//volist name="donews" id="vo" key="k"}
-        <li style="width:240px;overflow:hidden;white-space:nowrap;text-overflow: ellipsis; width:20em;"><a href="{//:url('index/index/news')}?id={//$k}" target="_self" title="标题">({//$k})&nbsp;
-        {//$vo.title}</a></li>
-        {///volist}
+        {volist name="donews" id="vo" key="k"}
+        <li style="width:240px;overflow:hidden;white-space:nowrap;text-overflow: ellipsis; width:20em;"><a href="{:url('index/index/news')}?id={$k}" target="_self" title="标题">({$k})&nbsp;
+        {$vo.title}</a></li>
+        {/volist}
       </ul>
-  </p> -->
+  </p>
   <script>
    var UpRoll = document.getElementById('UpRoll');
    var lis = UpRoll.getElementsByTagName('li');

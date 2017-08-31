@@ -76,7 +76,17 @@ class Cart extends Controller
 		} else {
 			return json(0);
 		}
-		// return json(input());
-		// $result = $this->car->nums();
+	}
+	//删除购物车
+	public function delcar()
+	{
+		$car_id = input('car_id');
+
+		$result = $this->car->delcar($car_id);
+		if ($result) {
+			return json(1);
+		} else {
+			return json(0);
+		}
 	}
 }

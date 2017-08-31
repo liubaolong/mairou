@@ -29,6 +29,11 @@
 	    public function twofl($data)
 	    {
 	    	$res2 = $this->where('parentid',$data)->select();
+	    	if ($res2) {
+	    		return $res2;
+	    	} else {
+	    		return false;
+	    	}
 	    }
 	    //三级分类
 	    public function threefl()

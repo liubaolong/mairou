@@ -37,7 +37,23 @@
      {/volist}
      {/neq}
    </table>
+<table class="U-order-D">
+订单状态：
 
+  {eq name="issign" value="1"}
+  <b>已签收</b>
+  {else}
+  <b>未签收</b>
+  {/eq}
+  <br />
+  {volist name="ostatus" id="val"}
+    {$val.time}
+      &nbsp;
+    {$val.status}
+    <br />
+  {/volist}
+
+</table>
    <!-- 修改地址 -->
   <!-- <span class="Font14 FontW Lineheight35 Block">收件地址：</span>
   <form action="#" method="post">

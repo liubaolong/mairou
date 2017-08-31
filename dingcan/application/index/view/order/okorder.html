@@ -12,9 +12,42 @@ $(document).ready(function(){
 <section class="Psection MT20 Textcenter" style="display:block;" id="Aflow">
   <!-- 订单提交成功后则显示如下 -->
   <p class="Font14 Lineheight35 FontW">恭喜你！订单提交成功！</p>
-  <p class="Font14 Lineheight35 FontW">您的订单编号为：<span class="CorRed">201409205134</span></p>
-  <p class="Font14 Lineheight35 FontW">共计金额：<span class="CorRed">￥359</span></p>
-  <p><button type="button" class="Lineheight35"><a href="#" target="_blank">支付宝立即支付</a></button><button type="button" class="Lineheight35"><a href="{:url('user/user')}">进入用户中心</button></p>
+  <p class="Font14 Lineheight35 FontW">您的订单编号为：<span class="CorRed">{$o_orderno}</span></p>
+  <p class="Font14 Lineheight35 FontW">共计金额：<span class="CorRed">￥<span id="payo">{$allprice}</span></span></p>
+	
+  <div class="pay_delivery">
+  	<span class="flow_title" style="text-align:left;">在线支付方式：</span>
+   <form action="#">
+    <ul>
+    <li><input type="radio" name="pay" id="alipay" value="alipay" checked/><label for="alipay"><i class="alipay"><img src="__IMG_PATH__/bank18.jpg" alt="" width="90" height="27"></i></label></li>
+    </ul>
+   </form>
+  </div>
+
+  <p><button type="button" class="Lineheight35"><a href="{:url('index/order/payorder')}?o_orderno={$o_orderno}" id="zhifu" >支付宝立即支付</a></button><button type="button" class="Lineheight35"><a href="{:url('user/user')}">进入用户中心</button></p>
 </section>
 <!--End content-->
 
+<script type="text/javascript">
+	function zhifu()
+	{
+		var payo = $('#payo').text();
+		var CorRed = $('.CorRed').text();
+		
+		//支付时判断此时库存量
+		$.post("{:url('index/order/payorder')}", {allprice:payo,o_orderno:CorRed}, function(data){
+				if (data) {
+					alert(data);
+					alert('支付成功');
+					window.location.href="{url('index/index/index')}";
+				} else {
+					alert(data);
+					alert('支付失败');
+					window.location.href="{url('index/index/index')}";
+				}
+		}, 'json');
+
+
+	}
+
+</script>

@@ -3,16 +3,19 @@ namespace app\index\controller;
 use think\Controller;
 use app\index\model\Shop as ShopModel;
 use app\index\model\Meal as MealModel;
+use app\index\model\Collect as CollectModel;
 use think\Request;
 class Shop extends Controller
 {
 	protected $shop;
 	protected $meal;
+	protected $collect;
 	public function  _initialize()
 	{
 		parent:: _initialize();
 		$this->shop = new ShopModel;
 		$this->meal = new MealModel;
+		$this->collect = new CollectModel;
 	}
 	//店铺展示（包括特色菜）
 	public function shop()
@@ -22,8 +25,37 @@ class Shop extends Controller
 		//特色菜查询
 		$tese = $this->meal->tese(input('s_id'));
 		$this->assign('tese', $tese);
-		// dump($tese);die;
+		//是否收藏该店铺
+		$data = [
+			'c_sid' => input('s_id'),
+			'c_uid' => session('uid')
+		];
+		// dump($data);die;
+		$onecoll = $this->collect->onecoll($data);
+		$this->assign('onecoll', $onecoll);
+		// dump($onecoll['c_id']);die;
+		// dump($onecoll);die;
+		//查看收藏店铺数量
+		$collnums = $this->collect->collnums(session('uid'));
+		$this->assign('collnums', $collnums);
 		return $this->fetch();
+	}
+	//添加收藏店铺/取消收藏店铺
+	public function docollect() 
+	{
+		$data = [
+			'c_sid' => input('s_id'),
+			'c_uid' => session('uid'),
+			'c_addtime' => time()
+		];
+		// $s_id = input('s_id');
+		$result = $this->collect->addcoll($data);
+		if ($result) {
+			return json(1);
+		} else {
+			return json(0);
+		}
+		
 	}
 	//搜索店铺
 	public function search_s()

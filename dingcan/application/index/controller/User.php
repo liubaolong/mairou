@@ -28,9 +28,24 @@ class User extends Controller
 		if (!session('?uid')) {
 			$this->success('请先登录', 'auth/login');
 		}
-		dump(session('uid'));die;
+		// dump(session('uid'));die;
 		$result = $this->collect->iscoll(session('uid'));
+		$this->assign('result', $result);
 		return $this->fetch();
+	}
+	//取消收藏
+	public function cancelcoll()
+	{
+		$data = [
+			'c_sid' => input('s_id'),
+			'c_uid' => session('uid')
+		];
+		$result = $this->collect->cancelcoll($data);
+		if ($result) {
+			return json(1);
+		} else {
+			return json(0);
+		}
 	}
 	//我的地址
 	public function address()

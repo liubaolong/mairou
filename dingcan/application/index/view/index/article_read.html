@@ -22,10 +22,27 @@
    因此呢，我们需要的是一个有共同“信仰”，共同“梦想”的“正规军”！<br/>
   </div>
  </article>
+
  <aside class="A-right Overflow">
   <!--广告位-->
   <div style="margin:8px 0;">
    <a href="#" target="_blank"><img src="__UPLOAD_PATH__/ggw.jpg"></a>
+  </div>
+  <div>
+    <?php
+        echo $result['city'].' '.$result['date'].' '.$result['week'].' '.$result['weather'].' '.$result['temp'].'<br>';
+        echo $result['temphigh'].' '.$result['templow'].' '.$result['img'].' '.$result['humidity'].' '.$result['pressure'].' '.$result['windspeed'].' '.$result['winddirect'].'<br>';
+        echo $result['windpower'].' '.$result['updatetime'].'<br>';
+        
+       
+        echo '未来几小时天气：<br>';
+        foreach($result['hourly'] as $hourly)
+        {    
+            echo $hourly['time'].' '.$hourly['weather'].' '.$hourly['temp'].' '.$hourly['img']. '<br>';    
+        }
+
+    ?>
+
   </div>
  </aside>
 </section>

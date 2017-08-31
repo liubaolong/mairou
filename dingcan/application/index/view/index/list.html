@@ -29,67 +29,55 @@
 <script type="text/javascript" src="__JS_PATH__/jqpublic.js"></script>
 <!--Start content-->
 <section class="Psection">
+<section class="fslist_navtree">
+  <ul class="select">
+    <li class="select-list">
+      <dl id="select1">
+        <dt>一级分类：</dt>
+        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
+                <!-- $k是它的b_id,  $v是b_name -->
+                {foreach $res1 as $k1=>$v1}
+                <dd><a href="javascript:" value="{$k1}" id="one" onclick="one(this)">{$v1}</a></dd>
+                {/foreach}
+                
+      </dl>
+    </li>
+    <li class="select-list" style="display:none;">
+      <dl id="select2">
+        <dt>二级分类：</dt>
+        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
+       {foreach $res2 as $k2=>$v2}
+                <dd><a href="javascript:" value="{$k2}" id="two" onclick="one(this)">{$v2}</a></dd>
+        {/foreach}
+      </dl>
+    </li>
+    <li class="select-list" style="display:none;">
+      <dl id="select3">
+        <dt>三级分类：</dt>
+        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
+        {foreach $res3 as $k3=>$v3}
+                <dd><a href="javascript:" value="{$k3}" id="three" onclick="one(this)">{$v3}</a></dd>
+        {/foreach}
+      </dl>
+    </li>
+        <li class="select-list" style="display:none;">
+      <dl id="select4">
+        <dt>四级分类：</dt>
+        <dd class="select-all selected"><a href="javascript:">全部</a></dd>
+         {foreach $res4 as $k4=>$v4}
+                <dd><a href="javascript:" value="{$k4}" id="one(this)">{$v4}</a></dd>
+        {/foreach}
+      </dl>
+    </li>
 
-  <!-- <section class="fslist_navtree"> -->
-
-  <!-- 导航栏 -->
-  
-  
-    <div class="header" style="margin-top:20px;">
-        <ul class="nav">
-
-  {volist name="res1" id="v1"}
-          <!-- 一级 -->
-          <li>
-            <a href="#">
-            {$v1}
-            </a>
-            <ul class="second-nav">
-          <!-- 二级 -->
-          {volist name="res2" id="v2"}
-              <li><a href="#">{$v2}</a>
-                <ul class="third-nav">
-                <!-- 三级 -->
-                  <li><a href="#">T恤+短裤</a></li>
-                  <li><a href="#">T恤+短裙</a></li>
-                  <li><a href="#">T恤+碎花裙</a></li>
-                </ul>
-              </li>
-          {/volist}
-              <li><a href="#">碎花裙</a>
-                <ul class="third-nav">
-                  <li><a href="#">荷叶裙</a></li>
-                  <li><a href="#">仙女裙</a></li>
-                </ul>
-              </li>
-              <li><a href="#">背带裤</a></li>
-            </ul>
-          </li>
-  {/volist}
-
-          <!-- <li><a href="#">夏季爆款</a>
-            <ul class="second-nav">
-              <li><a href="#">两件套</a>
-                <ul class="third-nav">
-                  <li><a href="#">T恤+短裤</a></li>
-                  <li><a href="#">T恤+短裙</a></li>
-                  <li><a href="#">T恤+碎花裙</a></li>
-                </ul>
-              </li>
-              <li><a href="#">背带裤</a></li>
-              <li><a href="#">碎花裙</a>
-                <ul class="third-nav">
-                  <li><a href="#">荷叶裙</a></li>
-                  <li><a href="#">仙女裙</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li> -->
-          
-        </ul>
-      </div>
-    <div style="text-align:center;">
-  </div>
+    
+    <li class="select-result">
+      <dl>
+       <dd class="select-no">已选择：</dd>
+      </dl>
+    </li>
+  </ul>
+ </section>
 
 <section class="Fslmenu">
  <a href="{:url('index/index/list')}?id=" title="默认排序">
@@ -190,3 +178,32 @@
 </section>
 </section>
 <!--End content-->
+
+<script>
+  // var one = $('#one').attr('value');
+  // alert(one);
+  function one(obj)
+  {
+    // alert($(obj).attr('value'));
+    var b_id = $(obj).attr('value');
+    $.post("{:url('index/index/twofl')}", {b_id:b_id}, function(data){
+      if (data) {
+        // alert(data);
+      } else {
+        alert(data);
+      }
+    }, 'json');
+  }
+  function two(obj)
+  {
+    alert($(obj).attr('value'));
+  }
+  function three(obj)
+  {
+    alert($(obj).attr('value'));
+  }
+  function four(obj)
+  {
+    alert($(obj).attr('value'));
+  }
+</script>

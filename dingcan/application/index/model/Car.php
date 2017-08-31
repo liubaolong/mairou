@@ -80,4 +80,32 @@
  				return false;
  			}
  		}
+ 		//删除购物车(单条删除)
+ 		public function delcar($data)
+ 		{
+ 			$result = $this
+ 					 // ->where('car_uid', $data['car_uid'])
+ 					 // ->where('car_mid', $data['car_mid'])
+ 					 ->where('car_id', 'in', $data)
+ 					 ->delete();
+ 			dump($result);die;
+ 			if ($result) {
+ 				return $result;
+ 			} else {
+ 				return false;
+ 			}
+ 		}
+ 		//删除购物车(多条删除)
+ 		public function delcares($data)
+ 		{
+ 			$result = $this
+ 					 ->where('car_uid', $data['car_uid'])
+ 					 ->where('car_mid', $data['car_mid'])
+ 					 ->delete();
+ 			if ($result) {
+ 				return $result;
+ 			} else {
+ 				return false;
+ 			}
+ 		}
  	}

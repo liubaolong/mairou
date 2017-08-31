@@ -97,7 +97,34 @@ Author URI: http://www.deathghost.cn
       <a href="#ydwm"><span class="DCbutton">查看菜谱点菜</span></a>
      </div>
      <div class="otherinfor">
-     <a href="#" class="icoa"><img src="__IMG_PATH__/collect.png">收藏店铺（1293）</a>
+    
+         <!-- <a style="cursor:pointer" class="icoa" onclick="collect()" value="{$result.s_id}" key="{$onecoll.c_id}" id="collect">
+         <img src="__IMG_PATH__/collect.png">
+         <span id="colle">取消收藏</span>
+         （
+         <span id="nums">
+         {$collnums}
+         </span>
+         ）
+         </a> -->
+         
+     
+          <a style="cursor:pointer" class="icoa" onclick="collect()" value="{$result.s_id}" key="{$onecoll.c_id}" id="collect">
+         <img src="__IMG_PATH__/collect.png">
+         <span id="colle">
+         {neq name="onecoll" value=""}
+         已收藏
+         {else}
+         收藏店铺
+         {/neq}
+         </span>
+         （
+         <span id="nums">
+         {$collnums}
+         </span>
+         ）
+         </a>
+     
      <div class="bshare-custom"><a title="分享" class="bshare-more bshare-more-icon more-style-addthis">分享</a></div>
 	 <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=1&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
      </div>
@@ -252,3 +279,43 @@ Author URI: http://www.deathghost.cn
  
 </section>
 <!--End content-->
+<script type="text/javascript">
+    function collect()
+    {
+      var s_id = $('#collect').attr('value');
+      // var key = $('#collect').attr('key');//key为真，说明已收藏
+      // var colle = $('#colle');
+      // var nums = $('#nums');
+      // 判断收藏还是取消
+      // if (!key) {
+          $.post("{:url('index/shop/docollect')}", {s_id:s_id},function(data){
+            if (data) {
+              // alert(key);
+              alert('收藏成功');
+              // $('#collect').attr('key') = 1;
+              $('#colle').text('已收藏');
+              $('#nums').text(parseInt($('#nums').text())+1);
+              $('#collect').attr('onclick','return false;');
+            } else {  
+              alert('收藏失败');
+            }
+          }, 'json');
+          
+      // } else {
+      //   $.post("{:url('index/user/cancelcoll')}", {s_id:s_id},function(data){
+      //       if (data) {
+      //          alert(key);
+      //         alert('取消收藏成功');
+      //         $('#collect').attr('key') = 0;
+      //         colle.text('收藏店铺');
+      //         nums.text(parseInt(nums.text())-1);
+      //       } else {  
+      //         alert('取消收藏失败');
+      //       }
+      //     }, 'json');
+
+      // }
+      
+    }
+
+</script>

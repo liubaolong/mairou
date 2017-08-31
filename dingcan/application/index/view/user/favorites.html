@@ -18,14 +18,38 @@
   <section class="ShopFav Overflow">
    <span class="ShopFavtitle Block Font14 FontW Lineheight35">我的收藏</span>
    <ul>
-    <a href="{:url('shop/shop')}" target="_blank">
-    <li>
-     <img src="__UPLOAD_PATH__/cc.jpg">
-     <p>好味来快餐店 ( 删除 )</p>
+    {neq name="result" value=""}
+    {volist name="result" id="v"}
+    <li><a href="{:url('shop/shop')}?s_id={$v.s_id}" >
+     <img src="{$v.s_pic}">
+     </a>
+     <p>{$v.s_name} ( 
+     <a  style="color:blue;cursor:pointer" onclick="docancel(this)" value="{$v.s_id}">删除</a>
+      )</p>
     </li>
-    </a>
+    {/volist}
+    {/neq}
+    
    </ul>
   </section>
  </article>
 </section>
 <!--End content-->
+<script type="text/javascript">
+  function docancel(obj)
+  {
+    var s_id = $(obj).attr('value');
+    if (confirm('确认取消收藏？')) {
+      $.post("{:url('index/user/cancelcoll')}", {s_id:s_id}, function(data){
+        if (data) {
+          alert('取消收藏成功');
+          $(obj).parent().parent().remove();
+        } else {
+          alert('操作失败');
+        }
+      }, 'json');
+    } 
+
+  }
+
+</script>

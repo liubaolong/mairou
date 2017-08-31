@@ -3,7 +3,7 @@ namespace app\index\model;
 use think\Model;
 use think\Db;
 use think\MyCurl;
-class shop extends Model
+class Shop extends Model
 {
 	//查询店铺名
 	public function shopname($data)

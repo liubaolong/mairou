@@ -13,6 +13,7 @@
     </tr>
   </table>
   <!-- 遍历购物车 -->
+  {neq name="result" value=""}
   {volist name="result" id="v" key="k"}
   <table cellpadding="0" cellspacing="0" class="gwc_tb2" id="table1">
     <tr>
@@ -35,10 +36,14 @@
         <input type="hidden" name="" id="price" value="{$v.m_newprice}">
       </td>
       <td class="tb1_td6"><label id="pice" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;">{$v.m_newprice*$v.mcounts}</label></td>
-      <td class="tb1_td7"><a href="#" id="delcart1">删除</a></td>
+      <td class="tb1_td7"><a   onclick="delcar(this)" value="{$v.car_id}">删除</a></td>
     </tr>
   </table>
   {/volist}
+  {else}
+  <br />
+  <span style="font-size:20px"><b>暂无内容~</b></span>
+  {/neq}
   <table cellpadding="0" cellspacing="0" class="gwc_tb3">
     <tr>
       <td class="tb1_td1"><!-- <input id="checkAll" class="allselect" type="checkbox" /> --></td>
@@ -66,6 +71,24 @@
 </form>
 <!--End content-->
 <script type="text/javascript">
+ //删除该购物车内容
+   function delcar(obj)
+  {
+    var car_id = $(obj).attr('value');
+   
+    $.post("{:url('index/cart/delcar')}", {car_id:car_id}, function(data){
+        if (data) {
+          alert('删除成功'); 
+          $(obj).parent().parent().prev().remove();
+          $(obj).parent().parent().remove();
+        } else {
+          alert('删除失败');
+        }
+    }, 'json');
+  }
+
+
+
   var shuliang = $('#shuliang');
   var totalprice = $('#zong1');
   function jianprice(obj)
@@ -135,4 +158,6 @@
     });
     return false;
   }
+
+ 
 </script>

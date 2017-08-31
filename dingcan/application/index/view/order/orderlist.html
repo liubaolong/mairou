@@ -26,7 +26,10 @@
      {neq name="result" value="false"}
      {volist name="result" id="v"}
      <tr>
-      <td class="FontW"><a href="{:url('index/order/order')}?o_orderno={$v.o_orderno}">{$v.o_orderno}</a></td>
+      <td class="FontW">
+      <a href="{:url('index/order/order')}?o_orderno=
+      {$v.o_orderno}&o_kuaidino={$v.o_kuaidino}">
+      {$v.o_orderno}</a></td>
       <td><?php echo date('Y-m-d H:i:s', $v['o_addtime']);?></td>
       <td>{$v.a_user}</td>
       <td>￥{$v.allprice}.00</td>
@@ -43,12 +46,22 @@
       取消订单</a> |
       {/eq}
 
-       <a href="#">付款</a></td>
+       <a href="{:url('index/order/payorder')}?o_orderno={$v.o_orderno}">
+      {eq name="v.o_status" value="0"}
+       付款
+       </a>
+      {else}
+       <a>
+       已付款
+       </a>
+      {/eq}
+       </td>
+      
      </tr>
      {/volist}
      {/neq}
     </table>
-    {$result->render()}
+    {//$result->render()}
   </section>
  </article>
 </section>
