@@ -31,7 +31,7 @@ Author URI: http://www.deathghost.cn
         {/if}
    </div>
    <div class="RightNav">
-    <a href="{:url('user/user')}">用户中心</a> <a href="{:url('order/orderlist')}" target="_self" title="我的订单">我的订单</a> <a href="{:url('cart/cart')}">购物车（0）</a> <a href="{:url('user/favorites')}" target="_self" title="我的收藏">我的收藏</a><a href="{:url('shop/join')}">商家入驻</a>
+    <a href="{:url('user/user')}">用户中心</a> <a href="{:url('order/orderlist')}" target="_self" title="我的订单">我的订单</a> <a href="{:url('cart/cart')}">购物车</a> <a href="{:url('user/favorites')}" target="_self" title="我的收藏">我的收藏</a><a href="{:url('shop/join')}">商家入驻</a>
    </div>
   </div>
  </section>
@@ -52,7 +52,6 @@ Author URI: http://www.deathghost.cn
    <input type="submit" class="searchbutton" value="搜 索" />
    </div>
    </form>
-   <p class="hotkeywords"><a href="#" title="酸辣土豆丝">酸辣土豆丝</a><a href="#" title="这里是产品名称">螃蟹炒年糕</a><a href="#" title="这里是产品名称">牛奶炖蛋</a><a href="#" title="这里是产品名称">芝麻酱凉面</a><a href="#" title="这里是产品名称">滑蛋虾仁</a><a href="#" title="这里是产品名称">蒜汁茄子</a></p>
   </div>
  </div>
  <nav class="menu_bg">
@@ -138,10 +137,8 @@ function selectsearch(theA,word){
  theA.className='choose';
   if(word=='restaurant_name'){
    $("#main_a_serach").attr('action',"{:url('index/shop/seachp')}");//Test url
-   alert($("#main_a_serach").attr("action"));
   }else if(word=='food_name'){
    $("#main_a_serach").attr('action',"{:url('index/Meal/seachd')}");//Test url
-  alert($("#main_a_serach").attr("action"));
   }
 }
     var Gid  = document.getElementById ;

@@ -36,11 +36,16 @@ class Index extends Controller
           $dish = IndexModel::hotdish();
           // //新闻标题
           $donews = $this->donews();
+          //查询轮播图
+          $picture = IndexModel::shopphoto();
+          //查询订单
+          $order = IndexModel::shoporder();
           $this->assign('donews', $donews);
           $this->assign('dish', $dish);
           $this->assign('str',$res);
-
+          $this->assign('picture',$picture);
           $this->assign('web_isclose',$config);
+          $this->assign('order',$order);
           return $this->fetch();
         }
         
@@ -232,7 +237,7 @@ class Index extends Controller
     public function twofl()
     {
       // dump(input());die;
-      $res2 = $this->bk->twofl(input('b_id');
+      // $res2 = $this->bk->twofl(input('b_id');
       if ($res2) {
         return json(1);
       } else {

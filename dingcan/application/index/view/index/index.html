@@ -24,9 +24,9 @@
  </aside>
  <div class="F-middle">
  <ul>
-        <li id="lunbo1" style="display:block;"><a href="javascript:"><img src="__UPLOAD_PATH__/01.jpg"/></a></li>
-        <li id="lunbo2" style="display:none;"><a href="javascript:"><img src="__UPLOAD_PATH__/02.jpg" /></a></li>
-        <li id="lunbo3" style="display:none;"><a href="javascript:"><img src="__UPLOAD_PATH__/03.jpg"/></a></li>
+        <li id="lunbo1" style="display:block;"><a href="{:url('index/shop/shop')}?s_id={$picture[0]['ad_sid']}"><img style="width:600px;height:400px;" src="{$picture[0]['ad_url']}"/></a></li>
+        <li id="lunbo2" style="display:none;"><a href="{:url('index/shop/shop')}?s_id={$picture[1]['ad_sid']}"><img style="width:600px;height:400px;" src="{$picture[1]['ad_url']}" /></a></li>
+        <li id="lunbo3" style="display:none;"><a href="{:url('index/shop/shop')}?s_id={$picture[2]['ad_sid']}"><img style="width:600px;height:400px;" src="{$picture[2]['ad_url']}"/></a></li>
   </ul>
  </div>
  <aside class="N-right">
@@ -34,18 +34,18 @@
 
   <ul class="Orderlist" id="UpRoll">
    <li>
-   <p>订单编号：2014090912973</p>
-   <p>收件人：王先生</p>
+   <p>订单编号：{$order[0]['o_orderno']}</p>
+   <p>收件人：{$order[0]['a_user']}</p>
    <p>订单状态：<i class="State01">已发货</i></p>
    </li>
    <li>
-   <p>订单编号：2014090912978</p>
-   <p>收件人：张小姐</p>
+   <p>订单编号：{$order[1]['o_orderno']}</p>
+   <p>收件人：{$order[1]['a_user']}</p>
    <p>订单状态：<i class="State02">已签收</i><i class="State03">已点评</i></p>
    </li>
    <li>
-   <p>订单编号：2014090912988</p>
-   <p>收件人：龚先生</p>
+   <p>订单编号：{$order[2]['o_orderno']}</p>
+   <p>收件人：{$order[2]['a_user']}</p>
    <p>订单状态：<i class="State02">已签收</i><i class="State03">已点评</i></p>
    </li>
   </ul>
@@ -84,13 +84,13 @@
    
     <li class="current">点菜</li>
     <li >餐馆</li>
-    <p class="class_B">
+<!--     <p class="class_B">
     <a href="#">中餐</a>
     <a href="#">西餐</a>
     <a href="#">甜点</a>
     <a href="#">日韩料理</a>
     <span><a href="#" target="_blank">more ></a></span>
-    </p>
+    </p> -->
    </ul>
 
 

@@ -52,4 +52,22 @@ class Index extends Model
 		$result = Db::table('f_shop')->where('s_status',1)->order('s_monthcount','desc')->paginate(4);
 		return $result;
 	}
+	//查询轮播图
+	static public function shopphoto()
+	{
+		$result = Db::name('ad')->where('status',1)->where('delete_time',null)->limit(3)->select();
+		return $result;
+	}
+	//查询订单
+	static public function shoporder()
+	{
+		$result = Db::name('order')
+				->alias('o')
+				->join('f_address as','as.a_id = o.o_aid')
+				->where('o.delete_time',null)
+				->order('o.o_addtime')
+				->limit(3)
+				->select();
+		return $result;
+	}
 }

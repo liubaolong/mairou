@@ -3,13 +3,13 @@
 	use think\Controller;
 	use app\index\model\Meal as MealModel;
 	use think\MyCurl;
+	use think\Request;
 	class Meal extends Controller{
 
 		//菜品详情
-		public function detailsp()
+		public function detailsp(Request $Request)
 		{
-			dump($_GET);die;
-			$mid = empty($_GET['id']) ? '':$_GET['id'];
+			$mid = empty($_GET['id']) ? $Request->param('id'):$_GET['id'];
 			//查找菜的信息 评价 
 			$res = MealModel::smeal($mid);	
 			$this->assign('dish',$res);
@@ -49,6 +49,7 @@
 	{
 		$name = $_POST['keyword'];
 		$res  = MealModel::shopsearchd($name);
+		dump($res['m_id']);
 		if ($res) {
 			$this->redirect('index/meal/detailsp',['id'=>$res['m_id']]);
 		}
